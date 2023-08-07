@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/tmovie.png";
 import "./Header.scss";
 import { ThemeSwitcher } from "component/ThemeSwitcher/ThemeSwitcher";
-import { useTheme } from "providers/theme/useTheme";
+import { useTheme } from "providers/themeProvider/useTheme";
 import { RoutePath } from "../../../config/routeConfig/routeConfig";
 
 const headerNav = [

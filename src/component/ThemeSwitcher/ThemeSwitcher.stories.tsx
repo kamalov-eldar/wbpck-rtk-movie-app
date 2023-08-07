@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Button, { ButtonTheme } from "../button/Button";
 import { ThemeDecorator } from "../../../config/ThemeDecorator/ThemeDecorator";
-import { Theme } from "providers/theme/ThemeContext";
+import { Theme } from "providers/themeProvider/ThemeContext";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import LightIcon from "assets/svg/LightIcon";
 import DarkIcon from "assets/svg/DarkIcon";
@@ -41,7 +41,7 @@ export const ThemeSwitcherDark: Story = {
     args: {
         buttonTheme: ButtonTheme.CLEAR,
     },
-    render: ({  buttonTheme }) => (
+    render: ({ buttonTheme }) => (
         <Button theme={buttonTheme}>
             <LightIcon />
         </Button>

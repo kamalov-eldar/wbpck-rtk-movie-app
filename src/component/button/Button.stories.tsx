@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Button, { ButtonTheme } from "./Button";
 import { ThemeDecorator } from "../../../config/ThemeDecorator/ThemeDecorator";
-import { Theme } from "providers/theme/ThemeContext";
+import { Theme } from "providers/themeProvider/ThemeContext";
 
 const meta = {
     title: "Example/Button",

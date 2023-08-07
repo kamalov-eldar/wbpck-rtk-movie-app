@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeDecorator } from "../../../config/ThemeDecorator/ThemeDecorator";
-import { Theme } from "providers/theme/ThemeContext";
+import { Theme } from "providers/themeProvider/ThemeContext";
 import MovieCard from "./MovieCard";
 
 const meta = {

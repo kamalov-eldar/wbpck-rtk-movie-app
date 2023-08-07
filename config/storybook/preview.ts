@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { ThemeDecorator } from "../ThemeDecorator/ThemeDecorator";
-import { Theme } from "providers/theme/ThemeContext";
+import { Theme } from "providers/themeProvider/ThemeContext";
 import { StyleDecorator } from "../StyleDecorator/StyleDecorator";
 import { RouterDecorator } from "../RouterDecorator/RouterDecorator";
 

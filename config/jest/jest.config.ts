@@ -7,6 +7,8 @@ import type { Config } from "jest";
 import path from "path";
 
 const config: Config = {
+    globals: { __IS_DEV__: true },
+
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 

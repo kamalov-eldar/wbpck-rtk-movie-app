@@ -12,7 +12,7 @@ import StatusUpload from "component/status-upload/StatusUpload";
 import Home from "pages/Home/Home";
 import Catalog from "pages/Catalog/Catalog";
 import Detail from "pages/detail/Detail";
-import { useTheme } from "providers/theme/useTheme";
+import { useTheme } from "providers/themeProvider/useTheme";
 import AppRouter from "providers/router/AppRouter";
 
 function App() {

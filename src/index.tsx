@@ -2,10 +2,25 @@ import App from "App";
 import { render } from "react-dom";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { StyledEngineProvider } from "@mui/material/styles";
-import ThemeProvider from "providers/theme/ThemeProvider";
-import { StoreProvider } from "providers/store/StoreProvider";
+import ThemeProvider from "providers/themeProvider/ThemeProvider";
+import { StoreProvider } from "providers/storeProvider/StoreProvider";
+import { createRoot } from "react-dom/client";
 
-render(
+const container = document.getElementById("root");
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
+    <StoreProvider>
+        <HashRouter>
+            <StyledEngineProvider injectFirst>
+                <ThemeProvider>
+                    <App />
+                </ThemeProvider>
+            </StyledEngineProvider>
+        </HashRouter>
+    </StoreProvider>,
+);
+
+/* render(
     <StoreProvider>
         <HashRouter>
             <StyledEngineProvider injectFirst>
@@ -16,4 +31,18 @@ render(
         </HashRouter>
     </StoreProvider>,
     document.getElementById("root"),
-);
+); */
+
+/*
+// Before
+import { render } from 'react-dom';
+const container = document.getElementById('app');
+render(<App tab="home" />, container);
+
+// After
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('app');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<App tab="home" />);
+
+*/

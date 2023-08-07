@@ -1,10 +1,10 @@
 import { screen } from "@testing-library/react";
 import { componentRender } from "../../../config/jest/componentRender/componentRender";
-import { userEvent } from "@storybook/testing-library";
 import { Counter } from "./Counter";
+import userEvent from "@testing-library/user-event";
 
 describe("Counter", () => {
-    /* test("test render", () => {
+    test("test render", () => {
         componentRender(<Counter />, {
             initialState: { counter: { value: 10 } },
         });
@@ -25,5 +25,5 @@ describe("Counter", () => {
         });
         userEvent.click(screen.getByTestId("decrement-btn"));
         expect(screen.getByTestId("value-title")).toHaveTextContent("9");
-    }); */
+    });
 });
