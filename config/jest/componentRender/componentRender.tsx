@@ -1,9 +1,8 @@
 import { ReactNode } from "react";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { StoreProvider } from "providers/store/StoreProvider";
 //import { StateSchema, StoreProvider } from "app/providers/StoreProvider";
-import { RootStoreContext } from "root-store-context";
-import RootStore from "store/root-store";
 //import { DeepPartial } from '@reduxjs/toolkit';
 
 export interface componentRenderOptions {
@@ -14,8 +13,8 @@ export function componentRender(component: ReactNode) {
     const route = "/";
 
     return render(
-        <RootStoreContext.Provider value={new RootStore()}>
+        <StoreProvider>
             <MemoryRouter initialEntries={[route]}>{component}</MemoryRouter>
-        </RootStoreContext.Provider>,
+        </StoreProvider>,
     );
 }

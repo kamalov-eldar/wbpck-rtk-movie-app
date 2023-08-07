@@ -1,12 +1,9 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import "./MovieGrid.scss";
-import { useStores } from "../../root-store-context";
 import MovieCard from "../movie-card/MovieCard";
 
-import { observer } from "mobx-react";
 import { ButtonTheme, Button } from "../button/Button";
 import MovieSearch from "../movie-search/MovieSearch";
-import { toJS } from "mobx";
 import { TCategoryType, TListType } from "../../api/types";
 import { useNavigate, useParams } from "react-router-dom";
 import StatusUpload from "component/status-upload/StatusUpload";
@@ -18,27 +15,8 @@ type MovieGridProps = {
 
 const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
     const [page, setPage] = useState(1);
-    const { moviesStore, tvStore } = useStores();
     const { keyword: keywordUrl } = useParams<{ keyword: string }>();
     const navigate = useNavigate();
-
-    const {
-        getMovieList,
-        totalpagesMovieList,
-        upcomingMovieList,
-        dataUpcomingMovieList,
-        popularMovieList,
-        dataPopularMovieList,
-        dataTopMovieList,
-        topMovieList,
-        keyword,
-        searchMovie,
-        resetMoviesList,
-        searchList,
-        setKeyword,
-    } = moviesStore;
-
-    const { popularTVList, totalPagesTVList, getTVList, topTVList, dataPopularTVList, dataTopTVList } = tvStore;
 
     useEffect(() => {
         if (keywordUrl) {
@@ -46,7 +24,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
         }
     }, []);
 
-    useEffect(() => {
+    /*  useEffect(() => {
         if (keyword === "") {
             const params = { page: 1 };
             if (category === "tv" && listType) getTVList(listType, { params });
@@ -73,9 +51,9 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
 
     useEffect(() => {
         setKeyword("");
-    }, [category]);
+    }, [category]); */
 
-    const loadMore = useCallback(() => {
+    /* const loadMore = useCallback(() => {
         if (keyword === "") {
             const params = {
                 page: page + 1,
@@ -92,9 +70,9 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             }
         }
         setPage(page + 1);
-    }, [page, category, keyword, listType]);
+    }, [page, category, keyword, listType]); */
 
-    const listMovie = useMemo(() => {
+    /*  const listMovie = useMemo(() => {
         switch (listType) {
             case "popular":
                 return popularMovieList;
@@ -106,9 +84,9 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             default:
                 return searchList;
         }
-    }, [listType, popularMovieList, topMovieList, upcomingMovieList, searchList]);
+    }, [listType, popularMovieList, topMovieList, upcomingMovieList, searchList]); */
 
-    const listTV = useMemo(() => {
+    /*   const listTV = useMemo(() => {
         switch (listType) {
             case "popular":
                 return popularTVList;
@@ -117,9 +95,9 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             default:
                 return searchList;
         }
-    }, [listType, popularTVList, topTVList, searchList]);
+    }, [listType, popularTVList, topTVList, searchList]); */
 
-    const dataMovieList = useMemo(() => {
+    /*   const dataMovieList = useMemo(() => {
         switch (listType) {
             case "popular":
                 return dataPopularMovieList;
@@ -131,9 +109,9 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             default:
                 return undefined;
         }
-    }, [listType, dataPopularMovieList, dataTopMovieList, dataUpcomingMovieList]);
+    }, [listType, dataPopularMovieList, dataTopMovieList, dataUpcomingMovieList]); */
 
-    const dataTVList = useMemo(() => {
+    /*  const dataTVList = useMemo(() => {
         switch (listType) {
             case "popular":
                 return dataPopularTVList;
@@ -143,15 +121,15 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             default:
                 return undefined;
         }
-    }, [listType, dataPopularTVList, dataTopTVList]);
+    }, [listType, dataPopularTVList, dataTopTVList]); */
 
-    if ((dataTVList?.state || dataMovieList?.state) === "rejected") {
+    /*  if ((dataTVList?.state || dataMovieList?.state) === "rejected") {
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
-    }
+    } */
 
-    if (listMovie.length === 0 && listTV.length === 0) {
+    /* if (listMovie.length === 0 && listTV.length === 0) {
         return <StatusUpload text={"Загрузка ..."} />;
-    }
+    } */
 
     return (
         <>
@@ -162,28 +140,26 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             <div className="movie-grid">
                 {category === "movie" && (
                     <>
-                        {listMovie.map((item, i) => (
+                        {[].map((item, i) => (
                             <MovieCard category={category} movieItem={item} key={item.id} />
                         ))}
                     </>
                 )}
                 {category === "tv" && (
                     <>
-                        {listTV.map((item, i) => {
+                        {[].map((item, i) => {
                             return <MovieCard category={category} movieItem={item} key={item.id} />;
                         })}
                     </>
                 )}
             </div>
-            {page < (category === "tv" ? totalPagesTVList : totalpagesMovieList) ? (
-                <div className="movie-grid__loadmore">
-                    <Button theme={ButtonTheme.OUTLINE} className="small" onClick={loadMore}>
-                        Load more
-                    </Button>
-                </div>
-            ) : null}
+            <div className="movie-grid__loadmore">
+                <Button theme={ButtonTheme.OUTLINE} className="small" onClick={() => console.log("onClick")}>
+                    Load more
+                </Button>
+            </div>
         </>
     );
 };
 
-export default observer(MovieGrid);
+export default MovieGrid;

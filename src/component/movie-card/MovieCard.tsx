@@ -6,7 +6,6 @@ import Button, { ButtonTheme } from "../button/Button";
 
 import { TCategoryType } from "../../api/types";
 import { TMovieItem } from "../../api/types";
-import { observer } from "mobx-react";
 import apiConfig from "../../api/apiConfig";
 import { IMG } from "./IMG";
 
@@ -37,4 +36,4 @@ const MovieCard: FC<MovieCardProps> = ({ movieItem, category }) => {
     );
 };
 
-export default observer(MovieCard);
+export default MovieCard;

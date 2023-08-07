@@ -2,8 +2,6 @@ import React, { FC, useEffect } from "react";
 import "./CastList.scss";
 import { TCategoryType } from "../../api/types";
 import apiConfig from "../../api/apiConfig";
-import { useStores } from "../../root-store-context";
-import { observer } from "mobx-react";
 
 type CastListProps = {
     id: number;
@@ -11,19 +9,16 @@ type CastListProps = {
 };
 
 const CastList: FC<CastListProps> = ({ id, category }) => {
-    const { moviesStore, tvStore } = useStores();
-    const { getCasts, resetCasts, casts } = moviesStore;
-
     useEffect(() => {
-        getCasts(category, id);
+        /*  getCasts(category, id);
         return () => {
             resetCasts();
-        };
+        }; */
     }, [category, id]);
 
     return (
         <div className="casts">
-            {casts.map((item, i) => (
+            {[].map((item, i) => (
                 <div key={i} className="casts__item">
                     <div
                         className="casts__item__img"
@@ -35,4 +30,4 @@ const CastList: FC<CastListProps> = ({ id, category }) => {
     );
 };
 
-export default observer(CastList);
+export default CastList;

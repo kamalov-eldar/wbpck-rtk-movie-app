@@ -1,8 +1,6 @@
 import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 
-import { observer } from "mobx-react";
-import { useStores } from "../../root-store-context";
 import { TCategoryType, TListType } from "../../api/types";
 import PageHeader from "component/page-header/PageHeader";
 import MovieGrid from "component/movie-grid/MovieGrid";

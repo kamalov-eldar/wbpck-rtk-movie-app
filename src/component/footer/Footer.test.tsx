@@ -2,8 +2,6 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import Footer from "./Footer";
 import { JSX } from "react/jsx-runtime";
 import { componentRender } from "../../../config/jest/componentRender/componentRender";
-import RootStore from "store/root-store";
-import { RootStoreContext } from "root-store-context";
 
 /*describe("Footer", () => {
      test("with only first param", () => {
