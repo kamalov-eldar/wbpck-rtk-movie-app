@@ -4,6 +4,7 @@
     font-size: 2.5rem;
     font-weight: 600;
     color: #fff;
+    position: relative;
 
     @include flex(center, unset);
 
@@ -16,6 +17,16 @@
             margin-right: 0;
         }
     }
+}
+
+.beta {
+    position: absolute;
+    color: #787878;
+    font-weight: 500;
+    font-size: 30px;
+    text-decoration: none;
+    left: 202px;
+    top: -10px;
 }
 
 .header {

@@ -50,7 +50,9 @@ const Header = () => {
                 <div className="logo">
                     <img src={logo} alt="" />
                     <Link to={RoutePath.home}>Movies</Link>
+                    <p className="beta">beta</p>
                 </div>
+
                 <ThemeSwitcher />
                 <ul className="header__nav">
                     {headerNav.map((e, i) => (
