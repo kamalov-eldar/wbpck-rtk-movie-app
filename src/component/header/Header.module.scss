@@ -1,24 +1,5 @@
 @use "../../scss/" as *;
 
-.logo {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #fff;
-    position: relative;
-
-    @include flex(center, unset);
-
-    img {
-        margin-right: 10px;
-        width: 50px;
-
-        @include mobile {
-            width: 30px;
-            margin-right: 0;
-        }
-    }
-}
-
 .beta {
     position: absolute;
     color: #787878;
@@ -35,16 +16,13 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 99;
+    // z-index: 1;
     transition: height 0.3s ease, background-color 0.3s ease;
     background-color: var(--header-color);
 
-    &.shrink {
-        height: $header-shrink-height;
-        background-color: var(--header-shrink);
-    }
-
     &__wrap {
+        max-width: 1660px;
+        margin: auto;
         @include flex(center, space-between);
         height: 100%;
         padding: 0 2rem;

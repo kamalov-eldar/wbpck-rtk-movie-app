@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { Theme } from "providers/themeProvider/ThemeContext";
 import Button, { ButtonTheme } from "component/button/Button";

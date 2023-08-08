@@ -74,12 +74,12 @@ iframe {
 }
 
 .app {
-    background: var(--bg-color);
+    background: var(--bg-primary);
     min-height: 100vh;
 }
 
 .storybook-custom {
-    background: var(--bg-color);
+    background: var(--bg-primary);
     min-height: 100vh;
 
     display: flex;
@@ -137,4 +137,27 @@ iframe {
 
 .section__header {
     @include flex(center, space-between);
+}
+
+.shrink {
+    height: $header-shrink-height;
+    background-color: var(--header-shrink);
+}
+.logo {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+
+    @include flex(center, unset);
+
+    img {
+        margin-right: 10px;
+        width: 50px;
+
+        @include mobile {
+            width: 30px;
+            margin-right: 0;
+        }
+    }
 }

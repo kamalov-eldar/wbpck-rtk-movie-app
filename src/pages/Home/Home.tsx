@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSlide from "../../component/hero-slide/HeroSlide";
 import { Link } from "react-router-dom";
 import { ButtonTheme, Button } from "../../component/button/Button";

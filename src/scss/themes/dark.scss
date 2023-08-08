@@ -1,5 +1,6 @@
 .dark_theme {
-    --bg-color: #0f0f0f;
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #232325; /*  rgb(35, 35, 37) */
     --header-color: #1a1a1a91;
     --header-shrink: #1a1a1a;
     --inverted-bg-color: #fff;
@@ -10,4 +11,5 @@
     --main-color: #ff0000;
     --text-color: #fff;
     --text-hover: #ff0000;
+    --overlay-color: rgba(0, 0, 0, 60%);
 }
