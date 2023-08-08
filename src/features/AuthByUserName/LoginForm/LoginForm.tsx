@@ -7,12 +7,19 @@ interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm = ({ className }: LoginFormProps) => {
+export const LoginForm = () => {
     return (
-        <div className={classNames(cls.LoginForm, {}, [className])}>
-            <Input autofocus type="text" className={cls.input} placeholder={"Введите username"} />
-            <Input type="text" className={cls.input} placeholder={"Введите пароль"} />
-            <Button className={cls.loginBtn}>"Войти"</Button>
+        <div className={classNames(cls.LoginForm, {}, [])}>
+            <div className={cls.InputWrapper}>
+                {<p className={cls.placeholder}>{"username"}</p>}
+                <Input autofocus type="text" className={cls.input} />
+            </div>
+            <div className={cls.InputWrapper}>
+                {<p className={cls.placeholder}>{"password"}</p>}
+                <Input type="text" className={cls.input} />
+            </div>
+
+            <Button className={cls.loginBtn}>Войти</Button>
         </div>
     );
 };
