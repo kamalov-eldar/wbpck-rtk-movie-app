@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { userActions } from "store/user/slice/userSlice";
-import { User } from "store/user/types/user";
+import { userActions } from "../../user/slice/userSlice";
+import { User } from "../../user/types/user";
 
 interface loginByUserNameProps {
     username: string;

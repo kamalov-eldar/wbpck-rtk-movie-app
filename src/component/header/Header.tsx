@@ -12,7 +12,7 @@ import { LoginModal } from "features/AuthByUserName/LoginModal/LoginModal";
 import Button, { ButtonTheme } from "component/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
-import { userActions } from "store/user/slice/userSlice";
+import { userActions } from "../../store/user/slice/userSlice";
 
 const headerNav = [
     {
@@ -86,11 +86,11 @@ const Header = () => {
                 <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
                 <ThemeSwitcher />
                 {authUser ? (
-                    <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
+                    <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>
                         Выйти
                     </Button>
                 ) : (
-                    <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onShowModal}>
+                    <Button theme={ButtonTheme.CLEAR} onClick={onShowModal}>
                         Войти
                     </Button>
                 )}

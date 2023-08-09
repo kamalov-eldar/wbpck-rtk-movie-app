@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ButtonTheme, Button } from "../../component/button/Button";
 import { TCategoryItem } from "../../api/types";
 import MovieList from "component/movie-list/MovieList";
-import { Counter } from "component/Counter/Counter";
 
 const categoryPage: Array<TCategoryItem> = [
     { title: "Trending Movies", category: "movie", listType: "popular" },
@@ -16,7 +15,6 @@ const Home = () => {
     return (
         <>
             <HeroSlide />
-            <Counter />
             <div className="container">
                 {categoryPage.map((item, idx) => {
                     const { category, listType, title } = item;

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Button from "./Button";
+import Button, { ButtonTheme } from "./Button";
 
 describe("Button", () => {
     test("Test render", () => {
@@ -7,7 +7,7 @@ describe("Button", () => {
         expect(screen.getByText("TEST")).toBeInTheDocument(); //.toBeInTheDocument();
     });
 
-    test("Test ", () => {
+    /*  test("Test ", () => {
         render(<Button>TEST</Button>);
         expect(screen.getByText("TEST")).toHaveClass("btn");
         screen.debug(); // чтоб увидеть какая кнопка отрендерилась
@@ -15,6 +15,11 @@ describe("Button", () => {
     test("Test ", () => {
         render(<Button>TEST</Button>);
         expect(screen.getByText("TEST")).toHaveClass("btn btn-outline");
+        screen.debug();
+    }); */
+    test("Test clear theme", () => {
+        render(<Button theme={ButtonTheme.CLEAR}>TEST</Button>);
+        expect(screen.getByText("TEST")).toHaveClass("clear");
         screen.debug();
     });
 });

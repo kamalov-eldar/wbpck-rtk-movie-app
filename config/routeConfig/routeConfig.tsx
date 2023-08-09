@@ -1,7 +1,7 @@
 import { RouteObject, RouteProps } from "react-router-dom";
-import Home from "pages/Home/Home";
-import Catalog from "pages/Catalog/Catalog";
-import Detail from "pages/detail/Detail";
+import Catalog from "../../src/pages/Catalog/Catalog";
+import Detail from "../../src/pages/detail/Detail";
+import Home from "../../src/pages/Home/Home";
 
 export enum AppRoutes {
     HOME = "home",
