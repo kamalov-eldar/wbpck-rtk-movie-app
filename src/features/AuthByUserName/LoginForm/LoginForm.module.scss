@@ -1,7 +1,14 @@
+@use "../../../scss/" as *;
+
 .LoginForm {
     display: flex;
     flex-direction: column;
     width: 400px;
+}
+
+.placeholder {
+    margin-right: 5px;
+    color: var(--text-color);
 }
 
 .input {
@@ -12,8 +19,20 @@
     margin-top: 15px;
     margin-left: auto;
 }
+
 .InputWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.buttonWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.error {
+    display: flex;
+    align-items: center;
+}
+.errorText {
+    color: $error;
 }

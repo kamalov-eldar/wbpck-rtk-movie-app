@@ -20,7 +20,6 @@ export const Modal = (props: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
     const { theme } = useTheme();
-    console.log("theme: ", theme);
 
     const closeHandler = useCallback(() => {
         if (onClose) {

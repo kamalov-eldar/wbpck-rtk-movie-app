@@ -10,6 +10,9 @@ import { useTheme } from "providers/themeProvider/useTheme";
 import { RoutePath } from "../../../config/routeConfig/routeConfig";
 import { LoginModal } from "features/AuthByUserName/LoginModal/LoginModal";
 import Button, { ButtonTheme } from "component/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
+import { userActions } from "store/user/slice/userSlice";
 
 const headerNav = [
     {
@@ -28,10 +31,14 @@ const headerNav = [
 
 const Header = () => {
     const { theme, toggleTheme } = useTheme();
+    const dispatch = useDispatch();
 
     const { pathname } = useLocation();
     const headerRef = useRef<HTMLDivElement | null>(null);
     const index = headerNav.findIndex((e) => e.path === pathname);
+
+    const authUser = useSelector(selectUserAuthData);
+
     useEffect(() => {
         const shrinkHeader = () => {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -48,6 +55,12 @@ const Header = () => {
         };
     }, []);
 
+    useEffect(() => {
+        if (authUser) {
+            setIsAuthModal(false);
+        }
+    }, [authUser]);
+
     const [isAuthModal, setIsAuthModal] = useState(false);
 
     const onCloseModal = useCallback(() => {
@@ -56,6 +69,9 @@ const Header = () => {
 
     const onShowModal = useCallback(() => {
         setIsAuthModal(true);
+    }, []);
+    const onLogout = useCallback(() => {
+        dispatch(userActions.logout());
     }, []);
 
     return (
@@ -69,9 +85,15 @@ const Header = () => {
 
                 <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
                 <ThemeSwitcher />
-                <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onShowModal}>
-                    "Войти"
-                </Button>
+                {authUser ? (
+                    <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
+                        Выйти
+                    </Button>
+                ) : (
+                    <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onShowModal}>
+                        Войти
+                    </Button>
+                )}
 
                 <ul className={cls.header__nav}>
                     {headerNav.map((e, i) => (

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeDecorator } from "../../../../config/ThemeDecorator/ThemeDecorator";
 import { Theme } from "providers/themeProvider/ThemeContext";
 import { LoginForm } from "./LoginForm";
+import { StoreDecorator } from "../../../../config/StoreDecorator/StoreDecorator";
 
 const meta = {
     title: "Example/LoginForm",
@@ -17,42 +18,36 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const PrimaryLight: Story = {
-    args: {
-        // theme: ButtonTheme.PRIMARY,
-    },
+    args: {},
 };
-PrimaryLight.decorators = [ThemeDecorator(Theme.LIGHT)];
+PrimaryLight.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({ auth: { username: "admin1", password: "123" } })];
 
 export const PrimaryDark: Story = {
-    args: {
-        // theme: ButtonTheme.PRIMARY,
-    },
+    args: {},
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+PrimaryDark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ auth: { username: "admin1", password: "123" } })];
 
-export const OutlineLight: Story = {
-    args: {
-        // theme: ButtonTheme.OUTLINE,
-    },
+export const withErrorDark: Story = {
+    args: {},
 };
-OutlineLight.decorators = [ThemeDecorator(Theme.LIGHT)];
-
-export const OutlineDark: Story = {
-    args: {
-        // theme: ButtonTheme.OUTLINE,
-    },
+withErrorDark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({ auth: { username: "admin", password: "123", error: "error mesage" } }),
+];
+export const withErrorLight: Story = {
+    args: {},
 };
-OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
+withErrorLight.decorators = [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({ auth: { username: "admin", password: "123", error: "error mesage" } }),
+];
 
-/*
-export const Large: Story = {
-    args: {
-        children: "Text",
-    },
+export const LoadingDark: Story = {
+    args: {},
 };
+LoadingDark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ auth: { isLoading: true } })];
 
-export const Small: Story = {
-    args: {
-        children: "Text",
-    },
-}; */
+export const LoadingLight: Story = {
+    args: {},
+};
+LoadingLight.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({ auth: { isLoading: true } })];

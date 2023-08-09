@@ -56,7 +56,7 @@
                 width: 0;
                 transition: width 0.5s ease;
                 height: 2px;
-                background-color: var(--text-hover);
+                background-color: var(--main-color);
             }
 
             &.active::after,

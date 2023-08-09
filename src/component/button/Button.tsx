@@ -11,12 +11,6 @@ export enum ButtonTheme {
     BACKGROUND_INVERTED = "backgroundInverted",
 }
 
-type ButtonPropsType = {
-    onClick?: () => void;
-    className?: string;
-    children?: ReactNode | string;
-};
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: ButtonTheme;
@@ -27,8 +21,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = (props) => {
     const { className, children, theme, square, disabled, ...otherProps } = props;
+    const mods: Record<string, boolean> = {
+        // [cls[theme]]: true,
+        // [cls.square]: square,
+        // [cls[size]]: true,
+        [cls.disabled]: disabled,
+    };
+
     return (
-        <button className={classNames({ [cls[theme]]: true }, [className])} {...otherProps}>
+        <button disabled={disabled} className={classNames({ [cls[theme]]: true }, [disabled, mods, className])} {...otherProps}>
             {children}
         </button>
     );

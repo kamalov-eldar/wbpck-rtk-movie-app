@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import cls from "./LoginForm.module.scss";
-import Button from "component/button/Button";
+import Button, { ButtonTheme } from "component/button/Button";
 import { Input } from "component/Input/Input";
 import { memo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,7 @@ export interface LoginFormProps {
 export const LoginForm = memo(() => {
     const dispatch = useDispatch();
 
-    const { username, password } = useSelector(selectAuthForm);
+    const { username, password, error, isLoading } = useSelector(selectAuthForm);
 
     const onChangeUserName = useCallback(
         (value: string) => {
@@ -45,10 +45,12 @@ export const LoginForm = memo(() => {
                 {<p className={cls.placeholder}>{"password"}</p>}
                 <Input value={password} onChange={onChangePassword} type="text" className={cls.input} />
             </div>
-
-            <Button onClick={onLoginClick} className={cls.loginBtn}>
-                Войти
-            </Button>
+            <div className={cls.buttonWrapper}>
+                <div className={cls.error}>{error && <p className={cls.errorText}>{error}</p>}</div>
+                <Button theme={ButtonTheme.PRIMARY} disabled={isLoading} onClick={onLoginClick} style={{ marginTop: "20px" }}>
+                    Войти
+                </Button>
+            </div>
         </div>
     );
 });

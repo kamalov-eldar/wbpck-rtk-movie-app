@@ -14,9 +14,17 @@ import Catalog from "pages/Catalog/Catalog";
 import Detail from "pages/detail/Detail";
 import { useTheme } from "providers/themeProvider/useTheme";
 import AppRouter from "providers/router/AppRouter";
+import { useDispatch } from "react-redux";
+import { userActions } from "store/user/slice/userSlice";
 
 function App() {
     const { theme } = useTheme();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.initAuthData());
+    }, []);
+
     return (
         <div className={`app ${theme}`}>
             <Header />

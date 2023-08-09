@@ -40,6 +40,6 @@ input {
     font-family: $font-family;
     &:hover,
     &:focus {
-        box-shadow: 0 0 0 1px var(--text-hover); //  #0096bfab;
+        box-shadow: 0 0 0 1px var(--main-color); //  #0096bfab;
     }
 }
