@@ -83,7 +83,7 @@ const Header = () => {
                     <p className={cls.beta}>beta</p>
                 </div>
 
-                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+                {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
                 <ThemeSwitcher />
                 {authUser ? (
                     <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>
