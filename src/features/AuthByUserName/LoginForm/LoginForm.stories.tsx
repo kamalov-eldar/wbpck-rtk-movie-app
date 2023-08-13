@@ -20,12 +20,16 @@ type Story = StoryObj<typeof meta>;
 export const PrimaryLight: Story = {
     args: {},
 };
-PrimaryLight.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({ auth: { username: "admin1", password: "123" } })];
+PrimaryLight.decorators = [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({ auth: { username: "admin1", password: "123" } })];
 
 export const PrimaryDark: Story = {
     args: {},
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ auth: { username: "admin1", password: "123" } })];
+PrimaryDark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({ auth: { username: "admin1", password: "123" } })];
 
 export const withErrorDark: Story = {
     args: {},
@@ -45,9 +49,13 @@ withErrorLight.decorators = [
 export const LoadingDark: Story = {
     args: {},
 };
-LoadingDark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ auth: { isLoading: true } })];
+LoadingDark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({ auth: { isLoading: true } })];
 
 export const LoadingLight: Story = {
     args: {},
 };
-LoadingLight.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({ auth: { isLoading: true } })];
+LoadingLight.decorators = [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({ auth: { isLoading: true } })];

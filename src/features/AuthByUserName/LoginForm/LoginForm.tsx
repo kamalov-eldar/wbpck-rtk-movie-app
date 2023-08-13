@@ -13,16 +13,18 @@ import { selectLoginIsLoading } from "store/auth/selectors/selectLoginIsLoading/
 import { selectLoginError } from "store/auth/selectors/selectLoginError/selectLoginError";
 import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
 import { AnyAction } from "@reduxjs/toolkit";
+import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginFormProps {
-    className?: string;
+    //  className?: string;
+    onSuccess: () => void;
 }
 const initialReducers: ReducersList = {
     auth: authReducer,
 };
 
-export const LoginForm = memo(() => {
-    const dispatch = useDispatch();
+export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
+    const dispatch = useAppDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
     useEffect(() => {
@@ -55,8 +57,11 @@ export const LoginForm = memo(() => {
         [dispatch],
     );
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUserName({ username, password }));
+    const onLoginClick = useCallback(async () => {
+        const res = await dispatch(loginByUserName({ username, password }));
+        if (res.meta.requestStatus === "fulfilled") {
+            onSuccess();
+        }
     }, [dispatch, password, username]);
 
     return (

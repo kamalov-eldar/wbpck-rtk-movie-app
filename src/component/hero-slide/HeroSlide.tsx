@@ -7,6 +7,7 @@ import HeroSlideItem from "./Hero-slide-Item/HeroSlideItem";
 
 import TrailerModal from "./Hero-slide-Item/TrailerModal";
 import StatusUpload from "component/status-upload/StatusUpload";
+import { Loader } from "component/Loader/Loader";
 
 const HeroSlide: FC = () => {
     SwiperCore.use([Autoplay]);
