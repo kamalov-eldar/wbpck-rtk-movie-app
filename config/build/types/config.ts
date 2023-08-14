@@ -1,4 +1,4 @@
-export type TBuildMode = 'development' | 'production';
+export type TBuildMode = "development" | "production";
 
 export interface IBuildPath {
     entry: string;
@@ -12,9 +12,11 @@ export interface IBuildOptions {
     paths: IBuildPath;
     isDev: boolean;
     port: number;
+    apiUrl: string;
 }
 
 export interface IBuildEnv {
     mode: TBuildMode;
     port: number;
+    apiUrl: string;
 }

@@ -12,7 +12,7 @@ type ReducersListEntry = [StateSchemaKey, Reducer];
 
 interface DynamicModuleLoaderProps {
     reducers: ReducersList;
-    removeAfterUnmount?: boolean;
+    removeAfterUnmount?: boolean; // разрешение на удаление reducer
     children: ReactElement;
 }
 

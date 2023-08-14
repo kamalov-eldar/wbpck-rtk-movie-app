@@ -9,15 +9,15 @@ import { createRoot } from "react-dom/client";
 const container = document.getElementById("root");
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
-    <StoreProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+        <StoreProvider>
             <StyledEngineProvider injectFirst>
                 <ThemeProvider>
                     <App />
                 </ThemeProvider>
             </StyledEngineProvider>
-        </BrowserRouter>
-    </StoreProvider>,
+        </StoreProvider>
+    </BrowserRouter>,
 );
 
 /* render(

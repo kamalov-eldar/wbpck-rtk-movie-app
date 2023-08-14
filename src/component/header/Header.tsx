@@ -18,7 +18,6 @@ const Header = () => {
     const { theme, toggleTheme } = useTheme();
     const dispatch = useDispatch();
 
-    const [first, setfirst] = useState(0);
 
     const headerRef = useRef<HTMLDivElement | null>(null);
 
@@ -68,8 +67,6 @@ const Header = () => {
                     <Link to={RoutePath.home}>Movies</Link>
                     <p className={cls.beta}>beta</p>
                 </div>
-                <Button onClick={() => setfirst(first + 1)}>click</Button>
-                {first}
                 {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
                 <ThemeSwitcher />
                 {authUser ? (

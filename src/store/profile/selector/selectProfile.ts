@@ -1,3 +1,3 @@
 import { StateSchema } from "providers/storeProvider/StateSchema";
 
-export const selectUserAuthData = (state: StateSchema) => state.user.authData;
+export const selectProfile = (state: StateSchema) => state.profile;
