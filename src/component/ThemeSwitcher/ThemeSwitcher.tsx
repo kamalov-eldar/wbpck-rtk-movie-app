@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { Theme } from "providers/themeProvider/ThemeContext";
 import Button, { ButtonTheme } from "component/button/Button";
@@ -6,7 +6,7 @@ import cls from "../button/Button.module.scss";
 import DarkIcon from "assets/svg/DarkIcon";
 import LightIcon from "assets/svg/LightIcon";
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher = memo(() => {
     const { theme, toggleTheme } = useTheme();
 
     return (
@@ -14,4 +14,4 @@ export const ThemeSwitcher = () => {
             {theme === Theme.DARK ? <LightIcon /> : <DarkIcon />}
         </Button>
     );
-};
+});

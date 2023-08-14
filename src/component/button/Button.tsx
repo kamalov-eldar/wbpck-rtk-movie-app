@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from "react";
+import { ButtonHTMLAttributes, FC, ReactNode, memo } from "react";
 import cls from "./Button.module.scss";
 import classNames from "classnames";
 
@@ -35,4 +35,4 @@ export const Button: FC<ButtonProps> = (props) => {
     );
 };
 
-export default Button;
+export default memo(Button);

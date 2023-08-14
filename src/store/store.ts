@@ -3,12 +3,13 @@ import { StateSchema } from "../providers/storeProvider/StateSchema";
 import { userReducer } from "./user/slice/userSlice";
 import { authReducer } from "./auth/slice/authSlice";
 import { createReducerManager } from "providers/storeProvider/reduceManager";
+import { profileReducer } from "./profile/slice/userSlice";
 
 export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
-        //auth: authReducer,
+        profile: profileReducer,
     };
 
     const reducerManager = createReducerManager(rootReducer);
@@ -25,4 +26,4 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
     return store;
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];

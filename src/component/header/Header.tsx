@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../assets/tmovie.png";
 //import "./Header.scss";
@@ -13,29 +12,15 @@ import Button, { ButtonTheme } from "component/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { userActions } from "../../store/user/slice/userSlice";
-
-const headerNav = [
-    {
-        display: "Home",
-        path: RoutePath.home,
-    },
-    {
-        display: "Upcoming Movies",
-        path: "/catalog/movie/upcoming",
-    },
-    {
-        display: "TV Series",
-        path: "/catalog/tv/popular",
-    },
-];
+import { NavbarLinks } from "component/navbar-link/NavbarLinks";
 
 const Header = () => {
     const { theme, toggleTheme } = useTheme();
     const dispatch = useDispatch();
 
-    const { pathname } = useLocation();
+    const [first, setfirst] = useState(0);
+
     const headerRef = useRef<HTMLDivElement | null>(null);
-    const index = headerNav.findIndex((e) => e.path === pathname);
 
     const authUser = useSelector(selectUserAuthData);
 
@@ -70,6 +55,7 @@ const Header = () => {
     const onShowModal = useCallback(() => {
         setIsAuthModal(true);
     }, []);
+
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
     }, []);
@@ -82,7 +68,8 @@ const Header = () => {
                     <Link to={RoutePath.home}>Movies</Link>
                     <p className={cls.beta}>beta</p>
                 </div>
-
+                <Button onClick={() => setfirst(first + 1)}>click</Button>
+                {first}
                 {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
                 <ThemeSwitcher />
                 {authUser ? (
@@ -94,14 +81,7 @@ const Header = () => {
                         Войти
                     </Button>
                 )}
-
-                <ul className={cls.header__nav}>
-                    {headerNav.map((e, i) => (
-                        <li key={i} className={`${i === index ? cls.active : ""}`}>
-                            <Link to={e.path}>{e.display}</Link>
-                        </li>
-                    ))}
-                </ul>
+                <NavbarLinks />
             </div>
         </div>
     );
