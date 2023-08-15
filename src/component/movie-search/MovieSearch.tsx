@@ -4,6 +4,7 @@ import "./MovieSearch.scss";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 import { TCategoryType } from "../../api/types";
+import { Input } from "component/Input/Input";
 
 type MovieSearchProps = {
     category: TCategoryType | undefined;
@@ -25,7 +26,7 @@ const MovieSearch: FC<MovieSearchProps> = ({ category }) => {
 
     return (
         <div className="movie-search">
-            <input type="text" placeholder="Enter keyword" /* value={keyword} */ onChange={(evt) => console.log(evt)} />
+            <Input type="text" placeholder="Enter keyword" /* value={keyword} */ onChange={(evt) => console.log(evt)} />
             <Button className="small" onClick={goToSearch}>
                 Search
             </Button>

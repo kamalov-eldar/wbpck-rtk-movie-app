@@ -1,42 +1,18 @@
+@use "../../scss/" as *;
+
 .input {
-    // background: transparent;
     border: none;
     outline: none;
     width: 100%;
-    // color: transparent;
-    // text-shadow: 0 0 0 var(--primary-color);
     width: 250px;
-
+    background-color: var(--bg-input);
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: $border-radius;
+    color: var(--text-color);
+    font-family: $font-family;
+    &:hover,
     &:focus {
-        outline: none;
+        box-shadow: 0 0 0 1px var(--main-color); //  #0096bfab;
     }
 }
-
-/* .caretWrapper {
-    flex-grow: 1;
-    position: relative;
-}
-
-.caret {
-    height: 3px;
-    width: 9px;
-    background: var(--primary-color);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    animation: blink 0.7s forwards infinite;
-} */
-
-/* @keyframes blink {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.01;
-    }
-
-    100% {
-        opacity: 1;
-    }
-} */

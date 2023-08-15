@@ -4,6 +4,9 @@
     display: flex;
     flex-direction: column;
     width: 400px;
+    & > * ~ * {
+        margin-top: 20px;
+    }
 }
 
 .placeholder {
@@ -11,12 +14,7 @@
     color: var(--text-color);
 }
 
-.input {
-    margin-top: 10px;
-}
-
 .loginBtn {
-    margin-top: 15px;
     margin-left: auto;
 }
 
@@ -25,14 +23,17 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .buttonWrapper {
     display: flex;
     justify-content: space-between;
 }
+
 .error {
     display: flex;
     align-items: center;
 }
+
 .errorText {
     color: $error;
 }

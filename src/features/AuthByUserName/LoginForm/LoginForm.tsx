@@ -77,7 +77,7 @@ export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
                 </div>
                 <div className={cls.buttonWrapper}>
                     <div className={cls.error}>{error && <p className={cls.errorText}>{error}</p>}</div>
-                    <Button theme={ButtonTheme.PRIMARY} disabled={isLoading} onClick={onLoginClick} style={{ marginTop: "20px" }}>
+                    <Button theme={ButtonTheme.PRIMARY} disabled={isLoading} onClick={onLoginClick}>
                         Войти
                     </Button>
                 </div>

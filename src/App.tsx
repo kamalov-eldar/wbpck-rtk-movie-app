@@ -22,7 +22,7 @@ function App() {
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={`app ${theme}`}>

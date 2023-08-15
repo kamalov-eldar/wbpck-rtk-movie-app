@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import React, { FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/tmovie.png";
 //import "./Header.scss";
@@ -14,14 +14,17 @@ import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { userActions } from "../../store/user/slice/userSlice";
 import { NavbarLinks } from "component/navbar-link/NavbarLinks";
 
-const Header = () => {
+const Header = memo(() => {
     const { theme, toggleTheme } = useTheme();
     const dispatch = useDispatch();
-
 
     const headerRef = useRef<HTMLDivElement | null>(null);
 
     const authUser = useSelector(selectUserAuthData);
+    const [isAuthModal, setIsAuthModal] = useState(false);
+    console.log("isAuthModal: ", isAuthModal);
+
+    console.log("authUser: ", authUser);
 
     useEffect(() => {
         const shrinkHeader = () => {
@@ -44,8 +47,6 @@ const Header = () => {
             setIsAuthModal(false);
         }
     }, [authUser]);
-
-    const [isAuthModal, setIsAuthModal] = useState(false);
 
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -82,6 +83,6 @@ const Header = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Header;

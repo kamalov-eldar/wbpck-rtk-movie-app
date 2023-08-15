@@ -1,8 +1,7 @@
 import axios from "axios";
-
 import apiConfig from "./apiConfig";
 import queryString from "query-string";
-console.log("__API__", __API__);
+
 const axiosClient = axios.create({
     // baseURL: apiConfig.baseUrl,
     baseURL: __API__, //  "http://localhost:8000",
