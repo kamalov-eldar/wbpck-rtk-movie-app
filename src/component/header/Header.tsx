@@ -22,9 +22,6 @@ const Header = memo(() => {
 
     const authUser = useSelector(selectUserAuthData);
     const [isAuthModal, setIsAuthModal] = useState(false);
-    console.log("isAuthModal: ", isAuthModal);
-
-    console.log("authUser: ", authUser);
 
     useEffect(() => {
         const shrinkHeader = () => {

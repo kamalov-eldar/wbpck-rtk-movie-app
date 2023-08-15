@@ -14,14 +14,14 @@ export const loginByUserName = createAsyncThunk<User, loginByUserNameProps, Thun
     async (authData, thunkAPI) => {
         try {
             const response = await thunkAPI.extra.api.post<User>("/login", authData);
-            console.log("response: ", response.data);
+            console.log("response-login: ", response.data);
 
             if (!response.data) {
                 throw new Error("");
             }
             localStorage.setItem("user", JSON.stringify(response.data));
             thunkAPI.dispatch(userActions.setAuthData(response.data));
-            thunkAPI.extra.navigate("/profile");// редирект после усп авторизации
+            thunkAPI.extra.navigate("/profile"); // редирект после усп авторизации
             return response.data;
         } catch (error) {
             console.log("error: ", error);

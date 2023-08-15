@@ -33,6 +33,6 @@
         "country": "Russia",
         "city": "Moscow",
         "username": "admin",
-        "avatar": "./src/assets/hacker-cat.jpg"
+        "avatar": "../../assets/hacker-cat.jpg"
     }
 }
