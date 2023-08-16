@@ -20,7 +20,7 @@ export interface LoginFormProps {
     onSuccess: () => void;
 }
 const initialReducers: ReducersList = {
-    auth: authReducer,
+    authForm: authReducer,
 };
 
 export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
@@ -28,10 +28,10 @@ export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
     const store = useStore() as ReduxStoreWithManager;
 
     useEffect(() => {
-        store.reducerManager.add("auth", authReducer);
+        store.reducerManager.add("authForm", authReducer);
         dispatch({ type: "@INIT loginForm reducer" });
         return () => {
-            store.reducerManager.remove("auth");
+            store.reducerManager.remove("authForm");
             dispatch({ type: "@DESTROY loginForm reducer" });
         };
     }, []);

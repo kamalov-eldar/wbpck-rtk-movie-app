@@ -18,7 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = { args: {} };
-Light.decorators = [ThemeDecorator(Theme.LIGHT),StoreDecorator({ auth: { username: "admin", password: "123" } })];
+Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({ authForm: { username: "admin", password: "123" } })];
 
 export const Dark: Story = { args: {} };
-Dark.decorators = [ThemeDecorator(Theme.DARK),StoreDecorator({ auth: { username: "admin", password: "123" } })];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ authForm: { username: "admin", password: "123" } })];

@@ -20,10 +20,12 @@ const CastList: FC<CastListProps> = ({ id, category }) => {
         <div className="casts">
             {[].map((item, i) => (
                 <div key={i} className="casts__item">
-                    <div
+                    {/* <div
                         className="casts__item__img"
-                        style={{ backgroundImage: `url(${apiConfig.w500Image(item.profile_path)})` }}></div>
-                    <p className="casts__item__name">{item.name}</p>
+                        style={{ backgroundImage: `url(${apiConfig.w500Image(item.profile_path)})` }}>
+                    </div>
+                    <p className="casts__item__name">{item.name}</p> */}
+                    castsList
                 </div>
             ))}
         </div>

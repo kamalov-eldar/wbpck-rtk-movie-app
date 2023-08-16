@@ -140,16 +140,16 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             <div className="movie-grid">
                 {category === "movie" && (
                     <>
-                        {[].map((item, i) => (
+                        {/*  {[].map((item, i) => (
                             <MovieCard category={category} movieItem={item} key={item.id} />
-                        ))}
+                        ))} */}
                     </>
                 )}
                 {category === "tv" && (
                     <>
-                        {[].map((item, i) => {
+                        {/*  {[].map((item, i) => {
                             return <MovieCard category={category} movieItem={item} key={item.id} />;
-                        })}
+                        })} */}
                     </>
                 )}
             </div>

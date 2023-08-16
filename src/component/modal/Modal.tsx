@@ -4,6 +4,7 @@ import { useTheme } from "providers/themeProvider/useTheme";
 
 import cls from "./Modal.module.scss";
 import { Portal } from "component/Portal/Portal";
+import { TMods } from "global/types/global";
 
 interface ModalProps {
     className?: string;
@@ -65,7 +66,7 @@ export const Modal = (props: ModalProps) => {
         };
     }, [isOpen, onKeyDown]);
 
-    const mods: Record<string, boolean> = {
+    const mods: TMods = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
     };

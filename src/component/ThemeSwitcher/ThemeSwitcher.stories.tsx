@@ -14,10 +14,10 @@ const meta = {
     parameters: {
         layout: "centered",
     },
-    args: {
+    /* args: {
         theme: Theme.DARK,
         buttonTheme: ButtonTheme.CLEAR,
-    },
+    }, */
     tags: ["autodocs"],
 } satisfies Meta<typeof ThemeSwitcher>;
 
@@ -29,11 +29,11 @@ export const ThemeSwitcherLight: Story = {
     args: {
         buttonTheme: ButtonTheme.CLEAR,
     },
-    render: ({ buttonTheme }) => (
+    /* render: ({ buttonTheme }) => (
         <Button theme={buttonTheme}>
             <DarkIcon />
         </Button>
-    ),
+    ), */
 };
 ThemeSwitcherLight.decorators = [ThemeDecorator(Theme.LIGHT)];
 
@@ -41,11 +41,11 @@ export const ThemeSwitcherDark: Story = {
     args: {
         buttonTheme: ButtonTheme.CLEAR,
     },
-    render: ({ buttonTheme }) => (
+    /* render: ({ buttonTheme }) => (
         <Button theme={buttonTheme}>
             <LightIcon />
         </Button>
-    ),
+    ), */
 };
 
 ThemeSwitcherDark.decorators = [ThemeDecorator(Theme.DARK)];

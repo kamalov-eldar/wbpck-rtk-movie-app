@@ -9,7 +9,7 @@ export interface StateSchema {
     user: UserSchema;
 
     // асинхронные редьюсеры
-    auth?: AuthSchema;
+    authForm?: AuthSchema;
     profile?: ProfileSchema;
 }
 

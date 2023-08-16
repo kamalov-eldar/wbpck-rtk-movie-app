@@ -1,13 +1,12 @@
 import { ReactNode } from "react";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { DeepPartial } from "@reduxjs/toolkit";
 import { StateSchema } from "providers/storeProvider/StateSchema";
 import { StoreProvider } from "../../../src/providers/storeProvider/StoreProvider";
 
 export interface componentRenderOptions {
     route?: string;
-    initialState?: DeepPartial<StateSchema>;
+    initialState?: CustomDeepPartial<StateSchema>;
 }
 
 export function componentRender(component: ReactNode, options: componentRenderOptions = {}) {
@@ -15,7 +14,9 @@ export function componentRender(component: ReactNode, options: componentRenderOp
 
     return render(
         <StoreProvider initialState={initialState}>
-            <MemoryRouter initialEntries={[route]}>{component}</MemoryRouter>
+            <MemoryRouter initialEntries={[route]}>
+                {component}
+            </MemoryRouter>
         </StoreProvider>,
     );
 }

@@ -6,10 +6,6 @@ import { User } from "../../user/types/user";
 import { ThunkConfig, ThunkExtraArg } from "providers/storeProvider/StateSchema";
 import { profileActions } from "./profileSlice";
 
-interface fetchProfileDataProps {
-    username: string;
-    password: string;
-}
 // { rejectValue: string } тип данных что отправляем в thunkAPI.rejectWithValue(string)
 export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
     "profile/fetchProfileData",

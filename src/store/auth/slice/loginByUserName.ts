@@ -12,6 +12,7 @@ interface loginByUserNameProps {
 export const loginByUserName = createAsyncThunk<User, loginByUserNameProps, ThunkConfig<string>>(
     "login/loginByUserName",
     async (authData, thunkAPI) => {
+        const { extra, dispatch, rejectWithValue } = thunkAPI;
         try {
             const response = await thunkAPI.extra.api.post<User>("/login", authData);
             console.log("response-login: ", response.data);
@@ -20,8 +21,8 @@ export const loginByUserName = createAsyncThunk<User, loginByUserNameProps, Thun
                 throw new Error("");
             }
             localStorage.setItem("user", JSON.stringify(response.data));
-            thunkAPI.dispatch(userActions.setAuthData(response.data));
-            thunkAPI.extra.navigate("/profile"); // редирект после усп авторизации
+            dispatch(userActions.setAuthData(response.data));
+            if (extra.navigate) extra.navigate("/profile"); // редирект после усп авторизации
             return response.data;
         } catch (error) {
             console.log("error: ", error);
