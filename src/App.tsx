@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, memo, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./component/header/Header";
 import Footer from "component/footer/Footer";
@@ -13,13 +13,15 @@ import Catalog from "pages/Catalog/Catalog";
 import Detail from "pages/Detail/Detail";
 import { useTheme } from "providers/themeProvider/useTheme";
 import AppRouter from "providers/router/AppRouter";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../src/store/user/slice/userSlice";
+import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 
 
 function App() {
     const { theme } = useTheme();
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         dispatch(userActions.initAuthData());

@@ -5,6 +5,7 @@ import Home from "../../src/pages/Home/Home";
 import ProfilePage from "pages/ProfilePage/ProfilePage";
 import { ProfilePageAsync } from "pages/ProfilePage/ProfilePage.async";
 import { CatalogPageAsync } from "pages/Catalog/Catalog.async";
+import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
 
 export enum AppRoutes {
     HOME = "home",
@@ -12,6 +13,7 @@ export enum AppRoutes {
     SEARCH = "search",
     DETAIL = "detail",
     PROFILE = "profile",
+    NOT_FOUND = 'not_found',
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
@@ -20,9 +22,14 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.SEARCH]: "/:category/search/:keyword",
     [AppRoutes.DETAIL]: "/:category/:id",
     [AppRoutes.PROFILE]: "/profile",
+    [AppRoutes.NOT_FOUND]: "*",
 };
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export type AppRoutesProps = RouteProps & {
+    authOnly?: boolean;
+};
+
+export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.HOME]: {
         path: RoutePath.home,
         element: <Home />,
@@ -42,6 +49,11 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.PROFILE]: {
         path: RoutePath.profile,
         element: <ProfilePageAsync />,
+        authOnly: true,
+    },
+    [AppRoutes.NOT_FOUND]: {
+        path: RoutePath.not_found,
+        element: <NotFoundPage />,
     },
 };
 

@@ -73,6 +73,10 @@ iframe {
     border: 0;
 }
 
+p {
+    color: var(--text-color);
+}
+
 .app {
     background: var(--bg-primary);
     min-height: 100vh;
