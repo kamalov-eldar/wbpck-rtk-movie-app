@@ -2,18 +2,21 @@ import React, { InputHTMLAttributes, memo, useEffect, useRef, useState } from "r
 import classNames from "classnames";
 
 import cls from "./Input.module.scss";
+import { TMods } from "global/types/global";
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange">;
 // Omit позволяет забрать из типов все пропсы но исключ то что не нужно вторым аргументом, первый что берем
 interface InputProps extends HTMLInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     autofocus?: boolean;
+    readonly?: boolean;
+    placeholder?: string;
 }
 
 export const Input = memo((props: InputProps) => {
-    const { className, value, onChange, type = "text",  autofocus, ...otherProps } = props;
+    const { className, value, onChange, type = "text", autofocus, readonly, placeholder, ...otherProps } = props;
     const ref = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setCaretPosition] = useState(0);
@@ -42,18 +45,23 @@ export const Input = memo((props: InputProps) => {
         setCaretPosition(e?.target?.selectionStart || 0);
     };
 
+    const mods: TMods = {
+        [cls.readonly]: readonly,
+    };
+
     return (
         <div className={classNames(cls.InputWrapper, {}, [className])}>
-            {/*   {placeholder && <div className={cls.placeholder}>{`${placeholder}`}</div>} */}
+            {placeholder && <div className={cls.placeholder}>{`${placeholder}`}</div>}
             <input
                 ref={ref}
                 type={type}
                 value={value}
                 onChange={onChangeHandler}
-                className={cls.input}
+                className={classNames(cls.input, {}, [mods])}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onSelect={onSelect}
+                readOnly={readonly}
                 {...otherProps}
             />
         </div>

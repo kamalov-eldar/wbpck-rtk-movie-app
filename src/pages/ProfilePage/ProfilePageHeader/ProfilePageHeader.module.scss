@@ -1,0 +1,16 @@
+.ProfilePageHeader {
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+    height: 150px;
+    margin-top: 128px;
+    .editBtn {
+        margin-left: auto;
+        margin-right: 10px;
+    }
+}
+
+.PageHeader__title {
+    color: var(--text-color);
+}

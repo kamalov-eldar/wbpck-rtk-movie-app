@@ -16,3 +16,22 @@
         box-shadow: 0 0 0 1px var(--main-color); //  #0096bfab;
     }
 }
+
+.readonly {
+    &:hover,
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.InputWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.placeholder {
+    margin-right: 5px;
+    color: var(--text-color);
+}

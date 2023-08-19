@@ -1,35 +1,129 @@
 import classNames from "classnames";
-import { useSelector } from "react-redux";
 import cls from "./ProfileCard.module.scss";
-import { selectProfile } from "store/profile/selectors/selectProfile";
-import { selectProfileError } from "store/profile/selectors/selectProfileError";
-import { selectProfileIsLoading } from "store/profile/selectors/selectProfileIsLoading";
-import Button, { ButtonTheme } from "component/button/Button";
 import { Input } from "component/Input/Input";
 import avatar from "../../assets/hacker-cat.jpg";
+import { Profile } from "store/profile/types/profile";
+import { FC } from "react";
+import { Loader } from "component/Loader/Loader";
+import { Country, Currency } from "global/types/global";
+import { Avatar } from "component/Avatar/Avatar";
+import { CurrencySelect } from "component/CurrencySelect/CurrencySelect";
 
 interface ProfileCardProps {
-    className?: string;
+    profile?: Profile;
+    error?: string;
+    isLoading?: boolean;
+    readonly?: boolean;
+    onChangeFirstname: (value: string) => void;
+    onChangeLastname: (value: string) => void;
+    onChangeCity?: (value?: string) => void;
+    onChangeAge?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
+    onChangeCurrency?: (currency: Currency) => void;
+    onChangeCountry?: (country: Country) => void;
 }
 
-export const ProfileCard = () => {
-    const profile = useSelector(selectProfile);
-    const isLoading = useSelector(selectProfileIsLoading);
-    const error = useSelector(selectProfileError);
-
-    return (
-        <div className={classNames(cls.ProfileCard, {}, [])}>
-            <div className={cls.header}>
-                <p className={""}>{"Профиль"}</p>
-                <img src={avatar} alt="img" style={{ width: "150px" }} />
+export const ProfileCard: FC<ProfileCardProps> = ({
+    profile,
+    error,
+    isLoading,
+    readonly,
+    onChangeFirstname,
+    onChangeLastname,
+    onChangeAge,
+    onChangeCity,
+    onChangeAvatar,
+    onChangeUsername,
+    onChangeCountry,
+    onChangeCurrency,
+}) => {
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.ProfileCard, {}, [])}>
+                <Loader />
             </div>
-            <div className={cls.data}>
-                <Button className={cls.editBtn} theme={ButtonTheme.OUTLINE}>
-                    {"Редактировать"}
-                </Button>
-                <Input value={profile?.first} placeholder={"Ваше имя"} className={cls.input} />
-                <Input value={profile?.lastname} placeholder={"Ваша фамилия"} className={cls.input} />
+        );
+    }
+
+    if (error) {
+        return (
+            <div className={classNames(cls.ProfileCard, {}, [])}>
+                <div className="errorBlock">{error && <p className="errorText">{error}</p>}</div>
+            </div>
+        );
+    }
+
+    return profile ? (
+        <div className={classNames(cls.ProfileCard, {}, [])}>
+            <div className={classNames(cls.ProfileCard__container, {}, [])}>
+                <div className={cls.header}>
+                    {profile?.avatar && (
+                        <div className={cls.avatarWrapper}>
+                            <Avatar src={profile?.avatar} />
+                        </div>
+                    )}
+                </div>
+                <div className={cls.data}>
+                    <div className={cls.data__wrapper}>
+                        <Input
+                            value={profile?.firstname}
+                            readonly={readonly}
+                            onChange={onChangeFirstname}
+                            autofocus
+                            type="text"
+                            className={cls.input}
+                            placeholder={"Ваше имя"}
+                        />
+                        <Input
+                            value={profile?.lastname}
+                            readonly={readonly}
+                            onChange={onChangeLastname}
+                            type="text"
+                            className={cls.input}
+                            placeholder={"Ваша фамилия"}
+                        />
+                        <Input
+                            value={profile?.age}
+                            placeholder={"Ваш возраст"}
+                            className={cls.input}
+                            onChange={onChangeAge}
+                            readonly={readonly}
+                        />
+                        <Input
+                            value={profile?.city}
+                            placeholder={"Город"}
+                            className={cls.input}
+                            onChange={onChangeCity}
+                            readonly={readonly}
+                        />
+                        <Input
+                            value={profile?.username}
+                            placeholder={"Введите имя пользователя"}
+                            className={cls.input}
+                            onChange={onChangeUsername}
+                            readonly={readonly}
+                        />
+                        <Input
+                            value={profile?.avatar}
+                            placeholder={"Введите ссылку на аватар"}
+                            className={cls.input}
+                            onChange={onChangeAvatar}
+                            readonly={readonly}
+                        />
+                        <CurrencySelect
+                            className={cls.input}
+                            value={profile?.currency}
+                            onChange={onChangeCurrency}
+                            readonly={readonly}
+                        />
+                        {/* <CountrySelect className={cls.input} value={profile?.country}
+                        onChange={onChangeCountry} readonly={readonly} /> */}
+                    </div>
+                </div>
             </div>
         </div>
+    ) : (
+        <>no data profile</>
     );
 };

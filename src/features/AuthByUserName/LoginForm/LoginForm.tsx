@@ -3,7 +3,7 @@ import cls from "./LoginForm.module.scss";
 import Button, { ButtonTheme } from "component/button/Button";
 import { Input } from "component/Input/Input";
 import { memo, useCallback, useEffect } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useSelector, useStore } from "react-redux";
 import { authActions, authReducer } from "store/auth/slice/authSlice";
 import { loginByUserName } from "store/auth/slice/loginByUserName";
 import { ReduxStoreWithManager } from "providers/storeProvider/StateSchema";
@@ -12,7 +12,6 @@ import { selectLoginPassword } from "store/auth/selectors/selectLoginPassword/se
 import { selectLoginIsLoading } from "store/auth/selectors/selectLoginIsLoading/selectLoginIsLoading";
 import { selectLoginError } from "store/auth/selectors/selectLoginError/selectLoginError";
 import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
-import { AnyAction } from "@reduxjs/toolkit";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginFormProps {
