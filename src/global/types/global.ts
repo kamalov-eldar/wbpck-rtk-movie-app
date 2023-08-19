@@ -8,8 +8,8 @@ export enum Currency {
 
 export enum Country {
     Russia = "Russia",
-    Belarus = "Belarus",
-    Ukraine = "Ukraine",
-    Kazakhstan = "Kazahstan",
-    Armenia = "Armenia",
+    Cuba = "Cuba",
+    Brasil = "Brasil",
+    Madagascar = "Madagascar",
+    Bahamas = "Bahamas",
 }

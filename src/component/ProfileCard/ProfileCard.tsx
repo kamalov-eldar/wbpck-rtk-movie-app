@@ -8,6 +8,7 @@ import { Loader } from "component/Loader/Loader";
 import { Country, Currency } from "global/types/global";
 import { Avatar } from "component/Avatar/Avatar";
 import { CurrencySelect } from "component/CurrencySelect/CurrencySelect";
+import { CountrySelect } from "component/CountrySelect/CountrySelect";
 
 interface ProfileCardProps {
     profile?: Profile;
@@ -57,15 +58,15 @@ export const ProfileCard: FC<ProfileCardProps> = ({
     return profile ? (
         <div className={classNames(cls.ProfileCard, {}, [])}>
             <div className={classNames(cls.ProfileCard__container, {}, [])}>
-                <div className={cls.header}>
+                <div className={cls.ProfileCard__header}>
                     {profile?.avatar && (
                         <div className={cls.avatarWrapper}>
                             <Avatar src={profile?.avatar} />
                         </div>
                     )}
                 </div>
-                <div className={cls.data}>
-                    <div className={cls.data__wrapper}>
+                <div className={cls.ProfileCard__body}>
+                    <div className={cls.body__wrapper}>
                         <Input
                             value={profile?.firstname}
                             readonly={readonly}
@@ -117,8 +118,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
                             onChange={onChangeCurrency}
                             readonly={readonly}
                         />
-                        {/* <CountrySelect className={cls.input} value={profile?.country}
-                        onChange={onChangeCountry} readonly={readonly} /> */}
+                        <CountrySelect className={cls.input} value={profile?.country} onChange={onChangeCountry} readonly={readonly} />
                     </div>
                 </div>
             </div>

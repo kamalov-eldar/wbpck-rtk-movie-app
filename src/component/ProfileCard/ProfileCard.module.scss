@@ -10,20 +10,26 @@
     &__container {
         border: 2px solid var(--inverted-bg-color);
         width: 100%;
-    }
-}
+        padding: 10px;
 
-.header {
-    display: flex;
+    }
+
+    &__header {
+        display: flex;
+    }
+
+    &__body {
+        margin-top: 30px;
+    }
 }
 
 .editBtn {
     margin-left: auto;
 }
 
-.data {
-    margin-top: 30px;
-}
-.data__wrapper {
+.body__wrapper {
     width: fit-content;
+    input {
+        border-radius: 4px;
+    }
 }
