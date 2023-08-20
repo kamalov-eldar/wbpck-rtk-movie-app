@@ -1,10 +1,8 @@
 import { loginByUserName } from "./loginByUserName";
-import { StateSchema } from "providers/storeProvider/StateSchema";
-import axios from "axios";
-import { TestAsyncThunk } from "../../../../config/jest/TestAsyncThunk/TestAsyncThunk";
-import { userActions } from "../../../store/user/slice/userSlice";
+import { TestAsyncThunk } from "../../../../../config/jest/TestAsyncThunk/TestAsyncThunk";
+import { userActions } from "../../../user/slice/userSlice";
 
-describe("selectLoginUsername.test", () => {
+describe("loginByUsername.test", () => {
     test("success login", async () => {
         const userValue = { username: "123", id: "1" };
         const thunk = new TestAsyncThunk(loginByUserName);

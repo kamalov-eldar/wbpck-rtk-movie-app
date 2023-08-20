@@ -29,11 +29,11 @@
     "first": "Admin",
     "lastname": "Server",
     "age": 22,
-    "currency": "RUB",
+    "currency": "EUR",
     "country": "Brasil",
     "city": "Moscow",
     "username": "admin",
     "avatar": "https://tr-static.eodev.com/files/d34/5983fa729ed7b4fe450e7f5faea0ef80.jpg",
-    "firstname": "admin"
+    "firstname": "Admin"
   }
 }

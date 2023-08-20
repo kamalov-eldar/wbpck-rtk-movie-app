@@ -1,8 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { userActions } from "../../user/slice/userSlice";
-import { User } from "../../user/types/user";
-import { ThunkConfig, ThunkExtraArg } from "providers/storeProvider/StateSchema";
+import { userActions } from "../../../user/slice/userSlice";
+import { User } from "../../../user/types/user";
+import { ThunkConfig } from "providers/storeProvider/StateSchema";
 
 interface loginByUserNameProps {
     username: string;

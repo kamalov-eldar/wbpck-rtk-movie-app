@@ -5,7 +5,7 @@ import { Input } from "component/Input/Input";
 import { memo, useCallback, useEffect } from "react";
 import { useSelector, useStore } from "react-redux";
 import { authActions, authReducer } from "store/auth/slice/authSlice";
-import { loginByUserName } from "store/auth/slice/loginByUserName";
+import { loginByUserName } from "store/auth/services/loginByUserName/loginByUserName";
 import { ReduxStoreWithManager } from "providers/storeProvider/StateSchema";
 import { selectLoginUsername } from "store/auth/selectors/selectLoginUsername/selectLoginUsername";
 import { selectLoginPassword } from "store/auth/selectors/selectLoginPassword/selectLoginPassword";

@@ -2,21 +2,22 @@ import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader
 import { profileActions, profileReducer } from "store/profile/slice/profileSlice";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
-import { fetchProfileData } from "store/profile/slice/fetchProfileData";
 import { useSelector } from "react-redux";
-import { Profile } from "store/profile/types/profile";
+import { Profile, ValidateProfileError } from "store/profile/types/profile";
 import { ProfileCard } from "component/ProfileCard/ProfileCard";
-import { selectProfileIsLoading } from "store/profile/selectors/selectProfileIsLoading";
-import { selectProfileError } from "store/profile/selectors/selectProfileError";
-import { selectProfile } from "store/profile/selectors/selectProfile";
+import { selectProfileIsLoading } from "store/profile/selectors/selectProfileIsLoading/selectProfileIsLoading";
+import { selectProfileError } from "store/profile/selectors/selectProfileError/selectProfileError";
+import { selectProfile } from "store/profile/selectors/selectProfile/selectProfile";
 import { useTheme } from "providers/themeProvider/useTheme";
 // import "./ProfilePage.scss";
 import cls from "./ProfilePage.module.scss";
 import classNames from "classnames";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
-import { selectProfileReadonly } from "store/profile/selectors/selectProfileReadonly";
-import { selectProfileForm } from "store/profile/selectors/selectProfileForm";
+import { selectProfileReadonly } from "store/profile/selectors/selectProfileReadonly/selectProfileReadonly";
+import { selectProfileForm } from "store/profile/selectors/selectProfileForm/selectProfileForm";
 import { Country, Currency } from "global/types/global";
+import { selectProfileValidateErrors } from "store/profile/selectors/selectProfileValidateErrors/selectProfileValidateErrors";
+import { fetchProfileData } from "store/profile/services/fetchProfileData/fetchProfileData";
 
 const redusers: ReducersList = {
     profile: profileReducer,
@@ -31,9 +32,20 @@ const ProfilePage = () => {
     const isLoading = useSelector(selectProfileIsLoading);
     const error = useSelector(selectProfileError);
     const readonly = useSelector(selectProfileReadonly);
+    const validateErrors = useSelector(selectProfileValidateErrors);
+
+    const validateErrorTranslates = {
+        [ValidateProfileError.SERVER_ERROR]: "Серверная ошибка при сохранении",
+        [ValidateProfileError.INCORRECT_COUNTRY]: "Некорректный регион",
+        [ValidateProfileError.NO_DATA]: "Данные не указаны",
+        [ValidateProfileError.INCORRECT_USER_DATA]: "Имя и фамилия обязательны",
+        [ValidateProfileError.INCORRECT_AGE]: "Некорректный возраст",
+    };
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== "storybook") {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(
@@ -96,6 +108,12 @@ const ProfilePage = () => {
         <DynamicModuleLoader reducers={redusers} removeAfterUnmount>
             <div className={classNames(cls.profilePage, {}, [theme])}>
                 <ProfilePageHeader />
+                {validateErrors?.length &&
+                    validateErrors.map((err) => (
+                        <div className="errorText" key={err}>
+                            {validateErrorTranslates[err]}
+                        </div>
+                    ))}
                 <ProfileCard
                     readonly={readonly}
                     profile={profileForm}

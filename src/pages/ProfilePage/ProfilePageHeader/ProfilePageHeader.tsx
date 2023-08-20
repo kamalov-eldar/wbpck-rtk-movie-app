@@ -6,8 +6,8 @@ import Button, { ButtonTheme } from "component/button/Button";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { profileActions } from "store/profile/slice/profileSlice";
-import { selectProfileReadonly } from "store/profile/selectors/selectProfileReadonly";
-import { updateProfileData } from "store/profile/slice/updateProfileData";
+import { selectProfileReadonly } from "store/profile/selectors/selectProfileReadonly/selectProfileReadonly";
+import { updateProfileData } from "store/profile/services/updateProfileData/updateProfileData";
 
 interface ProfilePageHeaderProps {
     className?: string;
@@ -17,7 +17,6 @@ export const ProfilePageHeader = () => {
     const dispatch = useAppDispatch();
     const { theme } = useTheme();
     const readonly = useSelector(selectProfileReadonly);
-    console.log("readonly: ", readonly);
 
     const onEdit = useCallback(() => {
         dispatch(profileActions.setReadonly(false));
