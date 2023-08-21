@@ -55,7 +55,7 @@ const Header = memo(() => {
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div ref={headerRef} className={`${cls.header} ${theme}`}>

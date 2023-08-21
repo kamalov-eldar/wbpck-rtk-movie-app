@@ -15,13 +15,12 @@ import { useTheme } from "providers/themeProvider/useTheme";
 import AppRouter from "providers/router/AppRouter";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../src/store/user/slice/userSlice";
-import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
-
+import { selectUserInited } from "store/user/selector/selectUserInited/selectUserInited";
 
 function App() {
     const { theme } = useTheme();
     const dispatch = useDispatch();
-
+    const userInited = useSelector(selectUserInited);
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -30,7 +29,7 @@ function App() {
     return (
         <div className={`app ${theme}`}>
             <Header />
-            <AppRouter />
+            {userInited && <AppRouter />}
             <Footer />
         </div>
     );

@@ -1,39 +1,20 @@
-import StatusUpload from "component/status-upload/StatusUpload";
-import { routeConfig } from "../../../config/routeConfig/routeConfig";
-import React, { Suspense, memo, useMemo } from "react";
+import { AppRoutesProps, routeConfig } from "../../../config/routeConfig/routeConfig";
+import { Suspense, memo, useCallback } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
+import { Loader } from "component/Loader/Loader";
+import { RequireAuth } from "./RequireAuth";
 
 const AppRouter = () => {
-    const isAuth = useSelector(selectUserAuthData);
+    const renderWithWrapper = useCallback((route: AppRoutesProps) => {
+        const element = (
+            <Suspense fallback={<Loader />}>
+                <div className="page-wrapper">{route.element}</div>
+            </Suspense>
+        );
+        return <Route key={route.path} path={route.path} element={route.authOnly ? <RequireAuth>{element}</RequireAuth> : element} />;
+    }, []);
 
-    const routes = useMemo(
-        () =>
-            Object.values(routeConfig).filter((route) => {
-                if (route.authOnly && !isAuth) {
-                    return false;
-                }
-
-                return true;
-            }),
-        [isAuth],
-    );
-    return (
-        <Routes>
-            {routes.map(({ element, path }) => (
-                <Route
-                    key={path}
-                    path={path}
-                    element={
-                        <Suspense fallback={<StatusUpload text={""} />}>
-                            <div className="page-wrapper">{element}</div>
-                        </Suspense>
-                    }
-                />
-            ))}
-        </Routes>
-    );
+    return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;
 };
 
 export default memo(AppRouter);
