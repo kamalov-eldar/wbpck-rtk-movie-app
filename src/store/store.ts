@@ -2,7 +2,7 @@ import { CombinedState, Reducer, ReducersMapObject, configureStore } from "@redu
 import { StateSchema } from "../providers/storeProvider/StateSchema";
 import { userReducer } from "./user/slice/userSlice";
 import { createReducerManager } from "providers/storeProvider/reduceManager";
-import axiosClient from "api/axiosClient";
+import { authAxios,tmdbAxios } from "api/axiosClient";
 import { NavigateOptions, To } from "react-router";
 
 export function createReduxStore(
@@ -10,7 +10,6 @@ export function createReduxStore(
     asyncReducers?: ReducersMapObject<StateSchema>,
     navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
-    
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
@@ -26,7 +25,7 @@ export function createReduxStore(
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
                 thunk: {
-                    extraArgument: { api: axiosClient, navigate },
+                    extraArgument: { api:  authAxios, apiTmdb: tmdbAxios , navigate },
                 },
             }),
     });

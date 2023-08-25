@@ -18,6 +18,7 @@ import { selectProfileForm } from "store/profile/selectors/selectProfileForm/sel
 import { Country, Currency } from "global/types/global";
 import { selectProfileValidateErrors } from "store/profile/selectors/selectProfileValidateErrors/selectProfileValidateErrors";
 import { fetchProfileData } from "store/profile/services/fetchProfileData/fetchProfileData";
+import { useParams } from "react-router-dom";
 
 const redusers: ReducersList = {
     profile: profileReducer,
@@ -33,6 +34,7 @@ const ProfilePage = () => {
     const error = useSelector(selectProfileError);
     const readonly = useSelector(selectProfileReadonly);
     const validateErrors = useSelector(selectProfileValidateErrors);
+    const { id } = useParams<{ id: string }>();
 
     const validateErrorTranslates = {
         [ValidateProfileError.SERVER_ERROR]: "Серверная ошибка при сохранении",
@@ -44,7 +46,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         if (__PROJECT__ !== "storybook") {
-            dispatch(fetchProfileData());
+            if (id) dispatch(fetchProfileData(id));
         }
     }, [dispatch]);
 

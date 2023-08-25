@@ -6,10 +6,12 @@ interface LoaderProps {
 }
 
 export const Loader = ({ className }: LoaderProps) => (
-    <div className="lds-ellipsis">
-        <div />
-        <div />
-        <div />
-        <div />
-    </div>
+   /*  <div className="wrapper"> */
+        <div className="lds-ellipsis">
+            <div />
+            <div />
+            <div />
+            <div />
+        </div>
+    /* </div> */
 );

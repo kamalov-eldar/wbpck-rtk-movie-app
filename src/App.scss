@@ -108,6 +108,14 @@ p {
     margin: auto;
 }
 
+.wrapper {
+    //min-height: 441px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hero-slide {
     min-width: 350px;
     .loader {

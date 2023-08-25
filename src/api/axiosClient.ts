@@ -2,32 +2,20 @@ import axios from "axios";
 import apiConfig from "./apiConfig";
 import queryString from "query-string";
 
-const axiosClient = axios.create({
-    // baseURL: apiConfig.baseUrl,
+const authAxios = axios.create({
     baseURL: __API__, //  "http://localhost:8000",
-    /* headers: {
-        "Content-Type": "application/json",
-    }, */
     headers: {
         authorization: localStorage.getItem("user") || "",
     },
-    // paramsSerializer: (params) => queryString.stringify({ ...params, api_key: apiConfig.apiKey }),
 });
 
-/* axiosClient.interceptors.request.use(async (config) => config);
-
-axiosClient.interceptors.response.use(
-    (response) => {
-        if (response && response.data) {
-            return response.data;
-        }
-        return response;
+const tmdbAxios = axios.create({
+    baseURL: apiConfig.baseUrl,//  'https://api.themoviedb.org/3/'
+    headers: {
+        "Content-Type": "application/json",
     },
-    (error) => {
-        console.log("error: ", error);
-        //  setError(true);
-        // throw error;
-    },
-); */
+    paramsSerializer: (params) => queryString.stringify({ ...params, api_key: apiConfig.apiKey }),
+});
 
-export default axiosClient;
+export { authAxios, tmdbAxios };
+

@@ -16,8 +16,8 @@ export function buildWebpackConfig(options: IBuildOptions): webpack.Configuratio
             filename: "[name].[contenthash].js",
             path: paths.build,
             clean: true,
-            //publicPath: "/wbpck-movie-app/",
-            publicPath: isDev ? "/" : "/wbpck-movie-app/",
+            publicPath: "/",
+            // publicPath: isDev ? "/" : "/wbpck-movie-app/",
         },
         plugins: buildPlugins(options),
         module: {

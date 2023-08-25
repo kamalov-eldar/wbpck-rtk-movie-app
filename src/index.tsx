@@ -9,7 +9,7 @@ import { createRoot } from "react-dom/client";
 const container = document.getElementById("root");
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript strict
 root.render(
-    <BrowserRouter>
+    <HashRouter>
         <StoreProvider>
             <StyledEngineProvider injectFirst>
                 <ThemeProvider>
@@ -17,7 +17,7 @@ root.render(
                 </ThemeProvider>
             </StyledEngineProvider>
         </StoreProvider>
-    </BrowserRouter>,
+    </HashRouter>,
 );
 
 /* render(

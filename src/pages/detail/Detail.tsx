@@ -29,11 +29,7 @@ const Detail = () => {
     return (
         <>
             <>
-                <div
-                    className="banner"
-                    style={{
-                        backgroundImage: `url()`,
-                    }}></div>
+                <div className="banner" style={{ backgroundImage: `url()` }}></div>
                 <div className="mb-3 movie-content container">
                     <div className="movie-content__poster">
                         <div

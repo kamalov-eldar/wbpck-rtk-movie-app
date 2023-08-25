@@ -7,13 +7,13 @@ interface loginByUserNameProps {
     username: string;
     password: string;
 }
-// { rejectValue: string } тип данных что отправляем в thunkAPI.rejectWithValue(string)
+// { rejectValue: string } тип данных что отправляем в thunkApi.rejectWithValue(string)
 export const loginByUserName = createAsyncThunk<User, loginByUserNameProps, ThunkConfig<string>>(
     "login/loginByUserName",
-    async (authData, thunkAPI) => {
-        const { extra, dispatch, rejectWithValue } = thunkAPI;
+    async (authData, thunkApi) => {
+        const { extra, dispatch, rejectWithValue } = thunkApi;
         try {
-            const response = await thunkAPI.extra.api.post<User>("/login", authData);
+            const response = await thunkApi.extra.api.post<User>("/login", authData);
             console.log("response-login: ", response.data);
 
             if (!response.data) {
@@ -25,7 +25,7 @@ export const loginByUserName = createAsyncThunk<User, loginByUserNameProps, Thun
             return response.data;
         } catch (error) {
             console.log("error: ", error);
-            return thunkAPI.rejectWithValue("Неверный логин или пароль");
+            return thunkApi.rejectWithValue("Неверный логин или пароль");
         }
     },
 );
