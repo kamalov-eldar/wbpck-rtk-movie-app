@@ -3,7 +3,7 @@ import cls from "./LoginForm.module.scss";
 import Button, { ButtonTheme } from "component/button/Button";
 import { Input } from "component/Input/Input";
 import { memo, useCallback, useEffect } from "react";
-import { useSelector, useStore } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { authActions, authReducer } from "store/auth/slice/authSlice";
 import { loginByUserName } from "store/auth/services/loginByUserName/loginByUserName";
 import { ReduxStoreWithManager } from "providers/storeProvider/StateSchema";
@@ -24,6 +24,7 @@ const initialReducers: ReducersList = {
 
 export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
     const dispatch = useAppDispatch();
+    //const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
     useEffect(() => {

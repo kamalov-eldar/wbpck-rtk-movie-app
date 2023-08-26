@@ -4,8 +4,8 @@ import tmdbApi from "../../../api/tmdbApi";
 import { FC } from "react";
 import { ButtonTheme, Button } from "../../button/Button";
 import "../Hero-Slide.scss";
-import { TMovieItem } from "../../../api/types";
 import { IMG } from "../../movie-card/IMG";
+import { TMovieItem } from "api/types";
 
 type HeroSlideItemProps = {
     item: TMovieItem;

@@ -1,6 +1,6 @@
 import { FC, useRef } from "react";
 import ModalContent from "../../Modal-Content/ModalContent";
-import { TMovieItem } from "../../../api/types";
+import { TMovieItem } from "api/types";
 
 type TrailerModalProps = {
     item: TMovieItem;

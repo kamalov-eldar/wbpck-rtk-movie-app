@@ -2,12 +2,13 @@ import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } f
 import { AxiosInstance } from "axios";
 import { NavigateOptions, To } from "react-router";
 import { AuthSchema } from "store/auth/types/authSchema";
+import { MovieSchema } from "store/movie/types/movie";
 import { ProfileSchema } from "store/profile/types/profile";
 import { UserSchema } from "store/user/types/user";
 
 export interface StateSchema {
     user: UserSchema;
-
+    movie: MovieSchema;
     // асинхронные редьюсеры
     authForm?: AuthSchema;
     profile?: ProfileSchema;
@@ -26,7 +27,7 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 }
 export interface ThunkExtraArg {
     api: AxiosInstance;
-    apiTmdb:AxiosInstance;
+    apiTmdb: AxiosInstance;
     navigate?: (to: To, options?: NavigateOptions) => void;
 }
 

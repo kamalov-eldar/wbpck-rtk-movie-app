@@ -108,14 +108,6 @@ p {
     margin: auto;
 }
 
-.wrapper {
-    //min-height: 441px;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .hero-slide {
     min-width: 350px;
     .loader {
@@ -124,6 +116,7 @@ p {
 }
 
 .loader {
+    color: var(--text-color);
     margin-bottom: 3rem;
     height: 100vh;
     min-width: 100%;
@@ -145,6 +138,7 @@ p {
 
 .section {
     padding: 0 2rem;
+    color: var(--text-color);
 }
 
 .section__header {

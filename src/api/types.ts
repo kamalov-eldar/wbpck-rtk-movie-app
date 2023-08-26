@@ -29,6 +29,14 @@ export type TMovieDetail = {
     vote_count: number;
 };
 
+export type TMovieItem = {
+    id: number;
+    title: string;
+    backdrop_path: string;
+    overview: string;
+    poster_path: string;
+};
+
 export type TItemTV = {
     id: number;
     name: string;
@@ -37,13 +45,7 @@ export type TItemTV = {
     poster_path: string;
 };
 
-export type TMovieItem = {
-    id: number;
-    title: string;
-    backdrop_path: string;
-    overview: string;
-    poster_path: string;
-};
+
 
 export type TVideo = {
     iso_639_1: string;

@@ -4,8 +4,7 @@ import "./MovieCard.scss";
 import { Link } from "react-router-dom";
 import Button, { ButtonTheme } from "../button/Button";
 
-import { TCategoryType } from "../../api/types";
-import { TMovieItem } from "../../api/types";
+import { TCategoryType, TMovieItem } from "../../api/types";
 import apiConfig from "../../api/apiConfig";
 import { IMG } from "./IMG";
 
@@ -22,10 +21,15 @@ const MovieCard: FC<MovieCardProps> = ({ movieItem, category }) => {
     return (
         <Link to={link} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div className="movie-card">
-                <IMG path={movieItem.poster_path || movieItem.backdrop_path} size={"w185"} />
-                <Button className="btn play">
-                    {/*  <i className="bx bx-play"></i> */}
-                    {/* <div className="play"></div> */}
+                <div className="img-wrapper">
+                    <IMG path={movieItem.poster_path || movieItem.backdrop_path} size={"w185"} />
+                </div>
+                {/*  <Button className="btn play"> */}
+                {/*  <i className="bx bx-play"></i> */}
+                {/* <div className="play"></div> */}
+                {/*    </Button> */}
+                <Button className="btn">
+                    <i className="bx bx-play"></i>
                 </Button>
                 {/*  <div>
                     <YuotubeIcon className="btn" />

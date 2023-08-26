@@ -16,6 +16,7 @@ import AppRouter from "providers/router/AppRouter";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../src/store/user/slice/userSlice";
 import { selectUserInited } from "store/user/selector/selectUserInited/selectUserInited";
+import './assets/boxicons-2.0.7/css/boxicons.min.css';
 
 function App() {
     const { theme } = useTheme();
@@ -28,9 +29,13 @@ function App() {
 
     return (
         <div className={`app ${theme}`}>
-            <Header />
-            {userInited && <AppRouter />}
-            <Footer />
+            {userInited && (
+                <>
+                    <Header />
+                    <AppRouter />
+                    <Footer />
+                </>
+            )}
         </div>
     );
 }

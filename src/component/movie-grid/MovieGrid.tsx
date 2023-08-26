@@ -128,7 +128,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
     } */
 
     /* if (listMovie.length === 0 && listTV.length === 0) {
-        return <StatusUpload text={"Загрузка ..."} />;
+        return <StatusUpload text={"Loading ..."} />;
     } */
 
     return (
