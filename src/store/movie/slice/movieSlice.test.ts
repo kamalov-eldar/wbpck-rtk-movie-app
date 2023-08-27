@@ -1,5 +1,5 @@
 import { Country, Currency } from "../../../global/types/global";
-import { fetchPopularMovieList } from "../services/fetchMovieList/fetchPopularMovieList";
+import { fetchMovieList } from "../services/fetchMovieList/fetchMovieList";
 import { MovieSchema } from "../types/movie";
 import { movieReducer } from "./movieSlice";
 const data = {
@@ -39,10 +39,10 @@ describe("movieSlice.test", () => {
     });
     test(" update movie service pending", () => {
         const state: CustomDeepPartial<MovieSchema> = {
-            isLoadingPopular: false,
+            isLoading: false,
         };
 
-        expect(movieReducer(state as MovieSchema, fetchPopularMovieList.pending)).toEqual({
+        expect(movieReducer(state as MovieSchema, fetchMovieList.pending)).toEqual({
             validateErrors: undefined,
             isLoading: true,
         });
@@ -50,7 +50,7 @@ describe("movieSlice.test", () => {
 
     test(" update movie service fullfiled", () => {
         const state: CustomDeepPartial<MovieSchema> = {
-            isLoadingPopular: true,
+            isLoading: true,
         };
 
         /* expect(movieReducer(state as MovieSchema, fetchMovieList.fulfilled(...state))).toEqual({

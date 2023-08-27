@@ -5,9 +5,9 @@ import { TCategoryItem } from "../../api/types";
 import MovieList from "component/movie-list/MovieList";
 
 const categoryPage: Array<TCategoryItem> = [
-    { title: "Trending Movies", category: "movie", listType: "popular" },
+    { title: "Popular Movies", category: "movie", listType: "popular" },
     { title: "Top Rated Movies", category: "movie", listType: "top_rated" },
-    { title: "Trending TV", category: "tv", listType: "popular" },
+    { title: "Popular TV", category: "tv", listType: "popular" },
     { title: "Top Rated TV", category: "tv", listType: "top_rated" },
 ];
 

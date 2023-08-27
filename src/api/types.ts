@@ -1,4 +1,4 @@
-export type TListType = 'popular' | 'top_rated' | 'upcoming' | 'similar';
+export type TListType = 'popular' | 'top_rated' | 'upcoming' | 'similar' | 'now_playing';
 export type TCategoryType = 'movie' | 'tv';
 export type TypeList = 'TOP_100_POPULAR_FILMS' | 'TOP_AWAIT_FILMS' | 'TOP_250_BEST_FILMS';
 
@@ -35,6 +35,7 @@ export type TMovieItem = {
     backdrop_path: string;
     overview: string;
     poster_path: string;
+    release_date?:string;
 };
 
 export type TItemTV = {
@@ -68,6 +69,7 @@ export type TCast = {
 export interface TResponseMovieList {
     results: TMovieItem[];
     total_pages: number;
+    listType?: TListType;
 }
 export interface TResponseMovieDetail {
     result: TMovieDetail;

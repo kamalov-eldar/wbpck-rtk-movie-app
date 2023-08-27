@@ -1,26 +1,27 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { fetchPopularMovieList } from "../services/fetchMovieList/fetchPopularMovieList";
 import { TMovieItem, TResponseMovieList } from "api/types";
 import { MovieSchema } from "../types/movie";
-import { fetchTopMovieList } from "../services/fetchMovieList/fetchTopMovieList";
-import { fetchSimilarMovieList } from "../services/fetchMovieList/fetchSimilarMovieList";
 import { fetchTopTVList } from "../services/fetchMovieList/fetchTopTVList";
+import { fetchMovieList } from "../services/fetchMovieList/fetchMovieList";
 
 const initialState: MovieSchema = {
-    isLoadingPopular: false,
-    errorPopular: undefined,
-    dataPopularFilms: [] as TMovieItem[],
-    popularTotalPages: 0,
+    isLoading: false,
+    error: undefined,
 
-    isLoadingTop: false,
-    errorTop: undefined,
+    popularTotalPages: 0,
+    dataPopularFilms: [] as TMovieItem[],
+
+    nowPlayingTotalPages: 0,
+    dataNowPlayingFilms: [] as TMovieItem[],
+
     dataTopFilms: [] as TMovieItem[],
     topTotalPages: 0,
 
-    isLoadingSimilar: false,
-    errorSimilar: undefined,
     dataSimilarFilms: [] as TMovieItem[],
     similarTotalPages: 0,
+
+    dataUpcomingFilms: [] as TMovieItem[],
+    upcomingTotalPages: 0,
 
     isLoadingTopTVList: false,
     errorTopTVList: undefined,
@@ -34,46 +35,43 @@ export const movieSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchPopularMovieList.pending, (state) => {
-                state.errorPopular = undefined;
-                state.isLoadingPopular = true;
+            .addCase(fetchMovieList.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
             })
-            .addCase(fetchPopularMovieList.fulfilled, (state, action: PayloadAction<TResponseMovieList>) => {
-                state.isLoadingPopular = false;
-                state.dataPopularFilms = action.payload.results;
-                state.popularTotalPages = action.payload.total_pages;
-            })
-            .addCase(fetchPopularMovieList.rejected, (state, action) => {
-                state.errorPopular = action.payload;
-                state.isLoadingPopular = false;
-            })
+            .addCase(fetchMovieList.fulfilled, (state, action: PayloadAction<TResponseMovieList>) => {
+                console.log(action.payload.listType);
+                state.isLoading = false;
 
-            .addCase(fetchTopMovieList.pending, (state) => {
-                state.errorTop = undefined;
-                state.isLoadingTop = true;
-            })
-            .addCase(fetchTopMovieList.fulfilled, (state, action: PayloadAction<TResponseMovieList>) => {
-                state.isLoadingTop = false;
-                state.dataTopFilms = action.payload.results;
-                state.topTotalPages = action.payload.total_pages;
-            })
-            .addCase(fetchTopMovieList.rejected, (state, action) => {
-                state.errorTop = action.payload;
-                state.isLoadingTop = false;
-            })
+                switch (action.payload.listType) {
+                    case "popular":
+                        state.dataPopularFilms = action.payload.results;
+                        state.popularTotalPages = action.payload.total_pages;
+                        break;
+                    case "top_rated":
+                        state.dataTopFilms = action.payload.results;
+                        state.topTotalPages = action.payload.total_pages;
+                        break;
+                    case "upcoming":
+                        state.dataUpcomingFilms = action.payload.results;
+                        state.upcomingTotalPages = action.payload.total_pages;
+                        break;
+                    case "similar":
+                        state.dataSimilarFilms = action.payload.results;
+                        state.similarTotalPages = action.payload.total_pages;
+                        break;
+                    case "now_playing":
+                        state.dataNowPlayingFilms = action.payload.results;
+                        state.nowPlayingTotalPages = action.payload.total_pages;
+                        break;
 
-            .addCase(fetchSimilarMovieList.pending, (state) => {
-                state.errorSimilar = undefined;
-                state.isLoadingSimilar = true;
+                    default:
+                        break;
+                }
             })
-            .addCase(fetchSimilarMovieList.fulfilled, (state, action: PayloadAction<TResponseMovieList>) => {
-                state.isLoadingSimilar = false;
-                state.dataSimilarFilms = action.payload.results;
-                state.similarTotalPages = action.payload.total_pages;
-            })
-            .addCase(fetchSimilarMovieList.rejected, (state, action) => {
-                state.errorSimilar = action.payload;
-                state.isLoadingSimilar = false;
+            .addCase(fetchMovieList.rejected, (state, action) => {
+                state.error = action.payload;
+                state.isLoading = false;
             })
 
             .addCase(fetchTopTVList.pending, (state) => {

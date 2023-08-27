@@ -1,16 +1,17 @@
 @use "../../scss/" as *;
 
-.swiper-slide {
+/* .swiper-slide {
     .movie-card {
         &::before {
             max-height: 98%;
             height: 98%;
         }
     }
-}
+} */
 
 .movie-card {
     position: relative;
+    display: flex;
 
     .btn {
         position: absolute;
@@ -45,7 +46,7 @@
         }
 
         &:hover .btn {
-            transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(0.8);
         }
     }
 }

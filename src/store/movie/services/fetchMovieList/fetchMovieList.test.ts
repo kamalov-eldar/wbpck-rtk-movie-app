@@ -1,7 +1,7 @@
-import { fetchPopularMovieList } from "./fetchPopularMovieList";
 import { TestAsyncThunk } from "../../../../../config/jest/TestAsyncThunk/TestAsyncThunk";
 import { userActions } from "../../../user/slice/userSlice";
 import { Country, Currency } from "../../../../global/types/global";
+import { fetchMovieList } from "./fetchMovieList";
 
 const data = {
     username: "admin",
@@ -15,8 +15,8 @@ const data = {
 
 describe("fetchProfileData.test", () => {
     test("success", async () => {
-        const thunk = new TestAsyncThunk(fetchPopularMovieList);
-        const result = await thunk.callThunk(1);
+        const thunk = new TestAsyncThunk(fetchMovieList);
+        const result = await thunk.callThunk({ listType: "popular", page: 1 });
 
         thunk.api.get.mockReturnValue(Promise.resolve({ data: data }));
 
@@ -26,8 +26,8 @@ describe("fetchProfileData.test", () => {
     });
 
     test("error", async () => {
-        const thunk = new TestAsyncThunk(fetchPopularMovieList);
-        const result = await thunk.callThunk(1);
+        const thunk = new TestAsyncThunk(fetchMovieList);
+        const result = await thunk.callThunk({ listType: "popular", page: 1 });
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
         expect(result.meta.requestStatus).toBe("fulfilled");
     });

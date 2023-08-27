@@ -1,4 +1,4 @@
-@use '../../scss/' as *;
+@use "../../scss/" as *;
 
 .movie-grid {
     display: grid;
@@ -13,27 +13,5 @@
 
     &__loadmore {
         text-align: center;
-    }
-}
-
-.movie-search {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-
-    input {
-        width: 100%;
-        padding-right: 8rem;
-    }
-
-    button {
-        position: absolute;
-        right: 0;
-        top: 50%;
-
-        @include mobile {
-            right: 1px;
-            top: 50%;
-        }
     }
 }

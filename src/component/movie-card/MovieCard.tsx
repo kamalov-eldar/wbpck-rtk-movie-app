@@ -21,19 +21,12 @@ const MovieCard: FC<MovieCardProps> = ({ movieItem, category }) => {
     return (
         <Link to={link} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div className="movie-card">
-                <div className="img-wrapper">
-                    <IMG path={movieItem.poster_path || movieItem.backdrop_path} size={"w185"} />
-                </div>
-                {/*  <Button className="btn play"> */}
-                {/*  <i className="bx bx-play"></i> */}
-                {/* <div className="play"></div> */}
-                {/*    </Button> */}
+                {/* <div className="img-wrapper"> */}
+                <IMG path={movieItem.poster_path || movieItem.backdrop_path} size={"w185"} />
+                {/*   </div> */}
                 <Button className="btn">
                     <i className="bx bx-play"></i>
                 </Button>
-                {/*  <div>
-                    <YuotubeIcon className="btn" />
-                </div> */}
             </div>
             <h3 className="movie-title">{movieItem.title}</h3>
         </Link>

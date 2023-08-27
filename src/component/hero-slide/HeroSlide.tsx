@@ -9,23 +9,23 @@ import TrailerModal from "./Hero-slide-Item/TrailerModal";
 import StatusUpload from "component/status-upload/StatusUpload";
 import { Loader } from "component/Loader/Loader";
 import { useSelector } from "react-redux";
-import {
-    selectPopularMovieList,
-    selectPopularMovieIsLoading,
-    selectPopularMovieError,
-} from "store/movie/selectors/selectPopularMovie";
+import { selectMovieError, selectMovieIsLoading, selectNowPlayingMovieList } from "store/movie/selectors/selectMovie";
+import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
+import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 
 const HeroSlide: FC = () => {
     SwiperCore.use([Autoplay]);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        // dispatch(fetchMovieList({ listType, page: 1 }));
+        dispatch(fetchMovieList({ listType: "now_playing", page: 1 }));
     }, []);
-    const popularMovieList = useSelector(selectPopularMovieList);
-    const isLoadingPopular = useSelector(selectPopularMovieIsLoading);
-    const errorPopular = useSelector(selectPopularMovieError);
 
-    if (isLoadingPopular) {
+    const nowPlayingMovieList = useSelector(selectNowPlayingMovieList);
+    const isLoading = useSelector(selectMovieIsLoading);
+    const error = useSelector(selectMovieError);
+
+    if (isLoading) {
         return (
             <div className="loader">
                 <h2 className="loader__text">Loading...</h2>
@@ -33,14 +33,14 @@ const HeroSlide: FC = () => {
         );
     }
 
-    if (errorPopular) {
+    if (error) {
         return (
             <div className="loader">
                 <h2 className="loader__text">Rejected upload - Enable vpn in browser &nbsp;</h2>
             </div>
         );
     }
-    if (!popularMovieList) {
+    if (!nowPlayingMovieList) {
         return (
             <div className="loader">
                 <h2 className="loader__text">No Data</h2>
@@ -56,14 +56,12 @@ const HeroSlide: FC = () => {
                     grabCursor={true}
                     spaceBetween={0}
                     slidesPerView={1}
-                    autoplay={{ delay: 6000 }}
-                    >
-                    {popularMovieList &&
-                        popularMovieList.map((item, i) => (
-                            <SwiperSlide key={i}>
-                                {({ isActive }) => <HeroSlideItem item={item} className={`${isActive ? "active" : ""}`} />}
-                            </SwiperSlide>
-                        ))}
+                    autoplay={{ delay: 6000 }}>
+                    {nowPlayingMovieList.map((item, i) => (
+                        <SwiperSlide key={i}>
+                            {({ isActive }) => <HeroSlideItem item={item} className={`${isActive ? "active" : ""}`} />}
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
                 {[].map((item, i) => (
                     <TrailerModal key={i} item={item} />

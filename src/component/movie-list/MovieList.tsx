@@ -1,27 +1,21 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import "./MovieList.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import MovieCard from "../movie-card/MovieCard";
 import { TCategoryType, TListType } from "../../api/types";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
-import { fetchPopularMovieList } from "store/movie/services/fetchMovieList/fetchPopularMovieList";
 import { useSelector } from "react-redux";
 import {
-    selectPopularMovieError,
-    selectPopularMovieIsLoading,
+    selectMovieError,
+    selectMovieIsLoading,
     selectPopularMovieList,
-} from "store/movie/selectors/selectPopularMovie";
-import { fetchTopMovieList } from "store/movie/services/fetchMovieList/fetchTopMovieList";
-import { selectTopMovieError, selectTopMovieIsLoading, selectTopMovieList } from "store/movie/selectors/selectTopMovie";
-import {
     selectSimilarMovieList,
-    selectSimilarMovieIsLoading,
-    selectSimilarMovieError,
-} from "store/movie/selectors/selectSimilarMovie";
-import { fetchSimilarMovieList } from "store/movie/services/fetchMovieList/fetchSimilarMovieList";
-import { fetchTopTVList } from "store/movie/services/fetchMovieList/fetchTopTVList";
+    selectTopMovieList,
+} from "store/movie/selectors/selectMovie";
 import { selectTopTVList, selectTopTVListError, selectTopTVListIsLoading } from "store/movie/selectors/selectTopTVList";
+import { fetchTopTVList } from "store/movie/services/fetchMovieList/fetchTopTVList";
+import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 
 type MovieListProps = {
     category: TCategoryType;
@@ -42,9 +36,9 @@ const MovieList: FC<MovieListProps> = ({ category, listType, id }) => {
         switch (category) {
             case "movie":
                 // getMovieList(listType, { params }, id);
-                if (listType === "popular") dispatch(fetchPopularMovieList(1));
-                if (listType === "top_rated") dispatch(fetchTopMovieList(1));
-                if (listType === "similar") dispatch(fetchSimilarMovieList(1));
+                if (listType === "popular") dispatch(fetchMovieList({ listType, page: 1 }));
+                if (listType === "top_rated") dispatch(fetchMovieList({ listType, page: 1 }));
+                if (listType === "similar") dispatch(fetchMovieList({ listType, page: 1 }));
                 break;
             case "tv":
                 //getTVList(listType, { params }); fetchTopTVList
@@ -53,27 +47,24 @@ const MovieList: FC<MovieListProps> = ({ category, listType, id }) => {
         }
     }, [category, listType]);
 
+    const isLoadingMovieList = useSelector(selectMovieIsLoading);
+    const error = useSelector(selectMovieError);
+
     const moviePopularList = useSelector(selectPopularMovieList);
-    const isLoadingPopular = useSelector(selectPopularMovieIsLoading);
-    const errorPopular = useSelector(selectPopularMovieError);
 
     const movieTopList = useSelector(selectTopMovieList);
-    const isLoadingTop = useSelector(selectTopMovieIsLoading);
-    const errorTop = useSelector(selectTopMovieError);
 
     const movieSimilarList = useSelector(selectSimilarMovieList);
-    const isLoadingSimilar = useSelector(selectSimilarMovieIsLoading);
-    const errorSimilar = useSelector(selectSimilarMovieError);
 
     const topTVList = useSelector(selectTopTVList);
     const isLoadingTopTVList = useSelector(selectTopTVListIsLoading);
     const errorTopTVList = useSelector(selectTopTVListError);
 
-    if (isLoadingPopular && isLoadingTop) {
+    if (isLoadingMovieList) {
         return <span className="loader__text">Loading...</span>;
     }
 
-    if (errorPopular && errorTop) {
+    if (error) {
         return <span className="loader__text">Error</span>;
     }
     if (!moviePopularList && !movieTopList) {

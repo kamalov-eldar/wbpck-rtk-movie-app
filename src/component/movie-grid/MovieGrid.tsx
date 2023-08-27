@@ -7,6 +7,10 @@ import MovieSearch from "../movie-search/MovieSearch";
 import { TCategoryType, TListType } from "../../api/types";
 import { useNavigate, useParams } from "react-router-dom";
 import StatusUpload from "component/status-upload/StatusUpload";
+import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
+import { useSelector } from "react-redux";
+import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
+import { selectMovieError, selectMovieIsLoading, selectUpcomingMovieList } from "store/movie/selectors/selectMovie";
 
 type MovieGridProps = {
     category: TCategoryType | undefined;
@@ -17,6 +21,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
     const [page, setPage] = useState(1);
     const { keyword: keywordUrl } = useParams<{ keyword: string }>();
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (keywordUrl) {
@@ -24,34 +29,39 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
         }
     }, []);
 
-    /*  useEffect(() => {
-        if (keyword === "") {
+    useEffect(() => {
+        if (keywordUrl === "") {
             const params = { page: 1 };
-            if (category === "tv" && listType) getTVList(listType, { params });
-            if (category === "movie" && listType) getMovieList(listType, { params });
+            //if (category === "tv" && listType) getTVList(listType, { params });
+            //if (category === "movie" && listType) getMovieList(listType, { params });
         } else {
             const params = {
                 page: 1,
-                query: keyword,
+                query: keywordUrl,
             };
 
             if (category) {
-                searchMovie(category, { params });
+                //searchMovie(category, { params });
             }
             if (listType === "upcoming") {
-                getMovieList(listType, { params });
-                setKeyword("");
+                dispatch(fetchMovieList({ listType, page: 1 }));
+                //getMovieList(listType, { params });
+                // setKeyword("");
             }
         }
         return () => {
             setPage(1);
-            if (listType) resetMoviesList(listType);
+            // if (listType) resetMoviesList(listType);
         };
     }, [category, listType]);
 
+    const movieUpcomingList = useSelector(selectUpcomingMovieList);
+    const isLoadingUpcoming = useSelector(selectMovieIsLoading);
+    const errorUpcoming = useSelector(selectMovieError);
+
     useEffect(() => {
-        setKeyword("");
-    }, [category]); */
+        // setKeyword("");
+    }, [category]);
 
     /* const loadMore = useCallback(() => {
         if (keyword === "") {
@@ -127,9 +137,9 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
     } */
 
-    /* if (listMovie.length === 0 && listTV.length === 0) {
+    if (isLoadingUpcoming) {
         return <StatusUpload text={"Loading ..."} />;
-    } */
+    }
 
     return (
         <>
@@ -140,9 +150,8 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
             <div className="movie-grid">
                 {category === "movie" && (
                     <>
-                        {/*  {[].map((item, i) => (
-                            <MovieCard category={category} movieItem={item} key={item.id} />
-                        ))} */}
+                        {movieUpcomingList &&
+                            movieUpcomingList.map((item, i) => <MovieCard category={category} movieItem={item} key={item.id} />)}
                     </>
                 )}
                 {category === "tv" && (

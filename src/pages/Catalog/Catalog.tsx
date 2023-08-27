@@ -19,11 +19,11 @@ const arrNav = [
         path: "/catalog/movie/top_rated",
     },
     {
-        display: "Trending Movies",
+        display: "Popular Movies",
         path: "/catalog/movie/popular",
     },
     {
-        display: "TV Series Trending",
+        display: "TV Series Popular",
         path: "/catalog/tv/popular",
     },
     {

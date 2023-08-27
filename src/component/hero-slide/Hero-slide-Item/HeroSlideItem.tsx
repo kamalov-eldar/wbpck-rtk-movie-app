@@ -42,8 +42,12 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
                 <div className="hero-slide__item__content__info">
                     <h2 className="title">{item.title}</h2>
                     <div className="overview">{item.overview}</div>
+                    {/* release_date */}
+                    <div className="overview">{"Release Dates: " + item.release_date}</div>
                     <div className="btns">
-                        <Button theme={ButtonTheme.PRIMARY} onClick={() => navigate("/movie/" + item.id)}>Watch now</Button>
+                        <Button theme={ButtonTheme.PRIMARY} onClick={() => navigate("/movie/" + item.id)}>
+                            Watch now
+                        </Button>
                         <Button theme={ButtonTheme.OUTLINE} onClick={setModalActive}>
                             Watch trailer
                         </Button>

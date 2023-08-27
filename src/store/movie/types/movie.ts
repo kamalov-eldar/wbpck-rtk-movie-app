@@ -1,20 +1,23 @@
 import { TMovieItem } from "api/types";
 
 export interface MovieSchema {
+    error?: string;
+    isLoading: boolean;
+
     dataPopularFilms?: TMovieItem[];
     popularTotalPages: number;
-    errorPopular?: string;
-    isLoadingPopular: boolean;
+
+    dataNowPlayingFilms?: TMovieItem[];
+    nowPlayingTotalPages: number;
 
     dataTopFilms?: TMovieItem[];
     topTotalPages: number;
-    errorTop?: string;
-    isLoadingTop: boolean;
 
     dataSimilarFilms?: TMovieItem[];
     similarTotalPages: number;
-    errorSimilar?: string;
-    isLoadingSimilar: boolean;
+
+    dataUpcomingFilms?: TMovieItem[];
+    upcomingTotalPages: number;
 
     dataTopTVList?: TMovieItem[];
     topTVListTotalPages: number;

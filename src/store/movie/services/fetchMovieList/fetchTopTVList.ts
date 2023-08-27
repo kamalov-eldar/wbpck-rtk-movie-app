@@ -7,7 +7,6 @@ export const fetchTopTVList = createAsyncThunk<TResponseMovieList, number, Thunk
     async (page, thunkApi) => {
         try {
             const response = await thunkApi.extra.apiTmdb.get<TResponseMovieList>(`/tv/top_rated`, { params: { page } });
-            console.log('response: ', response);
 
             if (!response.data) {
                 throw new Error();
