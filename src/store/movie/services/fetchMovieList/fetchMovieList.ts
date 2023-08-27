@@ -21,7 +21,7 @@ export const fetchMovieList = createAsyncThunk<TResponseMovieList, Params, Thunk
             return data;
         } catch (error) {
             console.log("error-fetchMovieList: ", error);
-            return thunkApi.rejectWithValue("Произошла ошибка при загрузке '' фильмов");
+            return thunkApi.rejectWithValue("Произошла ошибка при загрузке фильмов");
         }
     },
 );

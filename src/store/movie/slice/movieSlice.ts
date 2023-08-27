@@ -40,9 +40,7 @@ export const movieSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(fetchMovieList.fulfilled, (state, action: PayloadAction<TResponseMovieList>) => {
-                console.log(action.payload.listType);
                 state.isLoading = false;
-
                 switch (action.payload.listType) {
                     case "popular":
                         state.dataPopularFilms = action.payload.results;
@@ -64,7 +62,6 @@ export const movieSlice = createSlice({
                         state.dataNowPlayingFilms = action.payload.results;
                         state.nowPlayingTotalPages = action.payload.total_pages;
                         break;
-
                     default:
                         break;
                 }

@@ -6,6 +6,7 @@ import { NavigateOptions, To } from "react-router";
 import authAxios from "api/authClient";
 import tmdbAxios from "api/tmdbClient";
 import { movieReducer } from "./movie/slice/movieSlice";
+import { videosReducer } from "./videos/slice/videosSlice";
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -16,6 +17,7 @@ export function createReduxStore(
         ...asyncReducers,
         user: userReducer,
         movie: movieReducer,
+        videos: videosReducer,
         //profile: profileReducer,
     };
 

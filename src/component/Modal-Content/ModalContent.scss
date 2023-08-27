@@ -1,4 +1,4 @@
-@use '../../scss/' as *;
+@use "../../scss/" as *;
 
 .modal {
     @include flex(center, center);
@@ -37,6 +37,7 @@
             top: 5px;
             font-size: 1.5rem;
             cursor: pointer;
+            color: #fff;
 
             &:hover {
                 color: $main-color;

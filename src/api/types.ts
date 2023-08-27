@@ -46,8 +46,6 @@ export type TItemTV = {
     poster_path: string;
 };
 
-
-
 export type TVideo = {
     iso_639_1: string;
     iso_3166_1: string;
@@ -60,6 +58,11 @@ export type TVideo = {
     published_at: string;
     id: string;
 };
+
+export interface TResponseVideosList {
+    results: TVideo[];
+    id: number;
+}
 
 export type TCast = {
     profile_path: string;
@@ -74,10 +77,7 @@ export interface TResponseMovieList {
 export interface TResponseMovieDetail {
     result: TMovieDetail;
 }
-export interface TResponseVideosList {
-    results: TVideo[];
-    id: number;
-}
+
 export interface TResponseTVList {
     results: TItemTV[];
     page: number;

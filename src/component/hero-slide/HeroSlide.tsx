@@ -6,14 +6,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import HeroSlideItem from "./Hero-slide-Item/HeroSlideItem";
 
 import TrailerModal from "./Hero-slide-Item/TrailerModal";
-import StatusUpload from "component/status-upload/StatusUpload";
-import { Loader } from "component/Loader/Loader";
 import { useSelector } from "react-redux";
 import { selectMovieError, selectMovieIsLoading, selectNowPlayingMovieList } from "store/movie/selectors/selectMovie";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 
 const HeroSlide: FC = () => {
+    console.log("HeroSlide: ");
     SwiperCore.use([Autoplay]);
     const dispatch = useAppDispatch();
 
@@ -63,7 +62,7 @@ const HeroSlide: FC = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                {[].map((item, i) => (
+                {nowPlayingMovieList.map((item, i) => (
                     <TrailerModal key={i} item={item} />
                 ))}
             </>

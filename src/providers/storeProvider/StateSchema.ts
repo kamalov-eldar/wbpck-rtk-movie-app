@@ -5,10 +5,12 @@ import { AuthSchema } from "store/auth/types/authSchema";
 import { MovieSchema } from "store/movie/types/movie";
 import { ProfileSchema } from "store/profile/types/profile";
 import { UserSchema } from "store/user/types/user";
+import { VideosSchema } from "store/videos/types/videos";
 
 export interface StateSchema {
     user: UserSchema;
     movie: MovieSchema;
+    videos: VideosSchema;
     // асинхронные редьюсеры
     authForm?: AuthSchema;
     profile?: ProfileSchema;
