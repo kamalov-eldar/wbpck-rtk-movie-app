@@ -12,7 +12,6 @@ import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 
 const HeroSlide: FC = () => {
-    console.log("HeroSlide: ");
     SwiperCore.use([Autoplay]);
     const dispatch = useAppDispatch();
 
