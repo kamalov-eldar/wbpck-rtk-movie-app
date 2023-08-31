@@ -6,7 +6,7 @@ import { fetchVideosList } from "../fetchVideosList/fetchVideosList";
 const initialState: VideosSchema = {
     isLoading: false,
     error: undefined,
-    dataVideosList: [] as TVideo[],
+    dataVideosList: undefined,
 };
 
 export const videosSlice = createSlice({

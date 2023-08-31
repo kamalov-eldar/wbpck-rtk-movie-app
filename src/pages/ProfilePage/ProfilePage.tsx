@@ -48,7 +48,7 @@ const ProfilePage = () => {
         if (__PROJECT__ !== "storybook") {
             if (id) dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     const onChangeFirstname = useCallback(
         (value?: string) => {

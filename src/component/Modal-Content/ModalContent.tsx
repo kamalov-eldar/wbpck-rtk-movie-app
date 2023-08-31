@@ -10,31 +10,18 @@ type ModalContentPropsType = {
     onClose: () => void;
     children: ReactNode;
     activeProps: boolean;
-    id: string;
+    //id: string;
+    noDataMods?: string;
 };
 
-/* const Modal: FC<ModalPropsType> = ({ activeProps, id, children }) => {
-    const [active, setActive] = useState<boolean>(false);
-
-    useEffect(() => {
-        setActive(activeProps);
-    }, [activeProps]);
-
-    return (
-        <div id={id} className={`modal ${active ? "active" : ""}`}>
-            {children}
-        </div>
-    );
-}; */
-
-const ModalContent: FC<ModalContentPropsType> = ({ activeProps, id, onClose, children }) => {
+const ModalContent: FC<ModalContentPropsType> = ({ activeProps, onClose, children, noDataMods }) => {
     const contentRef = useRef<HTMLDivElement | null>(null);
 
     const [active, setActive] = useState<boolean>(false);
 
     useEffect(() => {
-        setActive(activeProps);
-    }, [activeProps]);
+        setActive(true);
+    }, []);
 
     const closeModal = () => {
         if (contentRef) {
@@ -43,10 +30,11 @@ const ModalContent: FC<ModalContentPropsType> = ({ activeProps, id, onClose, chi
         if (onClose) onClose();
     };
     return (
-        <div id={id} className={`modal ${active ? "active" : ""}`}>
+        <div /* id={id} */ className={`modal ${active ? "active" : ""}`}>
             <div ref={contentRef} className="modal__content">
+                {noDataMods && <div>{noDataMods}</div>}
                 {children}
-                <div className="modal__content__close" onClick={closeModal}>
+                <div className="modal__content__close" /* onClick={closeModal} */>
                     <i className="bx bx-x"></i>
                 </div>
             </div>

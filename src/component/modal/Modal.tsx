@@ -32,6 +32,7 @@ export const Modal = (props: ModalProps) => {
     }, [isOpen]);
 
     const closeHandler = useCallback(() => {
+        console.log("closeHandler:");
         if (onClose) {
             setIsClosing(true);
             timerRef.current = setTimeout(() => {
@@ -41,7 +42,6 @@ export const Modal = (props: ModalProps) => {
         }
     }, [onClose]);
 
-    // Новые ссылки!!!
     const onKeyDown = useCallback(
         (e: KeyboardEvent) => {
             if (e.key === "Escape") {
@@ -59,7 +59,6 @@ export const Modal = (props: ModalProps) => {
         if (isOpen) {
             window.addEventListener("keydown", onKeyDown);
         }
-
         return () => {
             clearTimeout(timerRef.current);
             window.removeEventListener("keydown", onKeyDown);
@@ -71,15 +70,20 @@ export const Modal = (props: ModalProps) => {
         [cls.isClosing]: isClosing,
     };
 
+    const modsContent = {
+        [cls["content-trailer"]]: className === "TrailerModal",
+        [cls["content"]]: !(className === "TrailerModal"),
+    };
+
     if (lazy && !isMounted) {
         return null;
     }
 
     return (
         <Portal>
-            <div className={classNames(cls.Modal, mods, [theme, className])}>
+            <div className={classNames(cls.Modal, mods, [theme])}>
                 <div className={cls.overlay} onClick={closeHandler}>
-                    <div className={cls.content} onClick={onContentClick}>
+                    <div className={classNames(modsContent)} onClick={onContentClick}>
                         {children}
                     </div>
                 </div>

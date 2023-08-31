@@ -16,8 +16,9 @@ export function createReduxStore(
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
+
         movie: movieReducer,
-        videos: videosReducer,
+        //videos: videosReducer,
         //profile: profileReducer,
     };
 

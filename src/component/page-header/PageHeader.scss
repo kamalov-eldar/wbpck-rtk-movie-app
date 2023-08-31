@@ -1,4 +1,4 @@
-@use '../../scss/variables' as *;
+@use "../../scss/variables" as *;
 
 .page-header {
     padding: $header-height 0 2rem;
@@ -14,10 +14,11 @@
     h2 {
         position: relative;
         z-index: 99;
+        color: var(--text-color);
     }
 
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;

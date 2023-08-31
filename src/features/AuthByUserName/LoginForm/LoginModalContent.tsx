@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import cls from "./LoginForm.module.scss";
+import cls from "./LoginModalContent.module.scss";
 import Button, { ButtonTheme } from "component/button/Button";
 import { Input } from "component/Input/Input";
 import { memo, useCallback, useEffect } from "react";
@@ -14,7 +14,7 @@ import { selectLoginError } from "store/auth/selectors/selectLoginError/selectLo
 import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 
-export interface LoginFormProps {
+export interface LoginModalContentProps {
     //  className?: string;
     onSuccess: () => void;
 }
@@ -22,19 +22,19 @@ const initialReducers: ReducersList = {
     authForm: authReducer,
 };
 
-export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
+const LoginModalContent = memo(({ onSuccess }: LoginModalContentProps) => {
     const dispatch = useAppDispatch();
     //const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
-    useEffect(() => {
+    /*  useEffect(() => {
         store.reducerManager.add("authForm", authReducer);
         dispatch({ type: "@INIT loginForm reducer" });
         return () => {
             store.reducerManager.remove("authForm");
             dispatch({ type: "@DESTROY loginForm reducer" });
         };
-    }, []);
+    }, []); */
 
     //const { username, password, error, isLoading } = useSelector(selectAuthForm);
 
@@ -65,7 +65,7 @@ export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
     }, [dispatch, password, username]);
 
     return (
-        <DynamicModuleLoader reducers={initialReducers}>
+        <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
             <div className={classNames(cls.LoginForm, {}, [])}>
                 <div className={cls.InputWrapper}>
                     {<p className={cls.placeholder}>{"username"}</p>}
@@ -85,3 +85,4 @@ export const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
         </DynamicModuleLoader>
     );
 });
+export default LoginModalContent;

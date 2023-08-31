@@ -12,6 +12,7 @@
     background-color: rgba($color: $black, $alpha: 0.4);
     opacity: 0;
     visibility: hidden;
+    color: #fff;
 
     &.active {
         opacity: 1;

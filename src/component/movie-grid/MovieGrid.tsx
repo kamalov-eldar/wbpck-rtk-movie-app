@@ -141,6 +141,10 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType }) => {
         return <StatusUpload text={"Loading ..."} />;
     }
 
+    if (errorUpcoming) {
+        return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
+    }
+
     return (
         <>
             <div className="section mb-3">

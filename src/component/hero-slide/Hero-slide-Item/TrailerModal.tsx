@@ -1,27 +1,29 @@
-import { FC, useRef } from "react";
-import ModalContent from "../../Modal-Content/ModalContent";
-import { TMovieItem } from "api/types";
+import cls from "./LoginModal.module.scss";
+import { Modal } from "component/Modal/Modal";
+import classNames from "classnames";
+import { Suspense } from "react";
+import { Loader } from "component/Loader/Loader";
+import { TrailerModalAsync } from "./TrailerModal.async";
 
-type TrailerModalProps = {
-    item: TMovieItem;
-};
+interface TrailerModalProps {
+    className?: string;
+    isOpen: boolean;
+    onClose: () => void;
+    id:number;
+}
 
-const TrailerModal: FC<TrailerModalProps> = ({ item }) => {
-    const iframeRef = useRef<HTMLIFrameElement>(null);
-
-    const onClose = () => {
-        if (iframeRef) {
-            iframeRef?.current?.setAttribute("src", "");
-        }
-    };
-
+export const TrailerModal = ({ className, isOpen, onClose, id }: TrailerModalProps) => {
     return (
-        /*    <Modal activeProps={false} id={`modal_${item.id}`}> */
-        <ModalContent onClose={onClose} activeProps={false} id={`modal_${item.id}`}>
-            <iframe ref={iframeRef} width="100%" height="500px" title="trailer"></iframe>
-        </ModalContent>
-        /* </Modal> */
+        <Modal
+            className="TrailerModal"
+            /* className={classNames(cls.LoginModal, {}, [className])} */
+            isOpen={isOpen}
+            onClose={onClose}
+            lazy>
+            <Suspense fallback={<Loader />}>
+                <TrailerModalAsync id={id}/* onSuccess={onClose} */ />
+            </Suspense>
+            {/*  <LoginForm onSuccess={onClose} /> */}
+        </Modal>
     );
 };
-
-export default TrailerModal;

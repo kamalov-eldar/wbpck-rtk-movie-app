@@ -10,10 +10,11 @@ import { VideosSchema } from "store/videos/types/videos";
 export interface StateSchema {
     user: UserSchema;
     movie: MovieSchema;
-    videos: VideosSchema;
-    // асинхронные редьюсеры
+
+    // Асинхронные редюсеры
+    videos?: VideosSchema;  // videos: videosReducer,
     authForm?: AuthSchema;
-    profile?: ProfileSchema;
+    profile?: ProfileSchema; //profile: profileReducer,
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeDecorator } from "../../../../config/ThemeDecorator/ThemeDecorator";
 import { Theme } from "providers/themeProvider/ThemeContext";
-import { LoginForm } from "./LoginForm";
+import LoginModalContent from "./LoginModalContent";
 import { StoreDecorator } from "../../../../config/StoreDecorator/StoreDecorator";
 
 const meta = {
     title: "Example/LoginForm",
-    component: LoginForm,
+    component: LoginModalContent,
     parameters: {
         layout: "centered",
     },
     tags: ["autodocs"],
-} satisfies Meta<typeof LoginForm>;
+} satisfies Meta<typeof LoginModalContent>;
 
 export default meta;
 

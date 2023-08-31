@@ -33,19 +33,33 @@
     transition: 0.3s transform;
     transform: scale(0.5);
     max-width: 60%;
+    //width: 100%;
+
+    &-trailer {
+        padding: 20px;
+        border-radius: 12px;
+        background: var(--bg-secondary);
+        transition: 0.3s transform;
+        transform: scale(0.5);
+        max-width: 60%;
+        width: 100%;
+    }
 }
 
 .opened {
     pointer-events: auto;
     opacity: 1;
     z-index: 10;
-    .content {
+
+    .content,
+    .content-trailer {
         transform: scale(1);
     }
 }
 
 .isClosing {
-    .content {
+    .content,
+    .content-trailer {
         transform: scale(0.2);
     }
 }

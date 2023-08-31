@@ -33,7 +33,6 @@ const Header = memo(() => {
         };
 
         window.addEventListener("scroll", shrinkHeader);
-
         return () => {
             window.removeEventListener("scroll", shrinkHeader);
         };
