@@ -15,7 +15,6 @@ import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginModalContentProps {
-    //  className?: string;
     onSuccess: () => void;
 }
 const initialReducers: ReducersList = {
@@ -24,7 +23,6 @@ const initialReducers: ReducersList = {
 
 const LoginModalContent = memo(({ onSuccess }: LoginModalContentProps) => {
     const dispatch = useAppDispatch();
-    //const dispatch = useDispatch();
     const store = useStore() as ReduxStoreWithManager;
 
     /*  useEffect(() => {

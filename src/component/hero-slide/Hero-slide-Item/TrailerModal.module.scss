@@ -1,16 +1,2 @@
 @use "../../../scss/" as *;
 
-.btn_trailer {
-    position: absolute;
-    top: 0px;
-    right: 2px;
-}
-
-.bx {
-    cursor: pointer;
-    color: var(--text-color);
-
-    &:hover {
-        color: var(--main-color);
-    }
-}

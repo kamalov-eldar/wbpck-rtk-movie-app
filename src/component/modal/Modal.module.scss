@@ -24,6 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .content {
@@ -33,6 +34,7 @@
     transition: 0.3s transform;
     transform: scale(0.5);
     max-width: 60%;
+    text-align: end;
     //width: 100%;
 
     &-trailer {
@@ -61,5 +63,20 @@
     .content,
     .content-trailer {
         transform: scale(0.2);
+    }
+}
+
+.btn_modal {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+}
+
+.bx {
+    cursor: pointer;
+    color: var(--text-color);
+
+    &:hover {
+        color: var(--main-color);
     }
 }

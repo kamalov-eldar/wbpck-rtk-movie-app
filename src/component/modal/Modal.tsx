@@ -5,6 +5,7 @@ import { useTheme } from "providers/themeProvider/useTheme";
 import cls from "./Modal.module.scss";
 import { Portal } from "component/Portal/Portal";
 import { TMods } from "global/types/global";
+import Button, { ButtonTheme } from "component/button/Button";
 
 interface ModalProps {
     className?: string;
@@ -84,6 +85,9 @@ export const Modal = (props: ModalProps) => {
             <div className={classNames(cls.Modal, mods, [theme])}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div className={classNames(modsContent)} onClick={onContentClick}>
+                        <Button theme={ButtonTheme.CLEAR} className={classNames(cls.btn_modal)} onClick={closeHandler}>
+                            <i className={classNames(cls.bx, "bx bx-x")}></i>
+                        </Button>
                         {children}
                     </div>
                 </div>

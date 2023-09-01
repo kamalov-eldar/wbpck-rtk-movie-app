@@ -1,7 +1,6 @@
 import React, { FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/tmovie.png";
-//import "./Header.scss";
 import cls from "./Header.module.scss";
 
 import { ThemeSwitcher } from "component/ThemeSwitcher/ThemeSwitcher";

@@ -9,21 +9,20 @@ interface TrailerModalProps {
     className?: string;
     isOpen: boolean;
     onClose: () => void;
-    id:number;
+    id: number;
 }
 
 export const TrailerModal = ({ className, isOpen, onClose, id }: TrailerModalProps) => {
     return (
-        <Modal
-            className="TrailerModal"
-            /* className={classNames(cls.LoginModal, {}, [className])} */
-            isOpen={isOpen}
-            onClose={onClose}
-            lazy>
-            <Suspense fallback={<Loader />}>
-                <TrailerModalAsync id={id}/* onSuccess={onClose} */ />
+        <Modal className="TrailerModal" isOpen={isOpen} onClose={onClose} lazy>
+            <Suspense
+                fallback={
+                    <div style={{ height: "500px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <Loader />
+                    </div>
+                }>
+                <TrailerModalAsync id={id} />
             </Suspense>
-            {/*  <LoginForm onSuccess={onClose} /> */}
         </Modal>
     );
 };
