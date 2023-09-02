@@ -43,23 +43,23 @@ export const movieSlice = createSlice({
                 state.isLoading = false;
                 switch (action.payload.listType) {
                     case "popular":
-                        state.dataPopularFilms = action.payload.results;
+                        state.dataPopularFilms?.push(...action.payload.results);
                         state.popularTotalPages = action.payload.total_pages;
                         break;
                     case "top_rated":
-                        state.dataTopFilms = action.payload.results;
+                        state.dataTopFilms?.push(...action.payload.results);
                         state.topTotalPages = action.payload.total_pages;
                         break;
                     case "upcoming":
-                        state.dataUpcomingFilms = action.payload.results;
+                        state.dataUpcomingFilms?.push(...action.payload.results);
                         state.upcomingTotalPages = action.payload.total_pages;
                         break;
                     case "similar":
-                        state.dataSimilarFilms = action.payload.results;
+                        state.dataSimilarFilms?.push(...action.payload.results);
                         state.similarTotalPages = action.payload.total_pages;
                         break;
                     case "now_playing":
-                        state.dataNowPlayingFilms = action.payload.results;
+                        state.dataNowPlayingFilms?.push(...action.payload.results);
                         state.nowPlayingTotalPages = action.payload.total_pages;
                         break;
                     default:

@@ -10,7 +10,6 @@ button {
     width: fit-content;
 }
 
-
 /*
 
 
@@ -55,6 +54,19 @@ button {
     background-color: $white;
 }
 
+.load {
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--main-color);
+    color: var(--text-color-inverted);
+    border: none;
+    font-size: 24px;
+    &:hover {
+        color: var(--text-color);
+    }
+
+}
+
 .btn.small {
     border-width: 2px;
     padding: 0.25rem 1.5rem;
@@ -64,7 +76,9 @@ button {
 .disabled {
     opacity: 0.5;
     box-shadow: none;
+    cursor: inherit;
     &:hover {
         box-shadow: none;
+        color: var(--text-color-inverted);
     }
 }

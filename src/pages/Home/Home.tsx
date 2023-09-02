@@ -15,27 +15,29 @@ const Home = () => {
     return (
         <>
             <HeroSlide />
-            <div className="container">
-                {categoryPage.map((item, idx) => {
-                    const { category, listType, title } = item;
-                    const link = "catalog/" + category + "/" + listType;
+            <div>
+                <div className="container">
+                    {categoryPage.map((item, idx) => {
+                        const { category, listType, title } = item;
+                        const link = "catalog/" + category + "/" + listType;
 
-                    return (
-                        <div key={title + idx} className="section mb-3">
-                            <div className="section__header mb-2">
-                                <h2>{title}</h2>
-                                <Link to={link}>
-                                    <Button theme={ButtonTheme.OUTLINE} className="small">
-                                        View More
-                                    </Button>
-                                </Link>
+                        return (
+                            <div key={title + idx} className="section mb-3">
+                                <div className="section__header mb-2">
+                                    <h2>{title}</h2>
+                                    <Link to={link}>
+                                        <Button theme={ButtonTheme.OUTLINE} className="small">
+                                            View More
+                                        </Button>
+                                    </Link>
+                                </div>
+                                <div style={{ minHeight: "24px" }}>
+                                    <MovieList category={category} listType={listType} />
+                                </div>
                             </div>
-                            <div style={{ minHeight: "24px" }}>
-                                <MovieList category={category} listType={listType} />
-                            </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </div>
         </>
     );

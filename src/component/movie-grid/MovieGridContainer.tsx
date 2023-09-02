@@ -1,40 +1,70 @@
-import { FC, memo, useCallback, useEffect } from "react";
+import { FC, useCallback, useEffect, useMemo } from "react";
 import "./MovieGrid.scss";
-import MovieCard from "../movie-card/MovieCard";
 
-import { ButtonTheme, Button } from "../button/Button";
-import MovieSearch from "../movie-search/MovieSearch";
-import { IError, TCategoryType, TListType, TMovieItem } from "../../api/types";
+import { TCategoryType, TListType } from "../../api/types";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
-import { paginationActions } from "store/pagination/slice/paginationSlice";
-import { SvgSpinners } from "assets/svg/SvgSpinners";
 import StatusUpload from "component/status-upload/StatusUpload";
+import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
+import { useSelector } from "react-redux";
+import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
+import {
+    selectMovieError,
+    selectMovieIsLoading,
+    selectPopularMovieList,
+    selectTopMovieList,
+    selectUpcomingMovieList,
+} from "store/movie/selectors/selectMovie";
+import { paginationActions } from "store/pagination/slice/paginationSlice";
+import { selectPage } from "store/pagination/selectors/selectPage/selectPage";
+import MovieGrid from "./MovieGrid";
 
-type MovieGridProps = {
+type MovieGridContainerProps = {
     category: TCategoryType | undefined;
     listType: TListType | undefined;
-    dataMovieList: TMovieItem[] | undefined;
-    isLoading: boolean;
-    error: IError | undefined;
 };
 
-const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLoading, error }) => {
+const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType }) => {
     const { keyword: keywordUrl } = useParams<{ keyword: string }>();
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    const movieUpcomingList = useSelector(selectUpcomingMovieList);
+    const movieTopList = useSelector(selectTopMovieList);
+    const moviePopularList = useSelector(selectPopularMovieList);
+    const page = useSelector(selectPage);
+
+    const isLoading = useSelector(selectMovieIsLoading);
+    const error = useSelector(selectMovieError);
 
     useEffect(() => {
         if (keywordUrl) {
             navigate(`/`);
         }
-        /*  return () => {
+        return () => {
             dispatch(paginationActions.clearPage());
-        }; */
+        };
     }, []);
+
+    useEffect(() => {
+        if (listType) dispatch(fetchMovieList({ listType, page }));
+
+        /*  if (keywordUrl === "") {
+            if (listType) dispatch(fetchMovieList({ listType, page }));
+        } else {
+            const params = {
+                page: 1,
+                query: keywordUrl,
+            };
+        } */
+    }, [page, category, listType]);
 
     useEffect(() => {
         // setKeyword("");
     }, [category]);
+
+    const loadMore = useCallback(() => {
+        dispatch(paginationActions.nextPage());
+    }, []);
 
     /*  const listMovie = useMemo(() => {
         switch (listType) {
@@ -61,7 +91,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
         }
     }, [listType, popularTVList, topTVList, searchList]); */
 
-    /*  const dataMovieList = useMemo(() => {
+    const dataMovieList = useMemo(() => {
         switch (listType) {
             case "popular":
                 return moviePopularList;
@@ -73,7 +103,6 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
                 return undefined;
         }
     }, [listType, moviePopularList, movieTopList, movieUpcomingList]);
-    console.log("dataMovieList: ", dataMovieList); */
 
     /*  const dataTVList = useMemo(() => {
         switch (listType) {
@@ -91,39 +120,15 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
     } */
 
-    const dispatch = useAppDispatch();
+    /*  if (isLoading) {
+        return <StatusUpload text={"Loading MovieGridContainer..."} />;
+    } */
 
-    const loadMore = useCallback(() => {
-        dispatch(paginationActions.nextPage());
-    }, []);
+    if (!dataMovieList) {
+        return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
+    }
 
-    return (
-        <>
-            <div className="section mb-3">
-                <MovieSearch category={category} />
-            </div>
-            <div className="movie-grid">
-                {category === "movie" && (
-                    <>
-                        {dataMovieList &&
-                            dataMovieList.map((item, i) => <MovieCard category={category} movieItem={item} key={item.id} />)}
-                    </>
-                )}
-            </div>
-            {error && (
-                <div className="errorBlock">
-                    <span className="errorText">{error.message}</span>{" "}
-                </div>
-            )}
-            {dataMovieList && dataMovieList?.length > 0 && (
-                <div className="movie-grid__loadmore">
-                    <Button disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
-                        {isLoading ? <SvgSpinners /> : "Load more"}
-                    </Button>
-                </div>
-            )}
-        </>
-    );
+    return <MovieGrid error={error} dataMovieList={dataMovieList} category={category} listType={listType} isLoading={isLoading} />;
 };
 
-export default memo(MovieGrid);
+export default MovieGridContainer;

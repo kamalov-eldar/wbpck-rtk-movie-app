@@ -2,6 +2,7 @@ import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } f
 import { AxiosInstance } from "axios";
 import { NavigateOptions, To } from "react-router";
 import { AuthSchema } from "store/auth/types/authSchema";
+import { PaginationSchema } from "store/pagination/types/paginationSchema";
 import { MovieSchema } from "store/movie/types/movie";
 import { ProfileSchema } from "store/profile/types/profile";
 import { UserSchema } from "store/user/types/user";
@@ -10,9 +11,9 @@ import { VideosSchema } from "store/videos/types/videos";
 export interface StateSchema {
     user: UserSchema;
     movie: MovieSchema;
-
+    pagination: PaginationSchema;
     // Асинхронные редюсеры
-    videos?: VideosSchema;  // videos: videosReducer,
+    videos?: VideosSchema; // videos: videosReducer,
     authForm?: AuthSchema;
     profile?: ProfileSchema; //profile: profileReducer,
 }

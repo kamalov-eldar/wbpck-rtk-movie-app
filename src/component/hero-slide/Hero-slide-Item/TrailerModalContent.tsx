@@ -26,7 +26,7 @@ const TrailerModalContent: FC<TrailerModalContentProps> = ({ id }) => {
         dispatch(fetchVideosList(id));
     }, [id, dispatch]);
 
-    let content = <div>1</div>;
+    let content = <div></div>;
 
     if (isLoading) {
         content = <Loader />;

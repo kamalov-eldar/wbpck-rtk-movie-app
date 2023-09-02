@@ -1,13 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { TListType, TResponseMovieList } from "api/types";
+import { IError, TListType, TResponseMovieList } from "api/types";
 import { ThunkConfig } from "providers/storeProvider/StateSchema";
 
-interface Params {
+interface IParams {
     page: number;
     listType: TListType;
 }
 
-export const fetchMovieList = createAsyncThunk<TResponseMovieList, Params, ThunkConfig<string>>(
+
+
+export const fetchMovieList = createAsyncThunk<TResponseMovieList, IParams, ThunkConfig<IError>>(
     "movie/fetchMovieList",
     async ({ page, listType }, thunkApi) => {
         try {
@@ -21,8 +23,7 @@ export const fetchMovieList = createAsyncThunk<TResponseMovieList, Params, Thunk
             return data;
         } catch (error) {
             console.log("error-fetchMovieList: ", error);
-            return thunkApi.rejectWithValue("Произошла ошибка при загрузке фильмов");
+            return thunkApi.rejectWithValue({ status: true, message: "Произошла ошибка при загрузке фильмов" });
         }
     },
 );
-// now_playing

@@ -5,6 +5,7 @@ import { TMods } from "global/types/global";
 
 export enum ButtonTheme {
     PRIMARY = "primary",
+    LOAD = "load",
     OUTLINE = "outline",
     CLEAR = "clear",
     CLEAR_INVERTED = "clearInverted",
@@ -30,7 +31,7 @@ export const Button: FC<ButtonProps> = (props) => {
     };
 
     return (
-        <button disabled={disabled} className={classNames({ [cls[theme]]: true }, [disabled, mods, className])} {...otherProps}>
+        <button disabled={disabled} className={classNames([mods, className])} {...otherProps}>
             {children}
         </button>
     );

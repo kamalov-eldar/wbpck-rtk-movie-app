@@ -7,6 +7,7 @@ import authAxios from "api/authClient";
 import tmdbAxios from "api/tmdbClient";
 import { movieReducer } from "./movie/slice/movieSlice";
 import { videosReducer } from "./videos/slice/videosSlice";
+import { paginationReducer } from "./pagination/slice/paginationSlice";
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -16,7 +17,7 @@ export function createReduxStore(
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
-
+        pagination: paginationReducer,
         movie: movieReducer,
         //videos: videosReducer,
         //profile: profileReducer,

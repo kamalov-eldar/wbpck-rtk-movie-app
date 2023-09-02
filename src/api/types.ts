@@ -122,3 +122,8 @@ export type TMovieListResponse = {
         pagesCount: number;
     };
 };
+
+export interface IError {
+    status: boolean;
+    message: string;
+}

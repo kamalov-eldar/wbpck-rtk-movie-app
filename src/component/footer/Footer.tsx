@@ -8,7 +8,7 @@ import { RoutePath } from "../../../config/routeConfig/routeConfig";
 const Footer = () => {
     return (
         <div data-testid="Footer" className="footer" style={{ backgroundImage: `url(${bg})` }}>
-            <div className="foter__content container">
+            <div className="footer__content">
                 <div className="footer__contetn__logo">
                     <div className="logo">
                         <img src={logo} alt="" />

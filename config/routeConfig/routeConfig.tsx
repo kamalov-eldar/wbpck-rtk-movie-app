@@ -1,11 +1,10 @@
 import { RouteObject, RouteProps } from "react-router-dom";
-import Catalog from "../../src/pages/Catalog/Catalog";
-import Detail from "../../src/pages/Detail/Detail";
 import Home from "../../src/pages/Home/Home";
 import { ProfilePageAsync } from "pages/ProfilePage/ProfilePage.async";
 import { CatalogPageAsync } from "pages/Catalog/Catalog.async";
 import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
 import { DetailPageAsync } from "pages/Detail/Detail.async";
+import { CatalogWrapper } from "pages/Catalog/CatalogWrapper";
 
 export enum AppRoutes {
     HOME = "home",
@@ -38,11 +37,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.LISTTYPE]: {
         path: RoutePath.listType,
-        element: <CatalogPageAsync />,
+        element: <CatalogWrapper />,
     },
     [AppRoutes.SEARCH]: {
         path: RoutePath.search,
-        element: <CatalogPageAsync />,
+        element: <CatalogWrapper />,
     },
     [AppRoutes.DETAIL]: {
         path: `${RoutePath.detail}:id`,

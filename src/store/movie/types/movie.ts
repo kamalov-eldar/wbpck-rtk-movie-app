@@ -1,7 +1,7 @@
-import { TMovieItem } from "api/types";
+import { IError, TMovieItem } from "api/types";
 
 export interface MovieSchema {
-    error?: string;
+    error?: IError;
     isLoading: boolean;
 
     dataPopularFilms?: TMovieItem[];

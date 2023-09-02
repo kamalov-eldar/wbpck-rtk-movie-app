@@ -35,7 +35,7 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
             {isOpenTrailerModal && <TrailerModal id={item.id} onClose={onCloseTrailerModal} isOpen={isOpenTrailerModal} />}
 
             <div className={`hero-slide__item ${className}`} style={{ backgroundImage: `url(${background})` }}>
-                <div className="hero-slide__item__content container">
+                <div className="hero-slide__item__content">
                     <div className="hero-slide__item__content__info">
                         <h2 className="title">{item.title}</h2>
                         <div className="overview">{item.overview}</div>

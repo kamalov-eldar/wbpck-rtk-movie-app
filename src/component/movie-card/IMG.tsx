@@ -22,14 +22,7 @@ export const IMG: FC<IMGProps> = ({ size, path, mods }) => {
     }, []);
 
     if (!url && !mods) {
-        return (
-            /*  <Skeleton variant="rectangular" sx={{ bgcolor: "grey.900", borderRadius: "30px", maxWidth: "100%" }}>
-                <div style={{ paddingTop: "153%" }} />
-                <Stack></Stack>
-            </Skeleton> */
-            /*  <Skeleton className={cls.skeleton} width="100%" height={200} /> */
-            <Skeleton border="30px" />
-        );
+        return <Skeleton border="30px" />;
     }
 
     if (!url && mods) {

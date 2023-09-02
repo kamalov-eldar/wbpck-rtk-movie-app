@@ -1,9 +1,9 @@
-import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 import { TCategoryType, TListType } from "../../api/types";
 import PageHeader from "component/page-header/PageHeader";
-import MovieGrid from "component/movie-grid/MovieGrid";
+import MovieGridContainer from "component/movie-grid/MovieGridContainer";
+import cls from "./Catalog.module.scss";
 
 const arrNav = [
     {
@@ -41,11 +41,12 @@ const Catalog = () => {
     });
 
     return (
-        <div className="catalog">
-            <PageHeader title={headerTitle?.display} />
+        <div className="catalog" style={{ flex: "1 0 auto" }}>
+            <PageHeader />
+            <h2 className={cls.title}>{headerTitle?.display}</h2>
             <div className="container">
                 <div className="section mb-3">
-                    <MovieGrid category={categoryUrl} listType={listType} />
+                    <MovieGridContainer category={categoryUrl} listType={listType} />
                 </div>
             </div>
         </div>
