@@ -12,7 +12,7 @@ export const fetchVideosList = createAsyncThunk<TResponseVideosList, number, Thu
     async (id, thunkApi) => {
         try {
             const response = await thunkApi.extra.apiTmdb.get<TResponseVideosList>(`/movie/${id}/videos`, { params: {} });
-            console.log("response: ", response);
+          //  console.log("response: ", response);
 
             if (!response.data) {
                 throw new Error();

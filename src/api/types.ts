@@ -1,6 +1,6 @@
-export type TListType = 'popular' | 'top_rated' | 'upcoming' | 'similar' | 'now_playing';
-export type TCategoryType = 'movie' | 'tv';
-export type TypeList = 'TOP_100_POPULAR_FILMS' | 'TOP_AWAIT_FILMS' | 'TOP_250_BEST_FILMS';
+export type TListType = "popular" | "top_rated" | "upcoming" | "similar" | "now_playing";
+export type TCategoryType = "movie" | "tv";
+export type TypeList = "TOP_100_POPULAR_FILMS" | "TOP_AWAIT_FILMS" | "TOP_250_BEST_FILMS";
 
 export type TGenre = {
     name: string;
@@ -35,7 +35,7 @@ export type TMovieItem = {
     backdrop_path: string;
     overview: string;
     poster_path: string;
-    release_date?:string;
+    release_date?: string;
 };
 
 export type TItemTV = {
@@ -101,25 +101,6 @@ export type TIMDbMovie = {
 export type TImdbComingSoonListResponse = {
     data: {
         items: TIMDbMovie[];
-    };
-};
-
-export type TMovieKP = {
-    filmId: number;
-    filmLength: string;
-    nameEn: string;
-    nameRu: string;
-    bigPosterUrl: string;
-    posterUrlPreview: string;
-    rating: string;
-    year: string;
-    genres: TGenre[];
-};
-
-export type TMovieListResponse = {
-    data: {
-        films: TMovieKP[];
-        pagesCount: number;
     };
 };
 

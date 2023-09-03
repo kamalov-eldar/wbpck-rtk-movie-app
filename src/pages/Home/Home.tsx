@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { ButtonTheme, Button } from "../../component/button/Button";
 import { TCategoryItem } from "../../api/types";
 import MovieList from "component/movie-list/MovieList";
+import { selectMovieError, selectMovieErrorStatus, selectMovieIsLoading } from "store/movie/selectors/selectMovie";
+import { useSelector } from "react-redux";
+import { useCallback } from "react";
 
 const categoryPage: Array<TCategoryItem> = [
     { title: "Popular Movies", category: "movie", listType: "popular" },
@@ -12,6 +15,9 @@ const categoryPage: Array<TCategoryItem> = [
 ];
 
 const Home = () => {
+    const errorStatus = useSelector(selectMovieErrorStatus);
+    const isLoading = useSelector(selectMovieIsLoading);
+
     return (
         <>
             <HeroSlide />
@@ -26,7 +32,7 @@ const Home = () => {
                                 <div className="section__header mb-2">
                                     <h2>{title}</h2>
                                     <Link to={link}>
-                                        <Button theme={ButtonTheme.OUTLINE} className="small">
+                                        <Button disabled={isLoading || errorStatus} theme={ButtonTheme.OUTLINE} className="small">
                                             View More
                                         </Button>
                                     </Link>

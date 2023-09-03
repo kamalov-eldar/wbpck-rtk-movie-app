@@ -62,10 +62,6 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
         // setKeyword("");
     }, [category]);
 
-    const loadMore = useCallback(() => {
-        dispatch(paginationActions.nextPage());
-    }, []);
-
     /*  const listMovie = useMemo(() => {
         switch (listType) {
             case "popular":

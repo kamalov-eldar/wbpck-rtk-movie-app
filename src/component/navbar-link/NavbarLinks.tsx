@@ -26,7 +26,7 @@ const headerNav: NavbarItemType[] = [
     },
     {
         display: "Profile",
-        path: RoutePath.profile,
+        path: "/profile/1",
         authOnly: true,
     },
 ];

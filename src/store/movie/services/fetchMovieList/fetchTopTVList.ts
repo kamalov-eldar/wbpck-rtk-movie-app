@@ -14,7 +14,7 @@ export const fetchTopTVList = createAsyncThunk<TResponseMovieList, number, Thunk
 
             return response.data;
         } catch (error) {
-            console.log("error-fetchTopTVList: ", error);
+            // console.log("error-fetchTopTVList: ", error);
             return thunkApi.rejectWithValue("Произошла ошибка при загрузке 'top' тв программ");
         }
     },

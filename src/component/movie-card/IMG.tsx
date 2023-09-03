@@ -2,7 +2,7 @@ import { Skeleton } from "component/Skeleton/Skeleton";
 import { FC, useEffect, useState } from "react";
 
 type IMGProps = {
-    path: string;
+    path: string | null;
     size: string;
     mods?: string;
 };
@@ -16,7 +16,11 @@ export const IMG: FC<IMGProps> = ({ size, path, mods }) => {
                 return response.blob();
             })
             .then((image) => {
-                setUrl(URL.createObjectURL(image));
+                if (!path) {
+                    setUrl("");
+                } else {
+                    setUrl(URL.createObjectURL(image));
+                }
             })
             .catch((err) => console.log(err));
     }, []);

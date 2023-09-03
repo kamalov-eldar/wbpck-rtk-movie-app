@@ -1,6 +1,8 @@
 import { StateSchema } from "providers/storeProvider/StateSchema";
 
 export const selectMovieError = (state: StateSchema) => state.movie.error;
+export const selectMovieErrorStatus = (state: StateSchema) => state.movie.error?.status;
+export const selectMovieErrorMessage = (state: StateSchema) => state.movie.error?.message;
 export const selectMovieIsLoading = (state: StateSchema) => state.movie?.isLoading;
 
 export const selectNowPlayingMovieTotalPages = (state: StateSchema) => state.movie?.nowPlayingTotalPages;

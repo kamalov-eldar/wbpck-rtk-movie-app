@@ -7,7 +7,6 @@ import { IMG } from "../../movie-card/IMG";
 import { TMovieItem, TResponseVideosList } from "api/types";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchVideosList } from "store/videos/fetchVideosList/fetchVideosList";
-import TrailerModalContent from "./TrailerModalContent";
 import { TrailerModal } from "./TrailerModal";
 
 type HeroSlideItemProps = {

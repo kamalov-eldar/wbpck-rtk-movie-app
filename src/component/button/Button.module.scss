@@ -46,13 +46,18 @@ button {
     color: var(--text-color);
     box-shadow: unset;
     transition: color 0.3s ease, background-color 0.3s ease;
+    &:not([disabled]):hover {
+        box-shadow: unset;
+        color: $main-color;
+        background-color: $white;
+    }
 }
 
-.outline:hover {
+/* .outline:hover {
     box-shadow: unset;
     color: $main-color;
     background-color: $white;
-}
+} */
 
 .load {
     width: 100%;
@@ -61,10 +66,10 @@ button {
     color: var(--text-color-inverted);
     border: none;
     font-size: 24px;
-    &:hover {
+    &:not([disabled]):hover {
+        box-shadow: unset;
         color: var(--text-color);
     }
-
 }
 
 .btn.small {
@@ -76,9 +81,10 @@ button {
 .disabled {
     opacity: 0.5;
     box-shadow: none;
-    cursor: inherit;
-    &:hover {
+    cursor: default;
+    //pointer-events: none;
+    /* &:hover {
         box-shadow: none;
         color: var(--text-color-inverted);
-    }
+    } */
 }

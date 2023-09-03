@@ -8,6 +8,7 @@ import tmdbAxios from "api/tmdbClient";
 import { movieReducer } from "./movie/slice/movieSlice";
 import { videosReducer } from "./videos/slice/videosSlice";
 import { paginationReducer } from "./pagination/slice/paginationSlice";
+import { detailReducer } from "./detail/slice/detailSlice";
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -19,6 +20,7 @@ export function createReduxStore(
         user: userReducer,
         pagination: paginationReducer,
         movie: movieReducer,
+        //detail: detailReducer, // detail: detailReducer,
         //videos: videosReducer,
         //profile: profileReducer,
     };

@@ -8,6 +8,7 @@ import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
 import {
     selectMovieError,
+    selectMovieErrorStatus,
     selectMovieIsLoading,
     selectPopularMovieList,
     selectSimilarMovieList,
@@ -18,12 +19,13 @@ import { fetchTopTVList } from "store/movie/services/fetchMovieList/fetchTopTVLi
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 
 type MovieListProps = {
-    category: TCategoryType;
+    category?: TCategoryType;
     listType: TListType;
     id?: number;
 };
 
-const MovieList: FC<MovieListProps> = ({ category, listType, id }) => {
+const MovieList: FC<MovieListProps> = ({ category = "movie", listType, id }) => {
+    // console.log("MovieList: ");
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -38,17 +40,17 @@ const MovieList: FC<MovieListProps> = ({ category, listType, id }) => {
                 // getMovieList(listType, { params }, id);
                 if (listType === "popular") dispatch(fetchMovieList({ listType, page: 1 }));
                 if (listType === "top_rated") dispatch(fetchMovieList({ listType, page: 1 }));
-                if (listType === "similar") dispatch(fetchMovieList({ listType, page: 1 }));
+                if (listType === "similar") dispatch(fetchMovieList({ listType, page: 1, id }));
                 break;
             case "tv":
                 //getTVList(listType, { params }); fetchTopTVList
                 if (listType === "top_rated") dispatch(fetchTopTVList(1));
                 break;
         }
-    }, [category, listType]);
+    }, [category, listType, id, dispatch]);
 
     const isLoadingMovieList = useSelector(selectMovieIsLoading);
-    const error = useSelector(selectMovieError);
+    const errorStatus = useSelector(selectMovieErrorStatus);
 
     const moviePopularList = useSelector(selectPopularMovieList);
 
@@ -64,7 +66,7 @@ const MovieList: FC<MovieListProps> = ({ category, listType, id }) => {
         return <span className="loader__text">Loading...</span>;
     }
 
-    if (error) {
+    if (errorStatus) {
         return <span className="loader__text">Error</span>;
     }
     if (!moviePopularList && !movieTopList) {

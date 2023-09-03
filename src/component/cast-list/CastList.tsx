@@ -4,7 +4,7 @@ import { TCategoryType } from "../../api/types";
 import apiConfig from "../../api/apiConfig";
 
 type CastListProps = {
-    id: number;
+    id?: number;
     category: TCategoryType;
 };
 

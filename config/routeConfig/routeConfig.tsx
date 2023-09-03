@@ -11,7 +11,6 @@ export enum AppRoutes {
     LISTTYPE = "listType",
     SEARCH = "search",
     DETAIL = "detail",
-    //  DETAIL_ID = "detail_ID",
     PROFILE = "profile",
     NOT_FOUND = "not_found",
 }
@@ -20,8 +19,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.HOME]: "/",
     [AppRoutes.LISTTYPE]: "/catalog/:category/:listType",
     [AppRoutes.SEARCH]: "/:category/search/:keyword",
-    [AppRoutes.DETAIL]: "/detail/", // "/:category/:id"
-    // [AppRoutes.DETAIL_ID]: "/detail/",
+    [AppRoutes.DETAIL]: "/:category/", // "/:category/:id"
     [AppRoutes.PROFILE]: "/profile/",
     [AppRoutes.NOT_FOUND]: "*",
 };
@@ -47,10 +45,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: `${RoutePath.detail}:id`,
         element: <DetailPageAsync />,
     },
-    /*  [AppRoutes.DETAIL_ID]: {
-        path: `${RoutePath.detail_ID}:id`,
-        element: <Detail />,
-    }, */
+
     [AppRoutes.PROFILE]: {
         path: `${RoutePath.profile}:id`,
         element: <ProfilePageAsync />,
@@ -61,7 +56,3 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <NotFoundPage />,
     },
 };
-
-/* export const routerConfig: RouteObject[]=[
-
-] */
