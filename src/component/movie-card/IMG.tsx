@@ -25,9 +25,9 @@ export const IMG: FC<IMGProps> = ({ size, path, mods }) => {
             .catch((err) => console.log(err));
     }, []);
 
-    if (url && !mods) {
+    /* if (url && !mods) {
         return <Skeleton border="10px" borderBottomRightRadius={"0"} borderBottomLeftRadius={"0"} paddingTop="153%" />;
-    }
+    } */
 
     if (!url && mods) {
         return <img src={url} className="img-card" />;

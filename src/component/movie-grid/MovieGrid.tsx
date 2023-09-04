@@ -10,7 +10,6 @@ import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { SvgSpinners } from "assets/svg/SvgSpinners";
 import StatusUpload from "component/status-upload/StatusUpload";
-import MovieCard2 from "component/movie-card/MovieCard2";
 
 type MovieGridProps = {
     category: TCategoryType | undefined;

@@ -17,7 +17,6 @@ import {
 import { selectTopTVList, selectTopTVListError, selectTopTVListIsLoading } from "store/movie/selectors/selectTopTVList";
 import { fetchTopTVList } from "store/movie/services/fetchMovieList/fetchTopTVList";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
-import MovieCard2 from "component/movie-card/MovieCard2";
 
 type MovieListProps = {
     category?: TCategoryType;

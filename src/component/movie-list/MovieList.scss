@@ -1,4 +1,4 @@
-@use '../../scss/breakpoint' as *;
+@use "../../scss/breakpoint" as *;
 
 .movie-list {
     .swiper-slide {
@@ -10,5 +10,14 @@
         @include mobile {
             width: 40%;
         }
+    }
+
+    .swiper-slide,
+    swiper-slide {
+        flex-shrink: 0;
+        height: auto;
+        position: relative;
+        transition-property: transform;
+        display: flex;
     }
 }
