@@ -1,8 +1,24 @@
 @use "../../scss/" as *;
 
+/* .swiper-slide {
+    .movie-card {
+        &::before {
+            max-height: 98%;
+            height: 98%;
+        }
+    }
+} */
+
 .movie-card {
+    border-radius: $border-radius-card;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+}
+
+.movie-poster {
     position: relative;
     display: flex;
+    border-radius: $border-radius-card;
 
     .btn {
         position: absolute;
@@ -15,38 +31,49 @@
     &::before {
         content: "";
         position: absolute;
-        top: -1px;
+        top: 0;
         left: 0;
-        bottom: -1px;
+        bottom: 0;
         right: 0;
         background-color: $black;
         opacity: 0;
         transition: opacity 0.3s ease;
-        border-radius: $border-radius;
+        border-radius: $border-radius-card;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 
     .img-card {
-        border-radius: $border-radius;
-        height: 100%;
+        border-radius: $border-radius-card;
         width: 100%;
-        object-fit: cover;
+        height: 100%;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 
     @media (hover: hover) and (pointer: fine) {
         &:hover::before {
             opacity: 0.8;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
         }
 
         &:hover .btn {
             transform: translate(-50%, -50%) scale(0.8);
         }
     }
-    .swiper-slide {
-        height: auto;
-    }
 }
+
+.card__content {
+    padding: 10px;
+    min-height: 80px;
+}
+
 .movie-title {
     color: var(--text-color);
+    display: inline;
+    font-size: 16px;
+
     &:hover {
         color: var(--main-color);
     }

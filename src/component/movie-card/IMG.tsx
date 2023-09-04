@@ -11,7 +11,7 @@ export const IMG: FC<IMGProps> = ({ size, path, mods }) => {
     const [url, setUrl] = useState("");
 
     useEffect(() => {
-        fetch(`https://image.tmdb.org/t/p/${size}/${path}`)
+        fetch(`https://image.tmdb.org/t/p/w220_and_h330_face/${path}`)
             .then((response) => {
                 return response.blob();
             })
@@ -25,8 +25,8 @@ export const IMG: FC<IMGProps> = ({ size, path, mods }) => {
             .catch((err) => console.log(err));
     }, []);
 
-    if (!url && !mods) {
-        return <Skeleton border="30px" />;
+    if (url && !mods) {
+        return <Skeleton border="10px" borderBottomRightRadius={"0"} borderBottomLeftRadius={"0"} paddingTop="153%" />;
     }
 
     if (!url && mods) {
