@@ -49,7 +49,7 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
                         </div>
                     </div>
                     <div className="hero-slide__item__content__poster">
-                        <IMG mods={"slide"} path={item.poster_path || item.backdrop_path} size={"w500"} />
+                        <IMG  mods={"slide"} path={item.poster_path || item.backdrop_path} size={"w500"} />
                     </div>
                 </div>
             </div>

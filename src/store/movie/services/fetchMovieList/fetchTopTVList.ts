@@ -7,12 +7,21 @@ export const fetchTopTVList = createAsyncThunk<TResponseMovieList, number, Thunk
     async (page, thunkApi) => {
         try {
             const response = await thunkApi.extra.apiTmdb.get<TResponseMovieList>(`/tv/top_rated`, { params: { page } });
+            console.log("response: ", response);
 
             if (!response.data) {
                 throw new Error();
             }
 
-            return response.data;
+            return {
+                ...response.data,
+                results: response.data.results.map((item: any) => {
+                    return {
+                        ...item,
+                        title: item.name,
+                    };
+                }),
+            };
         } catch (error) {
             // console.log("error-fetchTopTVList: ", error);
             return thunkApi.rejectWithValue("Произошла ошибка при загрузке 'top' тв программ");

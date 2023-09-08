@@ -1,21 +1,14 @@
 @use "../../scss/" as *;
 
-/* .swiper-slide {
-    .movie-card {
-        &::before {
-            max-height: 98%;
-            height: 98%;
-        }
-    }
-} */
-
-.movie-card {
+.card {
     border-radius: $border-radius-card;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 5px;
+    background-color: var(--bg-secondary);
+    position: relative;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+    min-height: 100%;
 }
 
-.movie-poster {
+.card__poster {
     position: relative;
     display: flex;
     border-radius: $border-radius-card;
@@ -43,14 +36,6 @@
         border-bottom-right-radius: 0px;
     }
 
-    .img-card {
-        border-radius: $border-radius-card;
-        width: 100%;
-        height: 100%;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-
     @media (hover: hover) and (pointer: fine) {
         &:hover::before {
             opacity: 0.8;
@@ -64,12 +49,21 @@
     }
 }
 
-.card__content {
+.card__img {
+    border-radius: $border-radius-card;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+
+.card__desc {
     padding: 10px;
     min-height: 80px;
 }
 
-.movie-title {
+.card__title {
     color: var(--text-color);
     display: inline;
     font-size: 16px;

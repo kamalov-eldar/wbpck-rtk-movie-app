@@ -37,7 +37,7 @@ const Home = () => {
                                         </Button>
                                     </Link>
                                 </div>
-                                <div style={{ minHeight: "24px" }}>
+                                <div>
                                     <MovieList category={category} listType={listType} />
                                 </div>
                             </div>

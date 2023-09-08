@@ -1,13 +1,16 @@
 import { Skeleton } from "component/Skeleton/Skeleton";
+import Button from "component/button/Button";
 import { FC, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 type IMGProps = {
     path: string | null;
     size: string;
     mods?: string;
+    link?: string;
 };
 
-export const IMG: FC<IMGProps> = ({ size, path, mods }) => {
+export const IMG: FC<IMGProps> = ({ size, path, mods, link }) => {
     const [url, setUrl] = useState("");
 
     useEffect(() => {
@@ -25,13 +28,17 @@ export const IMG: FC<IMGProps> = ({ size, path, mods }) => {
             .catch((err) => console.log(err));
     }, []);
 
-    /* if (url && !mods) {
-        return <Skeleton border="10px" borderBottomRightRadius={"0"} borderBottomLeftRadius={"0"} paddingTop="153%" />;
-    } */
-
-    if (!url && mods) {
-        return <img src={url} className="img-card" />;
+    if (!url) {
+        return <Skeleton border="10px"  borderBottomRightRadius={"0"} borderBottomLeftRadius={"0"}  paddingTop="150.5%" />;
     }
 
-    return <img src={url} className="img-card" />;
+
+    return (
+        <Link to={link || "/"} className="card__poster">
+            <img src={url} className="card__img" />
+            <Button className="btn">
+                <i className="bx bx-play"></i>
+            </Button>
+        </Link>
+    );
 };

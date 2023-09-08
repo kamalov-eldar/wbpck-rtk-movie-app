@@ -27,9 +27,6 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
         if (keywordUrl) {
             navigate(`/`);
         }
-        /*  return () => {
-            dispatch(paginationActions.clearPage());
-        }; */
     }, []);
 
     useEffect(() => {

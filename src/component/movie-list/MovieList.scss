@@ -13,11 +13,12 @@
     }
 
     .swiper-slide,
-    swiper-slide {
-        flex-shrink: 0;
+    .swiper-slide {
         height: auto;
         position: relative;
-        transition-property: transform;
-        display: flex;
+        transition-property: transform; */
+    }
+    .swiper-horizontal {
+        padding: 8px;
     }
 }

@@ -47,7 +47,6 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
 
     useEffect(() => {
         if (listType) dispatch(fetchMovieList({ listType, page }));
-
         /*  if (keywordUrl === "") {
             if (listType) dispatch(fetchMovieList({ listType, page }));
         } else {
@@ -57,6 +56,8 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
             };
         } */
     }, [page, category, listType]);
+
+    console.log("listType: ", listType);
 
     useEffect(() => {
         // setKeyword("");

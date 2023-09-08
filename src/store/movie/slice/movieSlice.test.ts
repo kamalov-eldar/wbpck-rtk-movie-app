@@ -11,6 +11,7 @@ const data = {
     city: "asf",
     currency: Currency.USD,
 };
+
 describe("movieSlice.test", () => {
     test("test set readonly", () => {
         const state: CustomDeepPartial<MovieSchema> = {
