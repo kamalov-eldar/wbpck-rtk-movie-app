@@ -4,6 +4,12 @@ import { TCategoryType, TListType } from "../../api/types";
 import PageHeader from "component/page-header/PageHeader";
 import MovieGridContainer from "component/movie-grid/MovieGridContainer";
 import cls from "./Catalog.module.scss";
+import { SwitchingTypeCards, ViewCardsType } from "component/SwitchingTypeCards/SwitchingTypeCards";
+import { useCallback, useEffect } from "react";
+import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
+import { viewCardsActions } from "store/viewCards/slice/viewCardsSlice";
+import { useSelector } from "react-redux";
+import { getViewCards } from "store/viewCards/selectors/viewCardsSelectors";
 
 const arrNav = [
     {
@@ -35,15 +41,33 @@ const arrNav = [
 const Catalog = () => {
     const { category: categoryUrl, listType } = useParams<{ category: TCategoryType; listType: TListType }>();
     const { pathname } = useLocation();
+    const dispatch = useAppDispatch();
+
+    const view = useSelector(getViewCards);
 
     const headerTitle = arrNav.find((item) => {
         return item.path === pathname;
     });
 
+    const onChangeView = useCallback(
+        (view: ViewCardsType) => {
+            console.log("onChangeView: ");
+            dispatch(viewCardsActions.setView(view));
+        },
+        [dispatch],
+    );
+
+    useEffect(() => {
+        dispatch(viewCardsActions.initState());
+    }, []);
+
     return (
         <div className="catalog" style={{ flex: "1 0 auto" }}>
             <PageHeader />
-            <h2 className={cls.title}>{headerTitle?.display}</h2>
+            <div className={cls.catalog__header}>
+                <h2 className={cls.title}>{headerTitle?.display}</h2>
+                <SwitchingTypeCards view={view} onViewClick={onChangeView} />
+            </div>
             <div className="container">
                 <div className="section mb-3">
                     <MovieGridContainer category={categoryUrl} listType={listType} />

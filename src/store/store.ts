@@ -9,6 +9,7 @@ import { movieReducer } from "./movie/slice/movieSlice";
 import { videosReducer } from "./videos/slice/videosSlice";
 import { paginationReducer } from "./pagination/slice/paginationSlice";
 import { detailReducer } from "./detail/slice/detailSlice";
+import { viewCardsReducer } from "./viewCards/slice/viewCardsSlice";
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -19,8 +20,9 @@ export function createReduxStore(
         ...asyncReducers,
         user: userReducer,
         pagination: paginationReducer,
+        viewCards: viewCardsReducer,
         movie: movieReducer,
-        //detail: detailReducer, // detail: detailReducer,
+        //detail: detailReducer,
         //videos: videosReducer,
         //profile: profileReducer,
     };

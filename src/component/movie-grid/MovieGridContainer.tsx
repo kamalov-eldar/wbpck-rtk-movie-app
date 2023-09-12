@@ -25,6 +25,7 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
     const movieUpcomingList = useSelector(selectUpcomingMovieList);
     const movieTopList = useSelector(selectTopMovieList);
     const moviePopularList = useSelector(selectPopularMovieList);
+    
     const page = useSelector(selectPage);
 
     // const isLoading = useSelector(selectMovieIsLoading);

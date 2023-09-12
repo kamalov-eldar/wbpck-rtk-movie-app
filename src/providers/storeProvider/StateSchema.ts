@@ -8,11 +8,13 @@ import { ProfileSchema } from "store/profile/types/profile";
 import { UserSchema } from "store/user/types/user";
 import { VideosSchema } from "store/videos/types/videos";
 import { DetailSchema } from "store/detail/types/detail";
+import { ViewCardsSchema } from "store/viewCards/types/viewCardsSchema";
 
 export interface StateSchema {
     user: UserSchema;
     movie: MovieSchema;
     pagination: PaginationSchema;
+    viewCards: ViewCardsSchema;
     // Асинхронные редюсеры
     videos?: VideosSchema; // videos: videosReducer,
     detail?: DetailSchema; // detail: detailReducer,

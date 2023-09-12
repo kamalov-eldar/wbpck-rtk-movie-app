@@ -89,6 +89,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
     } */
 
+   
     const dispatch = useAppDispatch();
 
     const loadMore = useCallback(() => {

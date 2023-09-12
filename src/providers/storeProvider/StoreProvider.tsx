@@ -13,7 +13,6 @@ interface StoreProviderProps {
 
 export const StoreProvider = (props: StoreProviderProps) => {
     const { children, initialState, asyncReducers } = props;
-    console.log("props-StoreProvider: ", props);
 
     const navigate = useNavigate();
     // чтоб перекинуть на страницу профиля псоле усп авторизации
