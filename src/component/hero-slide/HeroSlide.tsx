@@ -3,11 +3,17 @@ import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroSlideItem from "./Hero-slide-Item/HeroSlideItem";
 import { useSelector } from "react-redux";
-import { selectMovieError, selectMovieIsLoading, selectNowPlayingMovieList } from "store/movie/selectors/selectMovie";
+import {
+    selectNowPlayingErrorMessage,
+    selectNowPlayingErrorStatus,
+    selectNowPlayingIsLoading,
+    selectNowPlayingMovieList,
+} from "store/movie/selectors/selectMovie";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 
 const HeroSlide: FC = () => {
+    console.log("HeroSlide: ");
     SwiperCore.use([Autoplay]);
     const dispatch = useAppDispatch();
 
@@ -15,9 +21,10 @@ const HeroSlide: FC = () => {
         dispatch(fetchMovieList({ listType: "now_playing", page: 1 }));
     }, []);
 
-    const nowPlayingMovieList = useSelector(selectNowPlayingMovieList);
-    const isLoading = useSelector(selectMovieIsLoading);
-    const error = useSelector(selectMovieError);
+    const nowPlayingMovieList = useSelector(selectNowPlayingMovieList); // [] as TMovieItem[];
+    const isLoading = useSelector(selectNowPlayingIsLoading);
+    const errorMessage = useSelector(selectNowPlayingErrorMessage);
+    const errorStatus = useSelector(selectNowPlayingErrorStatus);
 
     if (isLoading) {
         return (
@@ -27,13 +34,14 @@ const HeroSlide: FC = () => {
         );
     }
 
-    if (error) {
+    if (errorStatus) {
         return (
             <div className="loader">
                 <h2 className="loader__text">Rejected upload - Enable vpn in browser &nbsp;</h2>
             </div>
         );
     }
+
     if (!nowPlayingMovieList) {
         return (
             <div className="loader">

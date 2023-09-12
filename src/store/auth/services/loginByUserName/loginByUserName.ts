@@ -23,6 +23,7 @@ export const loginByUserName = createAsyncThunk<User, loginByUserNameProps, Thun
             dispatch(userActions.setAuthData(response.data));
             if (extra.navigate) extra.navigate("/profile/1"); // редирект после усп авторизации
             return response.data;
+            
         } catch (error) {
             console.log("error-loginByUserName: ", error);
             return thunkApi.rejectWithValue("Неверный логин или пароль");

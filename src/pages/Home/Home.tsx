@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { ButtonTheme, Button } from "../../component/button/Button";
 import { TCategoryItem } from "../../api/types";
 import MovieList from "component/movie-list/MovieList";
-import { selectMovieError, selectMovieErrorStatus, selectMovieIsLoading } from "store/movie/selectors/selectMovie";
 import { useSelector } from "react-redux";
 import { useCallback } from "react";
+import MovieListContainer from "component/movie-list/MovieListContainer";
 
 const categoryPage: Array<TCategoryItem> = [
     { title: "Popular Movies", category: "movie", listType: "popular" },
@@ -15,8 +15,9 @@ const categoryPage: Array<TCategoryItem> = [
 ];
 
 const Home = () => {
-    const errorStatus = useSelector(selectMovieErrorStatus);
-    const isLoading = useSelector(selectMovieIsLoading);
+    console.log("Home: ");
+    //  const errorStatus = useSelector(selectMovieErrorStatus);
+    // const isLoading = useSelector(selectMovieIsLoading);
 
     return (
         <>
@@ -25,21 +26,10 @@ const Home = () => {
                 <div className="container">
                     {categoryPage.map((item, idx) => {
                         const { category, listType, title } = item;
-                        const link = "catalog/" + category + "/" + listType;
-
+                        //const link = "catalog/" + category + "/" + listType;
                         return (
                             <div key={title + idx} className="section mb-3">
-                                <div className="section__header mb-2">
-                                    <h2>{title}</h2>
-                                    <Link to={link}>
-                                        <Button disabled={isLoading || errorStatus} theme={ButtonTheme.OUTLINE} className="small">
-                                            View More
-                                        </Button>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <MovieList category={category} listType={listType} />
-                                </div>
+                                <MovieListContainer category={category} listType={listType} title={item.title} />
                             </div>
                         );
                     })}

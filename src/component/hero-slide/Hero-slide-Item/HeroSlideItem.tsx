@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import apiConfig from "../../../api/apiConfig";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { ButtonTheme, Button } from "../../button/Button";
 import "../Hero-Slide.scss";
 import { IMG } from "../../movie-card/IMG";
@@ -29,11 +29,34 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
         setOpenTrailerModal(true);
     }, []);
 
+    const [url, setUrl] = useState("");
+    const path = item.backdrop_path  || item.poster_path;
+
+    setTimeout(() => {
+       // console.log("setTimeout");
+    }, 1);
+
+    useEffect(() => {
+        fetch(`https://image.tmdb.org/t/p/original${path}`)
+            .then((response) => {
+                return response.blob();
+            })
+            .then((image) => {
+                if (!path) {
+                    setUrl("");
+                } else {
+                    setUrl(URL.createObjectURL(image));
+                }
+               // console.log("response");
+            })
+            .catch((err) => console.log(err));
+    }, []);
+
     return (
         <>
             {isOpenTrailerModal && <TrailerModal id={item.id} onClose={onCloseTrailerModal} isOpen={isOpenTrailerModal} />}
 
-            <div className={`hero-slide__item ${className}`} style={{ backgroundImage: `url(${background})` }}>
+            <div className={`hero-slide__item ${className}`} style={{ backgroundImage: `url(${url})` }}>
                 <div className="hero-slide__item__content">
                     <div className="hero-slide__item__content__info">
                         <h2 className="title">{item.title}</h2>
@@ -49,7 +72,7 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
                         </div>
                     </div>
                     <div className="hero-slide__item__content__poster">
-                        <IMG  mods={"slide"} path={item.poster_path || item.backdrop_path} size={"w500"} />
+                        <IMG mods={"slide"} path={item.poster_path || item.backdrop_path} size={"w500"} />
                     </div>
                 </div>
             </div>

@@ -40,7 +40,7 @@ describe("movieSlice.test", () => {
     });
     test(" update movie service pending", () => {
         const state: CustomDeepPartial<MovieSchema> = {
-            isLoading: false,
+           // isLoading: false,
         };
 
         expect(movieReducer(state as MovieSchema, fetchMovieList.pending)).toEqual({
@@ -51,7 +51,7 @@ describe("movieSlice.test", () => {
 
     test(" update movie service fullfiled", () => {
         const state: CustomDeepPartial<MovieSchema> = {
-            isLoading: true,
+           // isLoading: true,
         };
 
         /* expect(movieReducer(state as MovieSchema, fetchMovieList.fulfilled(...state))).toEqual({

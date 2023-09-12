@@ -10,11 +10,13 @@ type IMGProps = {
     link?: string;
 };
 
-export const IMG: FC<IMGProps> = ({ size, path, mods, link }) => {
+export const IMG: FC<IMGProps> = ({ size: sizeProp, path, mods, link }) => {
     const [url, setUrl] = useState("");
 
+    const size = sizeProp ? sizeProp : "w220_and_h330_face";
+
     useEffect(() => {
-        fetch(`https://image.tmdb.org/t/p/${size ? size : "w220_and_h330_face"}/${path}`)
+        fetch(`https://image.tmdb.org/t/p/${size}/${path}`)
             .then((response) => {
                 return response.blob();
             })

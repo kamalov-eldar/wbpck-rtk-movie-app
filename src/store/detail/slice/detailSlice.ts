@@ -4,7 +4,7 @@ import { fetchDetail } from "../fetchDetail/fetchDetail";
 import { TMovieDetail } from "api/types";
 
 const initialState: DetailSchema = {
-    isLoading: false,
+    isLoading: true,
     error: undefined,
     data: undefined,
 };

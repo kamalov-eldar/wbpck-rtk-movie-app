@@ -7,13 +7,7 @@ import StatusUpload from "component/status-upload/StatusUpload";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
-import {
-    selectMovieError,
-    selectMovieIsLoading,
-    selectPopularMovieList,
-    selectTopMovieList,
-    selectUpcomingMovieList,
-} from "store/movie/selectors/selectMovie";
+import { selectPopularMovieList, selectTopMovieList, selectUpcomingMovieList } from "store/movie/selectors/selectMovie";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { selectPage } from "store/pagination/selectors/selectPage/selectPage";
 import MovieGrid from "./MovieGrid";
@@ -33,8 +27,8 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
     const moviePopularList = useSelector(selectPopularMovieList);
     const page = useSelector(selectPage);
 
-    const isLoading = useSelector(selectMovieIsLoading);
-    const error = useSelector(selectMovieError);
+    // const isLoading = useSelector(selectMovieIsLoading);
+    //const error = useSelector(selectMovieError);
 
     useEffect(() => {
         if (keywordUrl) {
@@ -56,8 +50,6 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
             };
         } */
     }, [page, category, listType]);
-
-    console.log("listType: ", listType);
 
     useEffect(() => {
         // setKeyword("");
@@ -125,7 +117,15 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
     }
 
-    return <MovieGrid error={error} dataMovieList={dataMovieList} category={category} listType={listType} isLoading={isLoading} />;
+    return (
+        <MovieGrid
+            error={undefined}
+            isLoading={false /* isLoading */}
+            dataMovieList={dataMovieList}
+            category={category}
+            listType={listType}
+        />
+    );
 };
 
 export default MovieGridContainer;

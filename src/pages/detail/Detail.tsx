@@ -24,35 +24,37 @@ import {
 } from "store/detail/selectors/selectDetail";
 import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
 import { detailReducer } from "store/detail/slice/detailSlice";
+import MovieListContainer from "component/movie-list/MovieListContainer";
 
 const redusers: ReducersList = {
     detail: detailReducer,
 };
 
 const Detail = () => {
+    console.log("Detail: ");
     const { category, id } = useParams<{ category?: TCategoryType; id?: string }>();
+    const movieID = Number(id);
     const dispatch = useAppDispatch();
 
-    const movieID = useSelector(selectDetailMovieID);
+    //const movieID = useSelector(selectDetailMovieID);
     const genres = useSelector(selectDetailGenres);
     const title = useSelector(selectDetailTitle);
     const overview = useSelector(selectDetailOverview);
     const backdropPath = useSelector(selectDetailBackdropPath);
     const posterPath = useSelector(selectDetailPosterPath);
 
-    const isLoading = useSelector(selectDetailIsLoading);
-    const error = useSelector(selectDetailError);
+    //const isLoading = useSelector(selectDetailIsLoading);
+    //const error = useSelector(selectDetailError);
 
     useEffect(() => {
-        if (category && id) {
-            // getMovieDetails(category, Number(id), { params: {} });
+        if (category && movieID) {
             const params = {
-                id: Number(id),
+                id: movieID,
                 category,
             };
             dispatch(fetchDetail(params));
         }
-    }, [category, id, dispatch]);
+    }, [category, movieID, dispatch]);
 
     /* if (isLoading) {
         return <div className="loader">No Data Detail</div>;
@@ -97,10 +99,7 @@ const Detail = () => {
                         <VideoList id={movieID} category={category} />
                     </div>
                     <div className="section mb-3">
-                        <div className="section__header mb-2">
-                            <h2>Similar</h2>
-                        </div>
-                        <MovieList category={category} listType="similar" id={movieID} />
+                        <MovieListContainer title={"Similar"} category={category} listType="similar" id={movieID} />
                     </div>
                 </div>
             </div>

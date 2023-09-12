@@ -26,6 +26,11 @@
     background-repeat: no-repeat;
     color: #fff;
     height: 100vh;
+
+    @include tablet {
+        height: 50vh;
+    }
+
     &::before {
         content: "";
         position: absolute;

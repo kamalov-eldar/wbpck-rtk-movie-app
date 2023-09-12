@@ -4,12 +4,13 @@ import MovieCard from "../movie-card/MovieCard";
 
 import { ButtonTheme, Button } from "../button/Button";
 import MovieSearch from "../movie-search/MovieSearch";
-import { IError, TCategoryType, TListType, TMovieItem } from "../../api/types";
+import { TCategoryType, TListType, TMovieItem } from "../../api/types";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { SvgSpinners } from "assets/svg/SvgSpinners";
 import StatusUpload from "component/status-upload/StatusUpload";
+import { IError } from "store/movie/types/movie";
 
 type MovieGridProps = {
     category: TCategoryType | undefined;
@@ -109,13 +110,13 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
             </div>
             {error && (
                 <div className="errorBlock">
-                    <span className="errorText">{error.message}</span>{" "}
+                    <span className="errorText">{error.messageError}</span>{" "}
                 </div>
             )}
             {dataMovieList && dataMovieList?.length > 0 && (
                 <div className="movie-grid__loadmore">
-                    <Button disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
-                        {isLoading ? <SvgSpinners /> : "Load more"}
+                    <Button disabled={false /* isLoading */} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
+                        {false /* isLoading */ ? <SvgSpinners /> : "Load more"}
                     </Button>
                 </div>
             )}
