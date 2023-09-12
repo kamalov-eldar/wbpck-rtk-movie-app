@@ -1,6 +1,5 @@
 import cls from "./LoginModal.module.scss";
 import { Modal } from "component/Modal/Modal";
-import classNames from "classnames";
 import { Suspense } from "react";
 import { Loader } from "component/Loader/Loader";
 import { TrailerModalAsync } from "./TrailerModal.async";

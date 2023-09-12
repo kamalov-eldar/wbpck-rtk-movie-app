@@ -36,6 +36,8 @@ export type TMovieItem = {
     overview: string;
     poster_path: string;
     release_date?: string;
+    vote_count?: string;
+    vote_average?: string;
 };
 
 export type TItemTV = {
@@ -103,5 +105,3 @@ export type TImdbComingSoonListResponse = {
         items: TIMDbMovie[];
     };
 };
-
-

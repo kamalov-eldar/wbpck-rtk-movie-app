@@ -2,15 +2,18 @@ import { Skeleton } from "component/Skeleton/Skeleton";
 import Button from "component/button/Button";
 import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import cls from "./IMG.module.scss";
+import classNames from "classnames";
 
 type IMGProps = {
     path: string | null;
     size?: string;
-    mods?: string;
+    notSkeleton?: boolean;
     link?: string;
+    flex?: boolean;
 };
 
-export const IMG: FC<IMGProps> = ({ size: sizeProp, path, mods, link }) => {
+export const IMG: FC<IMGProps> = ({ size: sizeProp, path, notSkeleton, link, flex }) => {
     const [url, setUrl] = useState("");
 
     const size = sizeProp ? sizeProp : "w220_and_h330_face";
@@ -30,26 +33,29 @@ export const IMG: FC<IMGProps> = ({ size: sizeProp, path, mods, link }) => {
             .catch((err) => console.log(err));
     }, []);
 
-    if (mods && !url) {
+    if (notSkeleton && !url) {
         return <></>;
     }
 
-    if (mods && url) {
-        return <img src={url} className="card__img" />;
+    if (notSkeleton && url) {
+        return <img src={url} className={cls.card__img} />;
     }
 
-    if (!url && !mods) {
+    if (!url && !notSkeleton) {
         return <Skeleton border="10px" borderBottomRightRadius={"0"} borderBottomLeftRadius={"0"} paddingTop="150.5%" />;
     }
 
+    const mods = {
+        [cls.card__img]: !flex,
+        [cls["card__img-flex"]]: flex,
+    };
+
     return (
-        <Link to={link || "/"} className="card__poster">
-            {/*  <div className="card__img-block"> */}
-            <img src={url} className="card__img" />
-            <Button className="btn">
+        <Link to={link || "/"} className={classNames(cls.card__poster, { [cls["card__poster-flex"]]: flex })}>
+            <img src={url} className={classNames([mods])} />
+            <Button className={cls.btn}>
                 <i className="bx bx-play"></i>
             </Button>
-            {/*  </div> */}
         </Link>
     );
 };

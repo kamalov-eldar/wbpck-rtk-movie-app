@@ -1,5 +1,4 @@
 import { FC, useCallback, useEffect, useMemo } from "react";
-import "./MovieGrid.scss";
 
 import { TCategoryType, TListType } from "../../api/types";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,7 +24,7 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
     const movieUpcomingList = useSelector(selectUpcomingMovieList);
     const movieTopList = useSelector(selectTopMovieList);
     const moviePopularList = useSelector(selectPopularMovieList);
-    
+
     const page = useSelector(selectPage);
 
     // const isLoading = useSelector(selectMovieIsLoading);

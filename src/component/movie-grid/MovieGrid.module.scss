@@ -16,3 +16,9 @@
         text-align: center;
     }
 }
+
+.movie-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

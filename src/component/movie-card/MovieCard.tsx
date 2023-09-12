@@ -1,14 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
+import { Link } from "react-router-dom";
+import { TCategoryType, TMovieItem } from "../../api/types";
+import { IMG } from "./IMG/IMG";
 
 import "./MovieCard.scss";
-import { Link } from "react-router-dom";
-import Button, { ButtonTheme } from "../button/Button";
-
-import { TCategoryType, TMovieItem } from "../../api/types";
-import apiConfig from "../../api/apiConfig";
-import { IMG } from "./IMG";
-import { Skeleton } from "component/Skeleton/Skeleton";
-import classNames from "classnames";
 
 type MovieCardProps = {
     movieItem: TMovieItem;

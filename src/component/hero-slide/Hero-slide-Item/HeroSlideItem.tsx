@@ -3,7 +3,7 @@ import apiConfig from "../../../api/apiConfig";
 import { FC, useCallback, useEffect, useState } from "react";
 import { ButtonTheme, Button } from "../../button/Button";
 import "../Hero-Slide.scss";
-import { IMG } from "../../movie-card/IMG";
+import { IMG } from "../../movie-card/IMG/IMG";
 import { TMovieItem, TResponseVideosList } from "api/types";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchVideosList } from "store/videos/fetchVideosList/fetchVideosList";
@@ -30,10 +30,10 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
     }, []);
 
     const [url, setUrl] = useState("");
-    const path = item.backdrop_path  || item.poster_path;
+    const path = item.backdrop_path || item.poster_path;
 
     setTimeout(() => {
-       // console.log("setTimeout");
+        // console.log("setTimeout");
     }, 1);
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
                 } else {
                     setUrl(URL.createObjectURL(image));
                 }
-               // console.log("response");
+                // console.log("response");
             })
             .catch((err) => console.log(err));
     }, []);
@@ -72,7 +72,7 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
                         </div>
                     </div>
                     <div className="hero-slide__item__content__poster">
-                        <IMG mods={"slide"} path={item.poster_path || item.backdrop_path} size={"w500"} />
+                        <IMG notSkeleton  path={item.poster_path || item.backdrop_path} size={"w500"} />
                     </div>
                 </div>
             </div>

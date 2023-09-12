@@ -2,7 +2,6 @@ import { FC, useCallback, useEffect, useMemo } from "react";
 import "./MovieList.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import MovieCard from "../movie-card/MovieCard";
 import { TCategoryType, TListType } from "../../api/types";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
