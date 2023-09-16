@@ -67,11 +67,18 @@ const LoginModalContent = memo(({ onSuccess }: LoginModalContentProps) => {
             <div className={classNames(cls.LoginForm, {}, [])}>
                 <div className={cls.InputWrapper}>
                     {<p className={cls.placeholder}>{"username"}</p>}
-                    <Input value={username} onChange={onChangeUserName} autofocus type="text" className={cls.input} />
+                    <Input
+                        field={"username"}
+                        value={username}
+                        onChange={onChangeUserName}
+                        autofocus
+                        type="text"
+                        className={cls.input}
+                    />
                 </div>
                 <div className={cls.InputWrapper}>
                     {<p className={cls.placeholder}>{"password"}</p>}
-                    <Input value={password} onChange={onChangePassword} type="text" className={cls.input} />
+                    <Input field={"password"} value={password} onChange={onChangePassword} type="text" className={cls.input} />
                 </div>
                 <div className={cls.buttonWrapper}>
                     <div className={cls.error}>{error && <p className={cls.errorText}>{error}</p>}</div>

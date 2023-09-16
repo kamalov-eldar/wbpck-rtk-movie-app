@@ -10,12 +10,10 @@ import MovieListContainer from "component/movie-list/MovieListContainer";
 const categoryPage: Array<TCategoryItem> = [
     { title: "Popular Movies", category: "movie", listType: "popular" },
     { title: "Top Rated Movies", category: "movie", listType: "top_rated" },
-    { title: "Popular TV", category: "tv", listType: "popular" },
-    { title: "Top Rated TV", category: "tv", listType: "top_rated" },
 ];
 
 const Home = () => {
-    console.log("Home: ");
+    //console.log("Home: ");
     //  const errorStatus = useSelector(selectMovieErrorStatus);
     // const isLoading = useSelector(selectMovieIsLoading);
 

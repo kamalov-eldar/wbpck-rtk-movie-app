@@ -31,7 +31,7 @@ const VideoList: FC<VideoListProps> = ({ category, id }) => {
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
-            <div>
+            <div className="VideosList">
                 {videosListData?.slice(0, 3).map((item, i) => (
                     <Video key={i} item={item} />
                 ))}

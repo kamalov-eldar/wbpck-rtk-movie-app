@@ -21,10 +21,6 @@ const headerNav: NavbarItemType[] = [
         path: "/catalog/movie/upcoming",
     },
     {
-        display: "TV Series",
-        path: "/catalog/tv/popular",
-    },
-    {
         display: "Profile",
         path: "/profile/1",
         authOnly: true,

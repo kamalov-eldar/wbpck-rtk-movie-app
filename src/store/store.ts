@@ -6,9 +6,7 @@ import { NavigateOptions, To } from "react-router";
 import authAxios from "api/authClient";
 import tmdbAxios from "api/tmdbClient";
 import { movieReducer } from "./movie/slice/movieSlice";
-import { videosReducer } from "./videos/slice/videosSlice";
 import { paginationReducer } from "./pagination/slice/paginationSlice";
-import { detailReducer } from "./detail/slice/detailSlice";
 import { viewCardsReducer } from "./viewCards/slice/viewCardsSlice";
 
 export function createReduxStore(
@@ -22,9 +20,6 @@ export function createReduxStore(
         pagination: paginationReducer,
         viewCards: viewCardsReducer,
         movie: movieReducer,
-        //detail: detailReducer,
-        //videos: videosReducer,
-        //profile: profileReducer,
     };
 
     const reducerManager = createReducerManager(rootReducer);

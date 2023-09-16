@@ -12,7 +12,7 @@ export type TCategoryItem = {
     listType: TListType;
 };
 
-export type TMovieDetail = {
+export type TMovieDetails = {
     adult: boolean;
     backdrop_path: string;
     genres: Array<TGenre>;
@@ -77,7 +77,7 @@ export interface TResponseMovieList {
     listType?: TListType;
 }
 export interface TResponseMovieDetail {
-    result: TMovieDetail;
+    result: TMovieDetails;
 }
 
 export interface TResponseTVList {

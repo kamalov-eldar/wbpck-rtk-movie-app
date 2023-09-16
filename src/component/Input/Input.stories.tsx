@@ -18,36 +18,40 @@ type Story = StoryObj<typeof meta>;
 
 export const PrimaryLight: Story = {
     args: {
-        placeholder: 'placeholder',
-        value: '123123',
-           // theme: ButtonTheme.PRIMARY,
+        placeholder: "placeholder",
+        value: "123123",
+        field: "field",
+        // theme: ButtonTheme.PRIMARY,
     },
 };
 PrimaryLight.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const PrimaryDark: Story = {
     args: {
-        placeholder: 'placeholder',
-        value: '123123',
-           // theme: ButtonTheme.PRIMARY,
+        placeholder: "placeholder",
+        value: "123123",
+        field: "field",
+        // theme: ButtonTheme.PRIMARY,
     },
 };
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const OutlineLight: Story = {
     args: {
-        placeholder: 'placeholder',
-        value: '123123',
-           // theme: ButtonTheme.OUTLINE,
+        placeholder: "placeholder",
+        value: "123123",
+        field: "field",
+        // theme: ButtonTheme.OUTLINE,
     },
 };
 OutlineLight.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const OutlineDark: Story = {
     args: {
-        placeholder: 'placeholder',
-        value: '123123',
-           // theme: ButtonTheme.OUTLINE,
+        placeholder: "placeholder",
+        value: "123123",
+        field: "field",
+        // theme: ButtonTheme.OUTLINE,
     },
 };
 OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];

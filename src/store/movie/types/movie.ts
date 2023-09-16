@@ -30,9 +30,4 @@ export interface MovieSchema {
     isLoadingUpcoming: boolean;
     dataUpcomingFilms?: TMovieItem[];
     upcomingTotalPages: number;
-
-    dataTopTVList?: TMovieItem[];
-    topTVListTotalPages: number;
-    errorTopTVList?: string;
-    isLoadingTopTVList: boolean;
 }

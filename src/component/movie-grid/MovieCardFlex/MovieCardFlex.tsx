@@ -12,7 +12,7 @@ type MovieCardProps = {
 };
 
 const MovieCardFlex: FC<MovieCardProps> = ({ movieItem, category, size }) => {
-    const { overview, release_date, vote_average, vote_count } = movieItem;
+    const { overview, release_date, vote_average } = movieItem;
 
     const link = "/" + category + "/" + movieItem.id;
 

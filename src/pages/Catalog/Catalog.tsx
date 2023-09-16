@@ -28,14 +28,6 @@ const arrNav = [
         display: "Popular Movies",
         path: "/catalog/movie/popular",
     },
-    {
-        display: "TV Series Popular",
-        path: "/catalog/tv/popular",
-    },
-    {
-        display: "Top Rated TV Series",
-        path: "/catalog/tv/top_rated",
-    },
 ];
 
 const Catalog = () => {

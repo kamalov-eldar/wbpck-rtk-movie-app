@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TResponseVideosList, TVideo } from "api/types";
+import { TResponseVideosList } from "api/types";
 import { VideosSchema } from "../types/videos";
 import { fetchVideosList } from "../fetchVideosList/fetchVideosList";
 

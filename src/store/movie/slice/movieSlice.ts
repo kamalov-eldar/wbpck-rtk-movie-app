@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TMovieItem, TResponseMovieList } from "api/types";
 import { MovieSchema } from "../types/movie";
-import { fetchTopTVList } from "../services/fetchMovieList/fetchTopTVList";
 import { fetchMovieList } from "../services/fetchMovieList/fetchMovieList";
 
 const initialState: MovieSchema = {
@@ -29,11 +28,6 @@ const initialState: MovieSchema = {
     isLoadingUpcoming: true,
     dataUpcomingFilms: [] as TMovieItem[],
     upcomingTotalPages: 0,
-
-    isLoadingTopTVList: true,
-    errorTopTVList: undefined,
-    dataTopTVList: [] as TMovieItem[],
-    topTVListTotalPages: 0,
 };
 
 export const movieSlice = createSlice({
@@ -124,20 +118,6 @@ export const movieSlice = createSlice({
                     default:
                         break;
                 }
-            })
-
-            .addCase(fetchTopTVList.pending, (state) => {
-                state.errorTopTVList = undefined;
-                state.isLoadingTopTVList = true;
-            })
-            .addCase(fetchTopTVList.fulfilled, (state, action: PayloadAction<TResponseMovieList>) => {
-                state.isLoadingTopTVList = false;
-                state.dataTopTVList = action.payload.results;
-                state.topTVListTotalPages = action.payload.total_pages;
-            })
-            .addCase(fetchTopTVList.rejected, (state, action) => {
-                state.errorTopTVList = action.payload;
-                state.isLoadingTopTVList = false;
             });
     },
 });

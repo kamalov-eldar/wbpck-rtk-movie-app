@@ -11,7 +11,6 @@
         border: 2px solid var(--inverted-bg-color);
         width: 100%;
         padding: 10px;
-
     }
 
     &__header {
@@ -28,7 +27,7 @@
 }
 
 .body__wrapper {
-    width: fit-content;
+    width: max-content;
     input {
         border-radius: 4px;
     }

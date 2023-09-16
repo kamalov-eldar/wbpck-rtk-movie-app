@@ -47,7 +47,6 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
                 } else {
                     setUrl(URL.createObjectURL(image));
                 }
-                // console.log("response");
             })
             .catch((err) => console.log(err));
     }, []);

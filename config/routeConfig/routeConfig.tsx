@@ -3,14 +3,14 @@ import Home from "../../src/pages/Home/Home";
 import { ProfilePageAsync } from "pages/ProfilePage/ProfilePage.async";
 import { CatalogPageAsync } from "pages/Catalog/Catalog.async";
 import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
-import { DetailPageAsync } from "pages/Detail/Detail.async";
+import { MovieDetailsPageAsync } from "pages/MovieDetails/MovieDetails.async";
 import { CatalogWrapper } from "pages/Catalog/CatalogWrapper";
 
 export enum AppRoutes {
     HOME = "home",
     LISTTYPE = "listType",
     SEARCH = "search",
-    DETAIL = "detail",
+    MOVIE_DETAIL = "movie_detail",
     PROFILE = "profile",
     NOT_FOUND = "not_found",
 }
@@ -19,7 +19,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.HOME]: "/",
     [AppRoutes.LISTTYPE]: "/catalog/:category/:listType",
     [AppRoutes.SEARCH]: "/:category/search/:keyword",
-    [AppRoutes.DETAIL]: "/:category/", // "/:category/:id"
+    [AppRoutes.MOVIE_DETAIL]: "/:category/", // "/:category/:id"
     [AppRoutes.PROFILE]: "/profile/",
     [AppRoutes.NOT_FOUND]: "*",
 };
@@ -41,9 +41,9 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: RoutePath.search,
         element: <CatalogWrapper />,
     },
-    [AppRoutes.DETAIL]: {
-        path: `${RoutePath.detail}:id`,
-        element: <DetailPageAsync />,
+    [AppRoutes.MOVIE_DETAIL]: {
+        path: `${RoutePath.movie_detail}:id`,
+        element: <MovieDetailsPageAsync />,
     },
 
     [AppRoutes.PROFILE]: {

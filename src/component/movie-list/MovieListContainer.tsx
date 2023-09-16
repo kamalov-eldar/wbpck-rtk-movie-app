@@ -19,8 +19,6 @@ import {
     selectTopIsLoading,
     selectTopMovieList,
 } from "store/movie/selectors/selectMovie";
-import { selectTopTVList, selectTopTVListError, selectTopTVListIsLoading } from "store/movie/selectors/selectTopTVList";
-import { fetchTopTVList } from "store/movie/services/fetchMovieList/fetchTopTVList";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 import { Link } from "react-router-dom";
 import Button, { ButtonTheme } from "component/button/Button";
@@ -34,7 +32,7 @@ type MovieListContainerProps = {
 };
 
 const MovieListContainer: FC<MovieListContainerProps> = ({ category = "movie", listType, id, title }) => {
-   // console.log("MovieListContainer: ");
+    // console.log("MovieListContainer: ");
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -51,9 +49,7 @@ const MovieListContainer: FC<MovieListContainerProps> = ({ category = "movie", l
                 if (listType === "top_rated") dispatch(fetchMovieList({ listType, page: 1 }));
                 if (listType === "similar") dispatch(fetchMovieList({ listType, page: 1, id }));
                 break;
-            case "tv":
-                //getTVList(listType, { params }); fetchTopTVList
-                if (listType === "top_rated") dispatch(fetchTopTVList(1));
+            default:
                 break;
         }
     }, [category, listType, id, dispatch]);
@@ -76,12 +72,7 @@ const MovieListContainer: FC<MovieListContainerProps> = ({ category = "movie", l
     const errorStatusSimilar = useSelector(selectSimilarErrorStatus);
     const errorSimilar = useSelector(selectSimilarError);
 
-    const topTVList = useSelector(selectTopTVList);
-    const isLoadingTopTVList = useSelector(selectTopTVListIsLoading);
-    const errorTopTVList = useSelector(selectTopTVListError);
-
     const movieList = useMemo(() => {
-        // if (category === "movie")
         switch (listType) {
             case "popular":
                 return moviePopularList;
@@ -97,7 +88,6 @@ const MovieListContainer: FC<MovieListContainerProps> = ({ category = "movie", l
     }, [moviePopularList, movieTopList, movieSimilarList]);
 
     const isLoading = useMemo(() => {
-        // if (category === "movie")
         switch (listType) {
             case "popular":
                 return isLoadingPopular;
@@ -113,7 +103,6 @@ const MovieListContainer: FC<MovieListContainerProps> = ({ category = "movie", l
     }, [isLoadingPopular, isLoadingTop, isLoadingSimilar]);
 
     const error = useMemo(() => {
-        // if (category === "movie")
         switch (listType) {
             case "popular":
                 return errorPopular;
@@ -122,29 +111,22 @@ const MovieListContainer: FC<MovieListContainerProps> = ({ category = "movie", l
             case "similar":
                 return errorSimilar;
             /*  case "upcoming":
-                    return movieTopList; */
+                            return movieTopList; */
             default:
                 return undefined;
         }
-    }, [errorPopular, errorPopular, errorSimilar]);
-
-    /*  console.log("isLoading: ", isLoading);
-    console.log("isErrorStatus: ", isErrorStatus); */
+    }, [errorPopular, errorTop, errorSimilar]);
 
     return (
         <>
             <div className="section__header mb-2">
                 <h2>{title}</h2>
                 <Link to={link}>
-                    <Button
-                        disabled={isLoading}
-                        theme={ButtonTheme.OUTLINE}
-                        className="small">
+                    <Button disabled={isLoading} theme={ButtonTheme.OUTLINE} className="small">
                         View More
                     </Button>
                 </Link>
             </div>
-
             <MovieList movieList={movieList} isLoading={isLoading} error={error} category={category} listType={listType} />
         </>
     );

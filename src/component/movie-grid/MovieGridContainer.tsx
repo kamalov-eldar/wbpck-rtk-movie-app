@@ -6,7 +6,18 @@ import StatusUpload from "component/status-upload/StatusUpload";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
-import { selectPopularMovieList, selectTopMovieList, selectUpcomingMovieList } from "store/movie/selectors/selectMovie";
+import {
+    selectPopularError,
+    selectPopularIsLoading,
+    selectPopularMovieList,
+    selectSimilarIsLoading,
+    selectTopError,
+    selectTopIsLoading,
+    selectTopMovieList,
+    selectUpcomingError,
+    selectUpcomingIsLoading,
+    selectUpcomingMovieList,
+} from "store/movie/selectors/selectMovie";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { selectPage } from "store/pagination/selectors/selectPage/selectPage";
 import MovieGrid from "./MovieGrid";
@@ -22,13 +33,48 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
     const dispatch = useAppDispatch();
 
     const movieUpcomingList = useSelector(selectUpcomingMovieList);
+    const isLoadingUpcoming = useSelector(selectUpcomingIsLoading);
+    const errorUpcoming = useSelector(selectUpcomingError);
+
     const movieTopList = useSelector(selectTopMovieList);
+    const isLoadingTop = useSelector(selectTopIsLoading);
+    const errorTop = useSelector(selectTopError);
+
     const moviePopularList = useSelector(selectPopularMovieList);
+    const isLoadingPopular = useSelector(selectPopularIsLoading);
+    const errorPopular = useSelector(selectPopularError);
 
     const page = useSelector(selectPage);
 
-    // const isLoading = useSelector(selectMovieIsLoading);
-    //const error = useSelector(selectMovieError);
+    const isLoading = useMemo(() => {
+        switch (listType) {
+            case "popular":
+                return isLoadingPopular;
+            case "top_rated":
+                return isLoadingTop;
+            case "similar":
+                return isLoadingUpcoming;
+            /*  case "upcoming":
+                    return movieTopList; */
+            default:
+                return true;
+        }
+    }, [isLoadingPopular, isLoadingTop, isLoadingUpcoming]);
+
+    const error = useMemo(() => {
+        switch (listType) {
+            case "popular":
+                return errorPopular;
+            case "top_rated":
+                return errorTop;
+            case "similar":
+                return errorUpcoming;
+            /*  case "upcoming":
+                    return movieTopList; */
+            default:
+                return undefined;
+        }
+    }, [errorPopular, errorPopular, errorUpcoming]);
 
     useEffect(() => {
         if (keywordUrl) {
@@ -49,36 +95,11 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
                 query: keywordUrl,
             };
         } */
-    }, [page, category, listType]);
+    }, [page, listType]);
 
     useEffect(() => {
         // setKeyword("");
     }, [category]);
-
-    /*  const listMovie = useMemo(() => {
-        switch (listType) {
-            case "popular":
-                return popularMovieList;
-            case "top_rated":
-                return topMovieList;
-            case "upcoming":
-                return upcomingMovieList;
-
-            default:
-                return searchList;
-        }
-    }, [listType, popularMovieList, topMovieList, upcomingMovieList, searchList]); */
-
-    /*   const listTV = useMemo(() => {
-        switch (listType) {
-            case "popular":
-                return popularTVList;
-            case "top_rated":
-                return topTVList;
-            default:
-                return searchList;
-        }
-    }, [listType, popularTVList, topTVList, searchList]); */
 
     const dataMovieList = useMemo(() => {
         switch (listType) {
@@ -93,39 +114,11 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
         }
     }, [listType, moviePopularList, movieTopList, movieUpcomingList]);
 
-    /*  const dataTVList = useMemo(() => {
-        switch (listType) {
-            case "popular":
-                return dataPopularTVList;
-            case "top_rated":
-                return dataTopTVList;
-
-            default:
-                return undefined;
-        }
-    }, [listType, dataPopularTVList, dataTopTVList]); */
-
-    /*  if ((dataTVList?.state || dataMovieList?.state) === "rejected") {
-        return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
-    } */
-
-    /*  if (isLoading) {
-        return <StatusUpload text={"Loading MovieGridContainer..."} />;
-    } */
-
     if (!dataMovieList) {
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
     }
 
-    return (
-        <MovieGrid
-            error={undefined}
-            isLoading={false /* isLoading */}
-            dataMovieList={dataMovieList}
-            category={category}
-            listType={listType}
-        />
-    );
+    return <MovieGrid error={error} isLoading={isLoading} dataMovieList={dataMovieList} category={category} listType={listType} />;
 };
 
 export default MovieGridContainer;

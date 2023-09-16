@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import cls from "./ProfileCard.module.scss";
 import { Input } from "component/Input/Input";
-import avatar from "../../assets/hacker-cat.jpg";
 import { Profile } from "store/profile/types/profile";
 import { FC } from "react";
 import { Loader } from "component/Loader/Loader";
@@ -73,44 +72,56 @@ export const ProfileCard: FC<ProfileCardProps> = ({
                             onChange={onChangeFirstname}
                             autofocus
                             type="text"
-                            className={cls.input}
+                            /*   className={cls.input} */
                             placeholder={"Ваше имя"}
+                            label={"Ваше имя"}
+                            field={"name"}
                         />
                         <Input
                             value={profile?.lastname}
                             readonly={readonly}
                             onChange={onChangeLastname}
                             type="text"
-                            className={cls.input}
+                            /*   className={cls.input} */
                             placeholder={"Ваша фамилия"}
+                            label={"Ваша фамилия"}
+                            field={"surname"}
                         />
                         <Input
                             value={profile?.age}
                             placeholder={"Ваш возраст"}
+                            label={"Ваш возраст"}
                             className={cls.input}
                             onChange={onChangeAge}
                             readonly={readonly}
+                            field={"age"}
                         />
                         <Input
                             value={profile?.city}
                             placeholder={"Город"}
+                            label={"Город"}
                             className={cls.input}
                             onChange={onChangeCity}
                             readonly={readonly}
+                            field={"city"}
                         />
                         <Input
                             value={profile?.username}
                             placeholder={"Введите имя пользователя"}
+                            label={"Введите имя пользователя"}
                             className={cls.input}
                             onChange={onChangeUsername}
                             readonly={readonly}
+                            field={"userName"}
                         />
                         <Input
                             value={profile?.avatar}
                             placeholder={"Введите ссылку на аватар"}
+                            label={"Введите ссылку на аватар"}
                             className={cls.input}
                             onChange={onChangeAvatar}
                             readonly={readonly}
+                            field={"srcAvatar"}
                         />
                         <CurrencySelect
                             className={cls.input}

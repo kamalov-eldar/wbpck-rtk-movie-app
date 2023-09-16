@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import {
     TCategoryType,
     TListType,
-    TMovieDetail,
+    TMovieDetails,
     TResponseCastsList,
     TResponseMovieDetail,
     TResponseMovieList,
@@ -63,7 +63,7 @@ const tmdbApi = {
 
     detail: (category: TCategoryType, id: number, params: AxiosRequestConfig<any> | undefined) => {
         const url = category + "/" + id;
-        return tmdbAxios.get<never, TMovieDetail>(url, params);
+        return tmdbAxios.get<never, TMovieDetails>(url, params);
     },
     credits: (category: TCategoryType, id: number) => {
         const url = category + "/" + id + "/credits";

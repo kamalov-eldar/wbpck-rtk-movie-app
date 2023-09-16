@@ -26,7 +26,13 @@ const MovieSearch: FC<MovieSearchProps> = ({ category }) => {
 
     return (
         <div className="movie-search">
-            <Input type="text" placeholder="Enter keyword" /* value={keyword} */ onChange={(evt) => console.log(evt)} />
+            <Input
+                field={"search"}
+                type="text"
+                placeholder="Enter keyword"
+                /* value={keyword} */
+                onChange={(evt) => console.log(evt)}
+            />
             <Button className="small" onClick={goToSearch}>
                 Search
             </Button>

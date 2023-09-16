@@ -12,13 +12,23 @@ interface IParams {
 export const fetchMovieList = createAsyncThunk<TResponseMovieList, IParams, ThunkConfig<IError>>(
     "movie/fetchMovieList",
     async ({ page, listType, id }, thunkApi) => {
-       // console.log("fetchMovieList", listType);
+        // console.log("fetchMovieList", listType);
+        // const article = getArticleDetailsData(getState());
+
         try {
             const response = await thunkApi.extra.apiTmdb.get<TResponseMovieList>("/movie/" + (id ? `${id}/` : "") + listType, {
                 params: { page },
             });
+            if (response.data && listType === "popular") {
+                response.data.results.forEach((item) => {
+                    //console.log("item: ", item);
+                    /* thunkApi.extra.api.post("/movies", {
+                        ...item,
+                    }); */
+                });
+            }
 
-          //  console.log("response: ", `${listType}`, response);
+            //  console.log("response: ", `${listType}`, response);
 
             if (!response.data) {
                 throw new Error();

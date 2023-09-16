@@ -9,7 +9,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { SvgSpinners } from "assets/svg/SvgSpinners";
-import StatusUpload from "component/status-upload/StatusUpload";
 import { IError } from "store/movie/types/movie";
 import { useSelector } from "react-redux";
 import { getViewCards } from "store/viewCards/selectors/viewCardsSelectors";
@@ -57,7 +56,6 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
                 <MovieSearch category={category} />
             </div>
             <div className={classNames([viewType])}>
-                {/* "movie-grid" */}
                 {category === "movie" && (
                     <>
                         {dataMovieList &&
@@ -76,10 +74,10 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
                     <span className="errorText">{error.messageError}</span>{" "}
                 </div>
             )}
-            {dataMovieList && dataMovieList?.length > 0 && (
+            {dataMovieList && dataMovieList?.length && (
                 <div className="movie-grid__loadmore">
-                    <Button disabled={false /* isLoading */} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
-                        {false /* isLoading */ ? <SvgSpinners /> : "Load more"}
+                    <Button disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
+                        {isLoading ? <SvgSpinners /> : "Load more"}
                     </Button>
                 </div>
             )}
@@ -103,17 +101,6 @@ export default memo(MovieGrid);
         }
     }, [listType, popularMovieList, topMovieList, upcomingMovieList, searchList]); */
 
-/*   const listTV = useMemo(() => {
-        switch (listType) {
-            case "popular":
-                return popularTVList;
-            case "top_rated":
-                return topTVList;
-            default:
-                return searchList;
-        }
-    }, [listType, popularTVList, topTVList, searchList]); */
-
 /*  const dataMovieList = useMemo(() => {
         switch (listType) {
             case "popular":
@@ -127,19 +114,3 @@ export default memo(MovieGrid);
         }
     }, [listType, moviePopularList, movieTopList, movieUpcomingList]);
     console.log("dataMovieList: ", dataMovieList); */
-
-/*  const dataTVList = useMemo(() => {
-        switch (listType) {
-            case "popular":
-                return dataPopularTVList;
-            case "top_rated":
-                return dataTopTVList;
-
-            default:
-                return undefined;
-        }
-    }, [listType, dataPopularTVList, dataTopTVList]); */
-
-/*  if ((dataTVList?.state || dataMovieList?.state) === "rejected") {
-        return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
-    } */
