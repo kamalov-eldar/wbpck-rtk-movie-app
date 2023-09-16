@@ -1,5 +1,4 @@
 import { memo } from "react";
-import cls from "./CommentCard.module.scss";
 import classNames from "classnames";
 import { Skeleton } from "component/Skeleton/Skeleton";
 import { Link } from "react-router-dom";
@@ -7,6 +6,7 @@ import { RoutePath } from "../../../config/routeConfig/routeConfig";
 import { Comment } from "../../store/comments/types/comment";
 import { Avatar } from "component/Avatar/Avatar";
 
+import cls from "./CommentCard.module.scss";
 interface CommentCardProps {
     className?: string;
     comment?: Comment;
@@ -20,10 +20,10 @@ export const CommentCard = memo((props: CommentCardProps) => {
         return (
             <div className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
                 <div className={cls.header}>
-                    <Skeleton width={30} height={30} border="50%" />
-                    <Skeleton height={16} width={100} className={cls.username} />
+                    <Skeleton width={30} height={30} borderRadius="50%" paddingTop={"0"} />
+                    <Skeleton height={16} width={100} borderRadius="0%" className={cls.username} paddingTop={"0"} />
                 </div>
-                <Skeleton className={cls.text} width="100%" height={50} />
+                <Skeleton className={cls.text} width="100%" borderRadius="0%" height={50} paddingTop={"0"} />
             </div>
         );
     }

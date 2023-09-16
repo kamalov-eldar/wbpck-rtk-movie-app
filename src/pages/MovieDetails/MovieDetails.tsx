@@ -100,7 +100,7 @@ const MovieDetail = () => {
                     </div>
                 </div>
                 <AddCommentForm onSendComment={onSendComment} />
-                <CommentList isLoading={commentsIsLoading} comments={comments} />
+                <CommentList isLoading={true /* commentsIsLoading */} comments={comments} />
 
                 <div className="container">
                     <div className="section mb-3">

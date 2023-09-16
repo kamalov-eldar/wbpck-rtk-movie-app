@@ -1,6 +1,8 @@
 .CommentCard {
     padding: 10px;
-    border: 1px solid var(--primary-color);
+    // border: 1px solid var(--primary-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
 }
 
 .header {
@@ -17,5 +19,5 @@
 }
 
 .loading {
-    border: none;
+    // border: none;
 }

@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cls from "./IMG.module.scss";
 import classNames from "classnames";
+//import Skeleton from "@mui/material/Skeleton";
 
 type IMGProps = {
     path: string | null;
@@ -41,8 +42,14 @@ export const IMG: FC<IMGProps> = ({ size: sizeProp, path, notSkeleton, link, fle
         return <img src={url} className={cls.card__img} />;
     }
 
-    if (!url && !notSkeleton) {
-        return <Skeleton border="10px" borderBottomRightRadius={"0"} borderBottomLeftRadius={"0"} paddingTop="150.5%" />;
+    if (!flex && !url && !notSkeleton) {
+        return (
+            <Skeleton borderRadius={`10px 10px 0 0`} paddingTop="150.5%" />
+        );
+    }
+
+    if (flex && !url && !notSkeleton) {
+        return <Skeleton borderRadius="10px" width={220} height={330} minWidth={220} paddingTop="0" />;
     }
 
     const mods = {

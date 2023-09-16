@@ -8,6 +8,9 @@
     min-height: 100%;
     display: flex;
     padding: 10px;
+
+    //display: grid;
+    //grid-template-columns: 0.5fr 2.5fr;
 }
 
 .card__poster {
@@ -73,7 +76,7 @@
     margin: 10px 0;
 
     p {
-        font-size: 20px;
+        // font-size: 20px;
         margin-right: 5px;
     }
 }
