@@ -66,7 +66,7 @@ export interface TResponseVideosList {
     id: number;
 }
 
-export type TCast = {
+export type TActor = {
     profile_path: string;
     name: string;
 };
@@ -86,8 +86,8 @@ export interface TResponseTVList {
     total_pages: number;
 }
 
-export interface TResponseCastsList {
-    cast: TCast[];
+export interface TResponseActorsList {
+    cast: TActor[];
 }
 
 export type TIMDbMovie = {

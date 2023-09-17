@@ -44,9 +44,7 @@ const TrailerModalContent: FC<TrailerModalContentProps> = ({ id }) => {
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
-            <div style={{ height: "500px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                {content}
-            </div>
+            <div style={{ height: "500px", display: "flex", justifyContent: "center", alignItems: "center" }}>{content}</div>
         </DynamicModuleLoader>
     );
 };

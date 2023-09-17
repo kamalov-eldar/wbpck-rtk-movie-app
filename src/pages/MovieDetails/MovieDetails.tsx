@@ -4,7 +4,7 @@ import { TCategoryType } from "../../api/types";
 
 import "./MovieDetails.scss";
 import apiConfig from "../../api/apiConfig";
-import CastList from "../../component/cast-list/CastList";
+import ActorsList from "../../component/actors-list/ActorsList";
 import VideoList from "component/video-list/VideoList";
 import { fetchMovieDetails } from "store/movieDetails/services/fetchMovieDetails/fetchMovieDetails";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
@@ -93,14 +93,14 @@ const MovieDetail = () => {
                         <p className="overview">{overview}</p>
                         <div className="cast">
                             <div className="section__header">
-                                <h2>Casts</h2>
+                                <h2>Actors</h2>
                             </div>
-                            <CastList id={movieId} category={category!} />
+                            <ActorsList id={movieId} category={category!} />
                         </div>
                     </div>
                 </div>
                 <AddCommentForm onSendComment={onSendComment} />
-                <CommentList isLoading={true /* commentsIsLoading */} comments={comments} />
+                <CommentList isLoading={commentsIsLoading} comments={comments} />
 
                 <div className="container">
                     <div className="section mb-3">

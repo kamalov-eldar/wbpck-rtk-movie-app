@@ -3,8 +3,7 @@ import {
     TCategoryType,
     TListType,
     TMovieDetails,
-    TResponseCastsList,
-    TResponseMovieDetail,
+    TResponseActorsList,
     TResponseMovieList,
     TResponseVideosList,
 } from "./types";
@@ -67,7 +66,7 @@ const tmdbApi = {
     },
     credits: (category: TCategoryType, id: number) => {
         const url = category + "/" + id + "/credits";
-        return tmdbAxios.get<never, TResponseCastsList>(url, { params: {} });
+        return tmdbAxios.get<never, TResponseActorsList>(url, { params: {} });
     },
     // https://api.themoviedb.org/3/movie/id/similar
     /* similar: (category: TCategoryType, id: number) => {

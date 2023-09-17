@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { getViewCards } from "store/viewCards/selectors/viewCardsSelectors";
 import { ViewCardsType } from "component/SwitchingTypeCards/SwitchingTypeCards";
 import classNames from "classnames";
-import MovieCardFlex from "./MovieCardFlex/MovieCardFlex";
+import MovieCardList from "./MovieCardList/MovieCardList";
 
 type MovieGridProps = {
     category: TCategoryType | undefined;
@@ -47,7 +47,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
 
     const viewType = {
         [cls["movie-grid"]]: view === ViewCardsType.GRID,
-        [cls["movie-flex"]]: view === ViewCardsType.LIST,
+        [cls["movie-list"]]: view === ViewCardsType.LIST,
     };
 
     return (
@@ -63,7 +63,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
                                 return view === ViewCardsType.GRID ? (
                                     <MovieCard category={category} movieItem={item} key={item.id} />
                                 ) : (
-                                    <MovieCardFlex category={category} movieItem={item} key={item.id} />
+                                    <MovieCardList category={category} movieItem={item} key={item.id} />
                                 );
                             })}
                     </>

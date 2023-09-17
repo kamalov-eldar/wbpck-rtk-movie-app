@@ -6,11 +6,12 @@ import { PaginationSchema } from "store/pagination/types/paginationSchema";
 import { MovieSchema } from "store/movie/types/movie";
 import { ProfileSchema } from "store/profile/types/profile";
 import { UserSchema } from "store/user/types/user";
-import { VideosSchema } from "store/videos/types/videos";
 import { MovieDetailsSchema } from "store/movieDetails/types/movieDetails";
 import { ViewCardsSchema } from "store/viewCards/types/viewCardsSchema";
 import { AddCommentFormSchema } from "store/addCommentForm/types/addCommentForm";
 import { MovieDetailsCommentsSchema } from "store/comments/types/comment";
+import { VideosSchema } from "store/videos/types/videos";
+import { ActorsSchema } from "store/actors/types/actors";
 
 export interface StateSchema {
     user: UserSchema;
@@ -19,6 +20,7 @@ export interface StateSchema {
     viewCards: ViewCardsSchema;
     // Асинхронные редюсеры
     videos?: VideosSchema; // videos: videosReducer,
+    actors?: ActorsSchema; // actors: actorsReducer,
     movieDetails?: MovieDetailsSchema; // movieDetail: movieDetailReducer,
     authForm?: AuthSchema;
     profile?: ProfileSchema; //profile: profileReducer,

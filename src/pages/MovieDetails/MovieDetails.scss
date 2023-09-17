@@ -34,14 +34,16 @@
 .movie-content {
     @include flex(flex-start, flex-start);
     max-width: 1460px;
-    margin-left: auto;
+   /*  margin-left: auto;
     margin-right: auto;
     margin-top: -200px;
-    position: relative;
+    position: relative; */
     padding: 0 2rem;
     color: var(--text-color);
     &__poster {
         flex: 1;
+        position: relative;
+        top: -10vh;
 
         @include mobile {
             display: none;
@@ -59,8 +61,8 @@
     &__info {
         width: 70%;
         padding-left: 2rem;
-        position: relative;
-        top: 200px;
+        //position: relative;
+        //top: 200px;
 
         @include mobile {
             width: 100%;

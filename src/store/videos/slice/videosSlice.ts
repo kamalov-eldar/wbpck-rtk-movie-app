@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TResponseVideosList } from "api/types";
-import { VideosSchema } from "../types/videos";
 import { fetchVideosList } from "../fetchVideosList/fetchVideosList";
+import { VideosSchema } from "../types/videos";
 
 const initialState: VideosSchema = {
     isLoading: false,

@@ -2,16 +2,16 @@ import React, { FC } from "react";
 import { TCategoryType, TMovieItem } from "api/types";
 import { IMG } from "component/movie-card/IMG/IMG";
 import { Link } from "react-router-dom";
-import cls from "./MovieCardFlex.module.scss";
 import Rating from "@mui/material/Rating";
+
+import cls from "./MovieCardList.module.scss";
 
 type MovieCardProps = {
     movieItem: TMovieItem;
     category: TCategoryType | undefined;
-    size?: string;
 };
 
-const MovieCardFlex: FC<MovieCardProps> = ({ movieItem, category, size }) => {
+const MovieCardList: FC<MovieCardProps> = ({ movieItem, category }) => {
     const { overview, release_date, vote_average } = movieItem;
 
     const link = "/" + category + "/" + movieItem.id;
@@ -19,8 +19,8 @@ const MovieCardFlex: FC<MovieCardProps> = ({ movieItem, category, size }) => {
     // const bg = apiConfig.w185Image(movieItem.poster_path || movieItem.backdrop_path);
 
     return (
-        <div className={cls.card__flex}>
-            <IMG flex link={link} path={movieItem.poster_path || movieItem.backdrop_path} size={size} />
+        <div className={cls.card__list}>
+            <IMG list link={link} path={movieItem.poster_path || movieItem.backdrop_path} borderRadius={`10px`}/>
             <div className="card__desc">
                 <Link to={link}>
                     <h2 className={cls.card__title}>{movieItem.title}</h2>
@@ -47,4 +47,4 @@ const MovieCardFlex: FC<MovieCardProps> = ({ movieItem, category, size }) => {
     );
 };
 
-export default MovieCardFlex;
+export default MovieCardList;

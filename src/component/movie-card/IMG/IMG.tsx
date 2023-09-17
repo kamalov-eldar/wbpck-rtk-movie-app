@@ -1,6 +1,6 @@
 import { Skeleton } from "component/Skeleton/Skeleton";
 import Button from "component/button/Button";
-import { FC, useEffect, useState } from "react";
+import { CSSProperties, FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cls from "./IMG.module.scss";
 import classNames from "classnames";
@@ -8,14 +8,20 @@ import classNames from "classnames";
 
 type IMGProps = {
     path: string | null;
-    size?: string;
+    size?: "w500" | "w185";
     notSkeleton?: boolean;
     link?: string;
-    flex?: boolean;
+    list?: boolean;
+    onlyImg?: boolean;
+    borderRadius?: string;
 };
 
-export const IMG: FC<IMGProps> = ({ size: sizeProp, path, notSkeleton, link, flex }) => {
+export const IMG: FC<IMGProps> = ({ size: sizeProp, path, notSkeleton, link, list, onlyImg, borderRadius }) => {
     const [url, setUrl] = useState("");
+
+    const styles: CSSProperties = {
+        borderRadius,
+    };
 
     const size = sizeProp ? sizeProp : "w220_and_h330_face";
 
@@ -39,27 +45,27 @@ export const IMG: FC<IMGProps> = ({ size: sizeProp, path, notSkeleton, link, fle
     }
 
     if (notSkeleton && url) {
-        return <img src={url} className={cls.card__img} />;
+        return <img src={url} className={cls.card__img} alt="picture" />;
     }
 
-    if (!flex && !url && !notSkeleton) {
-        return (
-            <Skeleton borderRadius={`10px 10px 0 0`} paddingTop="150.5%" />
-        );
+    if (!list && !url && !notSkeleton) {
+        return <Skeleton borderRadius={borderRadius ||''} paddingTop="150.5%" />;
     }
 
-    if (flex && !url && !notSkeleton) {
-        return <Skeleton borderRadius="10px" width={220} height={330} minWidth={220} paddingTop="0" />;
+    if (list && !url && !notSkeleton) {
+        return <Skeleton borderRadius={borderRadius || "10px"} width={220} height={330} minWidth={220} paddingTop="0" />;
     }
 
     const mods = {
-        [cls.card__img]: !flex,
-        [cls["card__img-flex"]]: flex,
+        [cls.card__img]: !list,
+        [cls["card__img-list"]]: list,
     };
 
-    return (
-        <Link to={link || "/"} className={classNames(cls.card__poster, { [cls["card__poster-flex"]]: flex })}>
-            <img src={url} className={classNames([mods])} />
+    return onlyImg ? (
+        <img src={url} className={cls.card__img} style={styles} alt="picture" />
+    ) : (
+        <Link to={link || "/"} className={classNames(cls.card__poster, { [cls["card__poster-list"]]: list })}>
+            <img src={url} className={classNames([mods])} alt="picture"style={styles}/>
             <Button className={cls.btn}>
                 <i className="bx bx-play"></i>
             </Button>
