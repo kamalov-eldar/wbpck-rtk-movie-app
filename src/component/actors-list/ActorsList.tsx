@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { selectActorsList, selectActorsListError, selectActorsListIsLoading } from "store/actors/selectors/selectActorsList";
 
 import "./ActorsList.scss";
-import { IMG } from "component/movie-card/IMG/IMG";
+import { IMG } from "component/IMG/IMG";
 
 type ActorsListProps = {
     id?: number;

@@ -250,15 +250,51 @@
     },
     {
       "movieId": 346698,
-      "user": {
-        "id": "2",
-        "username": "user",
-        "password": "123",
-        "role": "USER",
-        "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
-      },
+      "userId": "2",
       "text": "комментарии барби",
       "id": "TstNawa"
+    },
+    {
+      "movieId": 346698,
+      "userId": "2",
+      "text": "комментарий 2",
+      "id": "Ykyqww1"
+    },
+    {
+      "movieId": 346698,
+      "userId": "2",
+      "text": "комментарий 3",
+      "id": "TvsFYZv"
+    },
+    {
+      "movieId": 346698,
+      "userId": "1",
+      "text": "комментарий admin",
+      "id": "DVOmGnj"
+    },
+    {
+      "movieId": 346698,
+      "userId": "1",
+      "text": "комментарий 2 admin",
+      "id": "pwRHINF"
+    },
+    {
+      "movieId": 346698,
+      "userId": "1",
+      "text": "isLoading comment",
+      "id": "UvlAxTX"
+    },
+    {
+      "movieId": 346698,
+      "userId": "1",
+      "text": "isLoading comment 2",
+      "id": "bZvrr4l"
+    },
+    {
+      "movieId": 346698,
+      "userId": "1",
+      "text": "isLoading comment 3",
+      "id": "DNiXhwQ"
     }
   ],
   "users": [

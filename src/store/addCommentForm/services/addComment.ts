@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "providers/storeProvider/StateSchema";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { Comment } from "../../comments/types/comment";
+import { fetchCommentsByMovieId } from "store/comments/services/fetchCommentsByMovieId/fetchCommentsByMovieId";
 
 interface addCommentProps {
     text: string;
@@ -9,12 +10,11 @@ interface addCommentProps {
 }
 
 export const addComment = createAsyncThunk<Comment, addCommentProps, ThunkConfig<string>>(
-    "movieDetails/addComment",
+    "addCommentForm/addComment",
     async ({ text, movieId }, thunkApi) => {
         const { extra, dispatch, rejectWithValue, getState } = thunkApi;
 
         const userData = selectUserAuthData(getState());
-        console.log('userData: ', userData);
 
         if (!userData || !text || !movieId) {
             return rejectWithValue("no data");
@@ -23,7 +23,7 @@ export const addComment = createAsyncThunk<Comment, addCommentProps, ThunkConfig
         try {
             const response = await extra.api.post<Comment>("/comments", {
                 movieId,
-                user: userData,
+                userId: userData.id,
                 text,
             });
 
@@ -31,7 +31,7 @@ export const addComment = createAsyncThunk<Comment, addCommentProps, ThunkConfig
                 throw new Error();
             }
 
-            // dispatch(fetchCommentsByArticleId(article.id));
+            dispatch(fetchCommentsByMovieId(movieId));
 
             return response.data;
         } catch (e) {

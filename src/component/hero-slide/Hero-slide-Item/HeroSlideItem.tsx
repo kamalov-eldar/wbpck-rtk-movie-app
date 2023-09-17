@@ -3,7 +3,7 @@ import apiConfig from "../../../api/apiConfig";
 import { FC, useCallback, useEffect, useState } from "react";
 import { ButtonTheme, Button } from "../../button/Button";
 import "../Hero-Slide.scss";
-import { IMG } from "../../movie-card/IMG/IMG";
+import { IMG } from "../../IMG/IMG";
 import { TMovieItem, TResponseVideosList } from "api/types";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchVideosList } from "store/videos/fetchVideosList/fetchVideosList";
@@ -71,7 +71,7 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
                         </div>
                     </div>
                     <div className="hero-slide__item__content__poster">
-                        <IMG  notSkeleton path={item.poster_path || item.backdrop_path} size={"w500"} />
+                        <IMG notSkeleton path={item.poster_path || item.backdrop_path} size={"w500"} />
                     </div>
                 </div>
             </div>

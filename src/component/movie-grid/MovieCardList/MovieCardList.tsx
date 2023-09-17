@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { TCategoryType, TMovieItem } from "api/types";
-import { IMG } from "component/movie-card/IMG/IMG";
+import { IMG } from "component/IMG/IMG";
 import { Link } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 
@@ -20,7 +20,7 @@ const MovieCardList: FC<MovieCardProps> = ({ movieItem, category }) => {
 
     return (
         <div className={cls.card__list}>
-            <IMG list link={link} path={movieItem.poster_path || movieItem.backdrop_path} borderRadius={`10px`}/>
+            <IMG list link={link} path={movieItem.poster_path || movieItem.backdrop_path} borderRadius={`10px`} />
             <div className="card__desc">
                 <Link to={link}>
                     <h2 className={cls.card__title}>{movieItem.title}</h2>

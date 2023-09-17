@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { TCategoryType, TMovieItem } from "../../api/types";
-import { IMG } from "./IMG/IMG";
+import { IMG } from "../IMG/IMG";
 
 import "./MovieCard.scss";
 

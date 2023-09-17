@@ -4,7 +4,6 @@ import { CSSProperties, FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cls from "./IMG.module.scss";
 import classNames from "classnames";
-//import Skeleton from "@mui/material/Skeleton";
 
 type IMGProps = {
     path: string | null;

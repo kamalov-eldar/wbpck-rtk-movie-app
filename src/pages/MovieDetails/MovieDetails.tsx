@@ -31,7 +31,7 @@ const redusers: ReducersList = {
     movieDetailsComments: movieDetailsCommentsReducer,
 };
 
-const MovieDetail = () => {
+const MovieDetails = () => {
     // console.log("Detail: ");
     const { category, id } = useParams<{ category?: TCategoryType; id?: string }>();
     const movieId = Number(id);
@@ -115,24 +115,5 @@ const MovieDetail = () => {
     );
 };
 
-export default MovieDetail;
-/* {
-            movieId: 385687,
-            user: {
-                id: "1",
-                username: "admin",
-                avatar: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-            },
-            text: "привет",
-            id: "xqgjowl",
-        },
-        {
-            movieId: 385687,
-            user: {
-                id: "1",
-                username: "admin",
-                avatar: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-            },
-            text: "comments 1111",
-            id: "IB0CBU8",
-        }, */
+export default MovieDetails;
+
