@@ -1,5 +1,5 @@
 import { Skeleton } from "component/Skeleton/Skeleton";
-import Button from "component/button/Button";
+import Button from "component/Button/Button";
 import { CSSProperties, FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cls from "./IMG.module.scss";
@@ -48,7 +48,7 @@ export const IMG: FC<IMGProps> = ({ size: sizeProp, path, notSkeleton, link, lis
     }
 
     if (!list && !url && !notSkeleton) {
-        return <Skeleton borderRadius={borderRadius ||''} paddingTop="150.5%" />;
+        return <Skeleton borderRadius={borderRadius || ""} paddingTop="150.5%" />;
     }
 
     if (list && !url && !notSkeleton) {
@@ -64,7 +64,7 @@ export const IMG: FC<IMGProps> = ({ size: sizeProp, path, notSkeleton, link, lis
         <img src={url} className={cls.card__img} style={styles} alt="picture" />
     ) : (
         <Link to={link || "/"} className={classNames(cls.card__poster, { [cls["card__poster-list"]]: list })}>
-            <img src={url} className={classNames([mods])} alt="picture"style={styles}/>
+            <img src={url} className={classNames([mods])} alt="picture" style={styles} />
             <Button className={cls.btn}>
                 <i className="bx bx-play"></i>
             </Button>

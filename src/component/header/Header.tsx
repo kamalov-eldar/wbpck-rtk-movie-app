@@ -7,7 +7,7 @@ import { ThemeSwitcher } from "component/ThemeSwitcher/ThemeSwitcher";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { RoutePath } from "../../../config/routeConfig/routeConfig";
 import { LoginModal } from "features/AuthByUserName/LoginModal/LoginModal";
-import Button, { ButtonTheme } from "component/button/Button";
+import Button, { ButtonTheme } from "component/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { userActions } from "../../store/user/slice/userSlice";
@@ -60,11 +60,14 @@ const Header = memo(() => {
             <div className={cls["header__wrap"]}>
                 <div className="logo">
                     <img src={logo} alt="" />
-                    <Link to={RoutePath.home}>Movies</Link>
-                    <p className={cls.beta}>beta</p>
                 </div>
-                {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
-                <ThemeSwitcher />
+                <Link style={{ color: "#fff" }} to={RoutePath.home}>
+                    <div className={cls.block}>
+                        <h1>Movies</h1>
+                        <span className={cls.beta}>beta</span>
+                    </div>
+                </Link>
+                {/*  <div className="beta"></div> */}
                 {authUser ? (
                     <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>
                         Выйти
@@ -74,8 +77,11 @@ const Header = memo(() => {
                         Войти
                     </Button>
                 )}
+                <ThemeSwitcher />
+
                 <NavbarLinks />
             </div>
+            {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
         </div>
     );
 });

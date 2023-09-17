@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect } from "react";
 import "./MovieSearch.scss";
 
 import { useNavigate } from "react-router-dom";
-import Button from "../button/Button";
+import Button from "../Button/Button";
 import { TCategoryType } from "../../api/types";
 import { Input } from "component/Input/Input";
 

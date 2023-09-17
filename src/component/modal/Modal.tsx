@@ -5,7 +5,7 @@ import { useTheme } from "providers/themeProvider/useTheme";
 import cls from "./Modal.module.scss";
 import { Portal } from "component/Portal/Portal";
 import { TMods } from "global/types/global";
-import Button, { ButtonTheme } from "component/button/Button";
+import Button, { ButtonTheme } from "component/Button/Button";
 
 interface ModalProps {
     className?: string;

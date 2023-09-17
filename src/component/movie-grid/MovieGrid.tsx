@@ -2,7 +2,7 @@ import { FC, memo, useCallback, useEffect } from "react";
 import cls from "./MovieGrid.module.scss";
 import MovieCard from "../movie-card/MovieCard";
 
-import { ButtonTheme, Button } from "../button/Button";
+import { ButtonTheme, Button } from "../Button/Button";
 import MovieSearch from "../movie-search/MovieSearch";
 import { TCategoryType, TListType, TMovieItem } from "../../api/types";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -58,14 +58,13 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
             <div className={classNames([viewType])}>
                 {category === "movie" && (
                     <>
-                        {dataMovieList &&
-                            dataMovieList.map((item, i) => {
-                                return view === ViewCardsType.GRID ? (
-                                    <MovieCard category={category} movieItem={item} key={item.id} />
-                                ) : (
-                                    <MovieCardList category={category} movieItem={item} key={item.id} />
-                                );
-                            })}
+                        {dataMovieList?.map((item, i) => {
+                            return view === ViewCardsType.GRID ? (
+                                <MovieCard category={category} movieItem={item} key={item.id} />
+                            ) : (
+                                <MovieCardList category={category} movieItem={item} key={item.id} />
+                            );
+                        })}
                     </>
                 )}
             </div>
@@ -74,7 +73,7 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
                     <span className="errorText">{error.messageError}</span>{" "}
                 </div>
             )}
-            {dataMovieList && dataMovieList?.length && (
+            {dataMovieList && (
                 <div className="movie-grid__loadmore">
                     <Button disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
                         {isLoading ? <SvgSpinners /> : "Load more"}

@@ -6,7 +6,7 @@ import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
 import { fetchVideosList } from "store/videos/fetchVideosList/fetchVideosList";
 import { selectVideosList, selectVideosListIsLoading, selectVideosListError } from "store/videos/selectors/selectVideosList";
-import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { videosReducer } from "store/videos/slice/videosSlice";
 
 type VideoListProps = {

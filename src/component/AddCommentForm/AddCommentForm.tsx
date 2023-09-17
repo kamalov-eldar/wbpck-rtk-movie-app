@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import cls from "./AddCommentForm.module.scss";
 import classNames from "classnames";
 import { Input } from "component/Input/Input";
-import Button, { ButtonTheme } from "component/button/Button";
+import Button, { ButtonTheme } from "component/Button/Button";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
-import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { addCommentFormActions, addCommentFormReducer } from "store/addCommentForm/slices/addCommentFormSlice";
 import { getAddCommentFormError, getAddCommentFormText } from "store/addCommentForm/selectors/addCommentFormSelectors";
 
@@ -21,7 +21,7 @@ const reducers: ReducersList = {
 const AddCommentForm = memo((props: AddCommentFormProps) => {
     const { className, onSendComment } = props;
     const dispatch = useAppDispatch();
-    
+
     const text = useSelector(getAddCommentFormText);
     const error = useSelector(getAddCommentFormError);
 

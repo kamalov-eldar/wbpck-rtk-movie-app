@@ -1,6 +1,6 @@
 import HeroSlide from "../../component/hero-slide/HeroSlide";
 import { Link } from "react-router-dom";
-import { ButtonTheme, Button } from "../../component/button/Button";
+import { ButtonTheme, Button } from "../../component/Button/Button";
 import { TCategoryItem } from "../../api/types";
 import MovieList from "component/movie-list/MovieList";
 import { useSelector } from "react-redux";

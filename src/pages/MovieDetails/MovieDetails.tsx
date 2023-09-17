@@ -4,7 +4,7 @@ import { TCategoryType } from "../../api/types";
 
 import "./MovieDetails.scss";
 import apiConfig from "../../api/apiConfig";
-import ActorsList from "../../component/actors-list/ActorsList";
+import ActorsList from "../../component/ActorsList/ActorsList";
 import VideoList from "component/video-list/VideoList";
 import { fetchMovieDetails } from "store/movieDetails/services/fetchMovieDetails/fetchMovieDetails";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
@@ -16,7 +16,7 @@ import {
     selectMovieDetailBackdropPath,
     selectMovieDetailPosterPath,
 } from "store/movieDetails/selectors/selectMovieDetails";
-import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { movieDetailsReducer } from "store/movieDetails/slice/movieDetailsSlice";
 import MovieListContainer from "component/movie-list/MovieListContainer";
 import AddCommentForm from "component/AddCommentForm/AddCommentForm";
@@ -116,4 +116,3 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
-

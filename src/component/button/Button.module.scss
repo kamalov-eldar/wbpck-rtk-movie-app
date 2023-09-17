@@ -8,6 +8,8 @@ button {
     white-space: normal;
     text-align: center;
     width: fit-content;
+    display: flex;
+    align-items: center;
 
     &:hover {
         //  opacity: 0.8;

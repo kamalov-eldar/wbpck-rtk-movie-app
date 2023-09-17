@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import cls from "./LoginModalContent.module.scss";
-import Button, { ButtonTheme } from "component/button/Button";
+import Button, { ButtonTheme } from "component/Button/Button";
 import { Input } from "component/Input/Input";
 import { memo, useCallback, useEffect } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
@@ -11,7 +11,7 @@ import { selectLoginUsername } from "store/auth/selectors/selectLoginUsername/se
 import { selectLoginPassword } from "store/auth/selectors/selectLoginPassword/selectLoginPassword";
 import { selectLoginIsLoading } from "store/auth/selectors/selectLoginIsLoading/selectLoginIsLoading";
 import { selectLoginError } from "store/auth/selectors/selectLoginError/selectLoginError";
-import { DynamicModuleLoader, ReducersList } from "component/dynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginModalContentProps {

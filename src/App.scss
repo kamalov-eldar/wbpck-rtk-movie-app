@@ -82,6 +82,7 @@ p {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    ustify-content: space-between;
     height: 100%;
 }
 
@@ -158,18 +159,25 @@ p {
     font-weight: 600;
     color: #fff;
     position: relative;
+    white-space: nowrap;
 
     @include flex(center, unset);
 
     img {
         margin-right: 10px;
         width: 50px;
+        min-width: 50px;
 
         @include mobile {
             width: 30px;
             margin-right: 0;
         }
     }
+}
+
+.beta {
+    width: 70px;
+    height: 45px;
 }
 .errorBlock {
     display: flex;
@@ -181,4 +189,3 @@ p {
 .errorText {
     color: $error;
 }
-

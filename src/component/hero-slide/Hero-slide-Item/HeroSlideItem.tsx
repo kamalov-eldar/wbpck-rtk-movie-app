@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import apiConfig from "../../../api/apiConfig";
 import { FC, useCallback, useEffect, useState } from "react";
-import { ButtonTheme, Button } from "../../button/Button";
+import { ButtonTheme, Button } from "../../Button/Button";
 import "../Hero-Slide.scss";
 import { IMG } from "../../IMG/IMG";
 import { TMovieItem, TResponseVideosList } from "api/types";
