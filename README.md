@@ -14,4 +14,4 @@
 <img style="margin: 10px" src="https://a11ybadges.com/badge?logo=storybook" alt="Storybook" width="80" height="50" />
 ![image](https://github.com/kamalov-eldar/mobx-movie-app/blob/master/src/img/movies.gif)
 
-готовый сайт -> https://kamalov-eldar.github.io/wbpck-movie-app/
+готовый сайт -> ...
