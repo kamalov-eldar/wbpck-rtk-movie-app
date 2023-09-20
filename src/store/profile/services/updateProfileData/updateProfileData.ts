@@ -10,7 +10,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
         const { extra, rejectWithValue, getState } = thunkApi;
 
         const formData = selectProfileForm(getState());
-        console.log('formData: ', formData);
+        console.log("formData: ", formData);
 
         const errors = validateProfileData(formData);
 

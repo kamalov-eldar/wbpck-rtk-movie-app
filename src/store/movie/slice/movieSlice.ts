@@ -16,18 +16,18 @@ const initialState: MovieSchema = {
 
     errorTop: undefined,
     isLoadingTop: true,
-    dataTopFilms: [] as TMovieItem[],
     topTotalPages: 0,
+    dataTopFilms: [] as TMovieItem[],
 
     errorSimilar: undefined,
     isLoadingSimilar: true,
-    dataSimilarFilms: [] as TMovieItem[],
     similarTotalPages: 0,
+    dataSimilarFilms: [] as TMovieItem[],
 
     errorUpcoming: undefined,
     isLoadingUpcoming: true,
-    dataUpcomingFilms: [] as TMovieItem[],
     upcomingTotalPages: 0,
+    dataUpcomingFilms: [] as TMovieItem[],
 };
 
 export const movieSlice = createSlice({

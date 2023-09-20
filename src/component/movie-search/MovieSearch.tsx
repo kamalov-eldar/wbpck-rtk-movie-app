@@ -31,11 +31,11 @@ const MovieSearch: FC<MovieSearchProps> = ({ category }) => {
                 type="text"
                 placeholder="Enter keyword"
                 /* value={keyword} */
-                onChange={(evt) => console.log(evt)}
-            />
-            <Button className="small" onClick={goToSearch}>
-                Search
-            </Button>
+                onChange={(evt) => console.log(evt)}>
+                <Button className="small" onClick={goToSearch}>
+                    Search
+                </Button>
+            </Input>
         </div>
     );
 };

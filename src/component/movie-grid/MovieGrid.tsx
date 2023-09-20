@@ -5,7 +5,7 @@ import MovieCard from "../movie-card/MovieCard";
 import { ButtonTheme, Button } from "../Button/Button";
 import MovieSearch from "../movie-search/MovieSearch";
 import { TCategoryType, TListType, TMovieItem } from "../../api/types";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { SvgSpinners } from "assets/svg/SvgSpinners";
@@ -70,10 +70,10 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
             </div>
             {error && (
                 <div className="errorBlock">
-                    <span className="errorText">{error.messageError}</span>{" "}
+                    <span className="errorText">{error.messageError}</span>
                 </div>
             )}
-            {dataMovieList && (
+            {!error?.statusError && dataMovieList && dataMovieList.length > 0 && (
                 <div className="movie-grid__loadmore">
                     <Button disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
                         {isLoading ? <SvgSpinners /> : "Load more"}
@@ -85,31 +85,3 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
 };
 
 export default memo(MovieGrid);
-
-/*  const listMovie = useMemo(() => {
-        switch (listType) {
-            case "popular":
-                return popularMovieList;
-            case "top_rated":
-                return topMovieList;
-            case "upcoming":
-                return upcomingMovieList;
-
-            default:
-                return searchList;
-        }
-    }, [listType, popularMovieList, topMovieList, upcomingMovieList, searchList]); */
-
-/*  const dataMovieList = useMemo(() => {
-        switch (listType) {
-            case "popular":
-                return moviePopularList;
-            case "top_rated":
-                return movieTopList;
-            case "upcoming":
-                return movieUpcomingList;
-            default:
-                return undefined;
-        }
-    }, [listType, moviePopularList, movieTopList, movieUpcomingList]);
-    console.log("dataMovieList: ", dataMovieList); */

@@ -6,7 +6,6 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { IBuildOptions } from "./types/config";
 
 export function buildPlugins({ paths, isDev, apiUrl, project }: IBuildOptions): webpack.WebpackPluginInstance[] {
-    console.log("project-buildPlugins: ", project);
 
     const plugins = [
         new HtmlWebpackPlugin({

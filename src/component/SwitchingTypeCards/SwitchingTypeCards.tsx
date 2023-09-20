@@ -30,7 +30,6 @@ const viewTypes = [
 
 export const SwitchingTypeCards = memo((props: SwitchingTypeCardsProps) => {
     const { className, view, onViewClick } = props;
-    console.log("view: ", view);
 
     const onClick = (newView: ViewCardsType) => () => {
         onViewClick?.(newView);

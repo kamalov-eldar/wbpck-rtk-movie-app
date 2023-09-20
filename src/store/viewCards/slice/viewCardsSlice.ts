@@ -11,7 +11,6 @@ export const viewCardsSlice = createSlice({
     initialState,
     reducers: {
         setView: (state, action: PayloadAction<ViewCardsType>) => {
-            console.log("setView: ");
             state.view = action.payload;
             localStorage.setItem("viewCards", action.payload);
         },

@@ -9,7 +9,6 @@ interface IconProps {
 
 export const Icon = memo((props: IconProps) => {
     const { className, Svg } = props;
-    console.log('className: ', className);
 
     return <Svg className={classNames(cls.Icon, {}, [className])} />;
 });

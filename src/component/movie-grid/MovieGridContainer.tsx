@@ -10,7 +10,9 @@ import {
     selectPopularError,
     selectPopularIsLoading,
     selectPopularMovieList,
+    selectSimilarError,
     selectSimilarIsLoading,
+    selectSimilarMovieList,
     selectTopError,
     selectTopIsLoading,
     selectTopMovieList,
@@ -44,6 +46,10 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
     const isLoadingPopular = useSelector(selectPopularIsLoading);
     const errorPopular = useSelector(selectPopularError);
 
+    const movieSimilarList = useSelector(selectSimilarMovieList);
+    const isLoadingSimilar = useSelector(selectSimilarIsLoading);
+    const errorSimilar = useSelector(selectSimilarError);
+
     const page = useSelector(selectPage);
 
     const isLoading = useMemo(() => {
@@ -53,13 +59,13 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
             case "top_rated":
                 return isLoadingTop;
             case "similar":
+                return isLoadingSimilar;
+            case "upcoming":
                 return isLoadingUpcoming;
-            /*  case "upcoming":
-                    return movieTopList; */
             default:
                 return true;
         }
-    }, [isLoadingPopular, isLoadingTop, isLoadingUpcoming]);
+    }, [isLoadingPopular, isLoadingTop, isLoadingUpcoming, isLoadingSimilar, listType]);
 
     const error = useMemo(() => {
         switch (listType) {
@@ -68,13 +74,14 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
             case "top_rated":
                 return errorTop;
             case "similar":
+                return errorSimilar;
+            case "upcoming":
                 return errorUpcoming;
-            /*  case "upcoming":
-                    return movieTopList; */
             default:
                 return undefined;
         }
-    }, [errorPopular, errorPopular, errorUpcoming]);
+    }, [errorPopular, errorPopular, errorUpcoming, errorSimilar, listType]);
+
 
     useEffect(() => {
         if (keywordUrl) {
@@ -109,10 +116,12 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
                 return movieTopList;
             case "upcoming":
                 return movieUpcomingList;
+            case "similar":
+                return movieSimilarList;
             default:
                 return undefined;
         }
-    }, [listType, moviePopularList, movieTopList, movieUpcomingList]);
+    }, [listType, moviePopularList, movieTopList, movieUpcomingList, movieSimilarList]);
 
     if (!dataMovieList) {
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;

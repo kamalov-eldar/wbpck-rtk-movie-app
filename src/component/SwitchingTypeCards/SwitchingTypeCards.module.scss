@@ -1,3 +1,7 @@
+Svg {
+    fill: var(--text-color);
+}
+
 .selected {
     fill: var(--main-color);
 }
@@ -5,4 +9,5 @@
 .SwitchingTypeCards {
     position: absolute;
     right: 0;
+    display: flex;
 }

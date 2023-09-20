@@ -43,7 +43,6 @@ const Catalog = () => {
 
     const onChangeView = useCallback(
         (view: ViewCardsType) => {
-            console.log("onChangeView: ");
             dispatch(viewCardsActions.setView(view));
         },
         [dispatch],
