@@ -22,14 +22,14 @@ import {
 } from "store/movie/selectors/selectMovie";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { selectPage } from "store/pagination/selectors/selectPage/selectPage";
-import MovieGrid from "./MovieGrid";
+import MovieContent from "./MovieContent";
 
-type MovieGridContainerProps = {
+type MovieContainerProps = {
     category: TCategoryType | undefined;
     listType: TListType | undefined;
 };
 
-const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType }) => {
+const MovieContainer: FC<MovieContainerProps> = ({ category, listType }) => {
     const { keyword: keywordUrl } = useParams<{ keyword: string }>();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -82,7 +82,6 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
         }
     }, [errorPopular, errorPopular, errorUpcoming, errorSimilar, listType]);
 
-
     useEffect(() => {
         if (keywordUrl) {
             navigate(`/`);
@@ -127,7 +126,7 @@ const MovieGridContainer: FC<MovieGridContainerProps> = ({ category, listType })
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
     }
 
-    return <MovieGrid error={error} isLoading={isLoading} dataMovieList={dataMovieList} category={category} listType={listType} />;
+    return <MovieContent error={error} isLoading={isLoading} dataMovieList={dataMovieList} category={category} listType={listType} />;
 };
 
-export default MovieGridContainer;
+export default MovieContainer;

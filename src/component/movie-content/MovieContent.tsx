@@ -1,7 +1,5 @@
 import { FC, memo, useCallback, useEffect } from "react";
-import cls from "./MovieGrid.module.scss";
 import MovieCard from "../movie-card/MovieCard";
-
 import { ButtonTheme, Button } from "../Button/Button";
 import MovieSearch from "../movie-search/MovieSearch";
 import { TCategoryType, TListType, TMovieItem } from "../../api/types";
@@ -15,8 +13,10 @@ import { getViewCards } from "store/viewCards/selectors/viewCardsSelectors";
 import { ViewCardsType } from "component/SwitchingTypeCards/SwitchingTypeCards";
 import classNames from "classnames";
 import MovieCardList from "./MovieCardList/MovieCardList";
+import cls from "./MovieContent.module.scss";
+import { ScrollWrapper } from "component/ScrollWrapper/ScrollWrapper";
 
-type MovieGridProps = {
+type MovieContentProps = {
     category: TCategoryType | undefined;
     listType: TListType | undefined;
     dataMovieList: TMovieItem[] | undefined;
@@ -24,7 +24,7 @@ type MovieGridProps = {
     error: IError | undefined;
 };
 
-const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLoading, error }) => {
+const MovieContent: FC<MovieContentProps> = ({ category, listType, dataMovieList, isLoading, error }) => {
     const { keyword: keywordUrl } = useParams<{ keyword: string }>();
     const navigate = useNavigate();
     const view = useSelector(getViewCards);
@@ -50,38 +50,42 @@ const MovieGrid: FC<MovieGridProps> = ({ category, listType, dataMovieList, isLo
         [cls["movie-list"]]: view === ViewCardsType.LIST,
     };
 
+    const onLoadNextPart = useCallback(() => {
+        console.log("onLoadNextPart");
+    }, []);
+
     return (
-        <>
-            <div className="section mb-3">
-                <MovieSearch category={category} />
-            </div>
-            <div className={classNames([viewType])}>
-                {category === "movie" && (
-                    <>
-                        {dataMovieList?.map((item, i) => {
-                            return view === ViewCardsType.GRID ? (
-                                <MovieCard category={category} movieItem={item} key={item.id} />
-                            ) : (
-                                <MovieCardList category={category} movieItem={item} key={item.id} />
-                            );
-                        })}
-                    </>
-                )}
-            </div>
-            {error && (
-                <div className="errorBlock">
-                    <span className="errorText">{error.messageError}</span>
+        <ScrollWrapper onScrollEnd={onLoadNextPart}>
+            <div className={cls.movie__content}>
+                <div className={cls.container__content}>
+                    <MovieSearch category={category} />
+                    <div className={classNames([viewType])}>
+                        {category === "movie" && (
+                            <>
+                                {dataMovieList?.map((item, i) => {
+                                    return view === ViewCardsType.GRID ? (
+                                        <MovieCard category={category} movieItem={item} key={item.id} />
+                                    ) : (
+                                        <MovieCardList category={category} movieItem={item} key={item.id} />
+                                    );
+                                })}
+                            </>
+                        )}
+                    </div>
                 </div>
-            )}
-            {!error?.statusError && dataMovieList && dataMovieList.length > 0 && (
-                <div className="movie-grid__loadmore">
+                {error && (
+                    <div className="errorBlock">
+                        <span className="errorText">{error.messageError}</span>
+                    </div>
+                )}
+                {!error?.statusError && dataMovieList && dataMovieList.length > 0 && (
                     <Button disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
                         {isLoading ? <SvgSpinners /> : "Load more"}
                     </Button>
-                </div>
-            )}
-        </>
+                )}
+            </div>
+        </ScrollWrapper>
     );
 };
 
-export default memo(MovieGrid);
+export default memo(MovieContent);

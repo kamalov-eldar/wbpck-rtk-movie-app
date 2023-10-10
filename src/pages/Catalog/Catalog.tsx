@@ -1,15 +1,14 @@
 import { useLocation, useParams } from "react-router-dom";
-
 import { TCategoryType, TListType } from "../../api/types";
-import PageHeader from "component/page-header/PageHeader";
-import MovieGridContainer from "component/movie-grid/MovieGridContainer";
-import cls from "./Catalog.module.scss";
+import MovieContainer from "component/movie-content/MovieContainer";
 import { SwitchingTypeCards, ViewCardsType } from "component/SwitchingTypeCards/SwitchingTypeCards";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { viewCardsActions } from "store/viewCards/slice/viewCardsSlice";
 import { useSelector } from "react-redux";
 import { getViewCards } from "store/viewCards/selectors/viewCardsSelectors";
+import cls from "./Catalog.module.scss";
+import bg from "../../assets/footer-bg.jpg";
 
 const arrNav = [
     {
@@ -53,17 +52,16 @@ const Catalog = () => {
     }, []);
 
     return (
-        <div className="catalog" style={{ flex: "1 0 auto" }}>
-            <PageHeader />
-            <div className={cls.catalog__header}>
-                <h2 className={cls.title}>{headerTitle?.display}</h2>
-                <SwitchingTypeCards view={view} onViewClick={onChangeView} />
-            </div>
-            <div className="container">
-                <div className="section mb-3">
-                    <MovieGridContainer category={categoryUrl} listType={listType} />
+        <div className={cls.catalog}>
+            <div>
+                <div className={cls.catalog__header} style={{ backgroundImage: `url(${bg})` }}></div>
+                <div className={cls.catalog__title}>
+                    <h2 className={cls.title}>{headerTitle?.display}</h2>
+
+                    <SwitchingTypeCards view={view} onViewClick={onChangeView} />
                 </div>
             </div>
+            <MovieContainer category={categoryUrl} listType={listType} />
         </div>
     );
 };

@@ -9,20 +9,18 @@ const Footer = () => {
     return (
         <div data-testid="Footer" className="footer" style={{ backgroundImage: `url(${bg})` }}>
             <div className="footer__content">
-                <div className="footer__contetn__logo">
-                    <div className="logo">
-                        <img src={logo} alt="" />
-                        <Link to={RoutePath.home} />
-                    </div>
+                <div className="logo">
+                    <img src={logo} alt="" />
+                    <Link to={RoutePath.home} />
                 </div>
-                <div className="footer__content__menus">
-                    <div className="footer__content__menu">
-                        <Link to={RoutePath.home}>Home</Link>
-                        <Link to={RoutePath.home}>Contact us</Link>
-                        <Link to={RoutePath.home}>Term of services</Link>
-                        <Link to={RoutePath.home}>About us</Link>
-                    </div>
-                    <div className="footer__content__menu">
+                <div className="footer__content__menu">
+                    <Link to={RoutePath.home}>Home</Link>
+                    <Link to={RoutePath.home}>Contact us</Link>
+                    <Link to={RoutePath.home}>Term of services</Link>
+                    <Link to={RoutePath.home}>About us</Link>
+                </div>
+
+                {/* <div className="footer__content__menu">
                         <Link to={RoutePath.home}>Live</Link>
                         <Link to={RoutePath.home}>FAQ</Link>
                         <Link to={RoutePath.home}>Premium</Link>
@@ -32,8 +30,7 @@ const Footer = () => {
                         <Link to={RoutePath.home}>Yuo must watch</Link>
                         <Link to={RoutePath.home}>Recent release</Link>
                         <Link to={RoutePath.home}>Top IMDB</Link>
-                    </div>
-                </div>
+                    </div> */}
             </div>
         </div>
     );

@@ -11,14 +11,25 @@
     @include tablet {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
-
-    &__loadmore {
-        text-align: center;
-    }
 }
 
 .movie-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.movie__content {
+    padding: 0 2rem;
+    color: var(--text-color);
+   // max-width: 1660px;
+   // margin: auto;
+    //height: calc(79vh - 128px); //height:67vh;
+    //height:67vh;
+    // overflow: auto;
+}
+
+.container__content {
+    max-width: 1660px;
+    margin: auto;
 }

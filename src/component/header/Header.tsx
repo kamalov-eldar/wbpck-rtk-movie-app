@@ -21,9 +21,9 @@ const Header = memo(() => {
 
     const authUser = useSelector(selectUserAuthData);
     const [isAuthModal, setIsAuthModal] = useState(false);
-
     useEffect(() => {
         const shrinkHeader = () => {
+           // console.log("scroll");
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 headerRef.current?.classList.add("shrink");
             } else {
@@ -31,7 +31,7 @@ const Header = memo(() => {
             }
         };
 
-        window.addEventListener("scroll", shrinkHeader);
+            window.addEventListener("scroll", shrinkHeader);
         return () => {
             window.removeEventListener("scroll", shrinkHeader);
         };

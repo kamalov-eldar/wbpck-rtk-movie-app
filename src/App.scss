@@ -26,7 +26,6 @@ input {
 
 html {
     font-size: 100%;
-
     @include tablet {
         font-size: 80%;
     }
@@ -36,13 +35,29 @@ html {
     }
 }
 
+::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background-color: grey;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: white;
+}
+
 body {
     font-family: $font-family;
     font-weight: 600;
     line-height: 1.5;
 
-    // background-color: $body-bg;
-    color: var(--text-color);
+    color: var(--main-color);
 
     @include mobile {
         margin-bottom: 3rem;
@@ -82,7 +97,7 @@ p {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    ustify-content: space-between;
+    justify-content: space-between;
     height: 100%;
 }
 

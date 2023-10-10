@@ -2,7 +2,7 @@
 
 .footer {
     position: relative;
-    padding: 2rem 2rem;
+    padding: 1rem;
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -10,33 +10,21 @@
     &__content {
         margin: 0 auto;
         max-width: 1660px;
+        display: flex;
+        align-items: center;
 
         &__logo {
             @include flex(center, center);
             margin-bottom: 3rem;
         }
 
-        &__menus {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            @include mobile {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         &__menu {
             @include flex(flex-start, flex-start);
-            flex-direction: column;
-            margin-top: 1rem;
-
+            justify-content: space-between;
+            width: 100%;
             font-size: 1.5rem;
             font-weight: 600;
             color: #fff;
-
-            & > * ~ * {
-                margin-top: 1rem;
-            }
         }
     }
 }

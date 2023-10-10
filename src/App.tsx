@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "./component/header/Header";
 import Footer from "component/footer/Footer";
 import { useTheme } from "providers/themeProvider/useTheme";
@@ -20,15 +20,17 @@ function App() {
     }, [dispatch]);
 
     return (
-        <div className={`app ${theme}`}>
-            {userInited && (
-                <>
-                    <Header />
-                    <AppRouter />
-                    <Footer />
-                </>
-            )}
-        </div>
+       /*  <ScrollWrapper> */
+            <div className={`app ${theme}`}>
+                {userInited && (
+                    <>
+                        <Header />
+                        <AppRouter />
+                        <Footer />
+                    </>
+                )}
+            </div>
+        /* </ScrollWrapper> */
     );
 }
 
