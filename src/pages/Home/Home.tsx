@@ -6,6 +6,8 @@ import MovieList from "component/movie-list/MovieList";
 import { useSelector } from "react-redux";
 import { useCallback } from "react";
 import MovieListContainer from "component/movie-list/MovieListContainer";
+import Header from "component/header/Header";
+import Footer from "component/footer/Footer";
 
 const categoryPage: Array<TCategoryItem> = [
     { title: "Popular Movies", category: "movie", listType: "popular" },
@@ -19,6 +21,7 @@ const Home = () => {
 
     return (
         <>
+            <Header />
             <HeroSlide />
             <div>
                 <div className="container">
@@ -33,6 +36,7 @@ const Home = () => {
                     })}
                 </div>
             </div>
+            <Footer />
         </>
     );
 };

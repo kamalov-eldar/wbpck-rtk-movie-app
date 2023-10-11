@@ -35,21 +35,8 @@ html {
     }
 }
 
-::-webkit-scrollbar,
-body::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb {
-    background-color: grey;
-    border-radius: 20px;
-}
-
-::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track {
-    background: white;
+.ScrollWrapper {
+    
 }
 
 body {
@@ -167,6 +154,15 @@ p {
 .shrink {
     height: $header-shrink-height;
     background-color: var(--header-shrink);
+}
+
+.header__catalog {
+    height: $header-shrink-height;
+    position: inherit;
+}
+
+.footer__catalog {
+    padding: 5px;
 }
 
 .logo {

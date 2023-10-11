@@ -30,10 +30,12 @@
         gap: 5px;
         @include flex(center, space-between);
         height: 100%;
-        padding: 0 2rem;
+        padding: 2rem;
 
         @include mobile {
             justify-content: center;
         }
     }
 }
+
+

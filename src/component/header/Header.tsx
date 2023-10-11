@@ -13,7 +13,11 @@ import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { userActions } from "../../store/user/slice/userSlice";
 import { NavbarLinks } from "component/navbar-link/NavbarLinks";
 
-const Header = memo(() => {
+type HeaderProps = {
+    catalog?: boolean;
+};
+
+const Header = memo(({ catalog }: HeaderProps) => {
     const { theme, toggleTheme } = useTheme();
     const dispatch = useDispatch();
 
@@ -21,9 +25,10 @@ const Header = memo(() => {
 
     const authUser = useSelector(selectUserAuthData);
     const [isAuthModal, setIsAuthModal] = useState(false);
+
     useEffect(() => {
         const shrinkHeader = () => {
-           // console.log("scroll");
+            // console.log("scroll");
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 headerRef.current?.classList.add("shrink");
             } else {
@@ -31,7 +36,7 @@ const Header = memo(() => {
             }
         };
 
-            window.addEventListener("scroll", shrinkHeader);
+        window.addEventListener("scroll", shrinkHeader);
         return () => {
             window.removeEventListener("scroll", shrinkHeader);
         };
@@ -56,7 +61,7 @@ const Header = memo(() => {
     }, [dispatch]);
 
     return (
-        <div ref={headerRef} className={`${cls.header} ${theme}`}>
+        <div id="header" ref={headerRef} className={`${cls.header} ${theme} ${catalog && 'header__catalog'}`}>
             <div className={cls["header__wrap"]}>
                 <div className="logo">
                     <img src={logo} alt="" />

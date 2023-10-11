@@ -1,4 +1,6 @@
 import { MutableRefObject, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import { selectPage } from "store/pagination/selectors/selectPage/selectPage";
 
 export interface UseInfiniteScrollOptions {
     callback?: () => void;
@@ -7,34 +9,29 @@ export interface UseInfiniteScrollOptions {
 }
 
 export function useInfiniteScroll({ callback, triggerRef, wrapperRef }: UseInfiniteScrollOptions) {
-    const observer = useRef<IntersectionObserver | null>(null);
-
     useEffect(() => {
-        //  let observer: IntersectionObserver | null = null;
-        const scrollElement = document.querySelector("html"); // wrapperRef.current; //
-        const triggerElement = document.querySelector("#scroll"); // triggerRef.current; //
-        console.log('triggerElement: ', triggerElement);
+        let observer: IntersectionObserver | null = null;
+       // const scrollElement = wrapperRef.current; // document.querySelector("html");
+        const triggerElement = triggerRef.current; // triggerRef.current;
 
         if (callback && triggerElement) {
-            const options = {
-                root: scrollElement, // элемент со скролом root: document.querySelector("#scrollArea"),
-                rootMargin: "0px",
+           /*  const options = {
+                root: null, // scrollElement, // элемент со скролом root: document.querySelector("#scrollArea"),
+                rootMargin: "20px",
                 threshold: 1.0,
-            };
-            observer.current = new IntersectionObserver((entries) => {
-                console.log('entries: ', entries);
-                if (entries[0].isIntersecting) {
+            }; */
+            observer = new IntersectionObserver(([entry]) => {
+                if (entry.isIntersecting) {
                     callback();
                 }
-            }, options);
-
-            observer.current.observe(triggerElement);
+            }, {});
+            observer.observe(triggerElement);
         }
 
         return () => {
-            if (observer.current && triggerElement) {
+            if (observer && triggerElement) {
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-                observer.current.unobserve(triggerElement);
+                observer.unobserve(triggerElement);
             }
         };
     }, [callback, triggerRef, wrapperRef]);

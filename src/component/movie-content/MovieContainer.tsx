@@ -82,17 +82,22 @@ const MovieContainer: FC<MovieContainerProps> = ({ category, listType }) => {
         }
     }, [errorPopular, errorPopular, errorUpcoming, errorSimilar, listType]);
 
-    useEffect(() => {
+   /*  useEffect(() => {
         if (keywordUrl) {
             navigate(`/`);
         }
         return () => {
             dispatch(paginationActions.clearPage());
         };
-    }, []);
+    }, []); */
+
+    const onLoadNextPart = useCallback(() => {
+        console.log("onLoadNextPart");
+         dispatch(paginationActions.nextPage());
+    }, [dispatch]);
 
     useEffect(() => {
-        if (listType) dispatch(fetchMovieList({ listType, page }));
+        if (listType && page) dispatch(fetchMovieList({ listType, page }));
         /*  if (keywordUrl === "") {
             if (listType) dispatch(fetchMovieList({ listType, page }));
         } else {
@@ -103,9 +108,6 @@ const MovieContainer: FC<MovieContainerProps> = ({ category, listType }) => {
         } */
     }, [page, listType]);
 
-    useEffect(() => {
-        // setKeyword("");
-    }, [category]);
 
     const dataMovieList = useMemo(() => {
         switch (listType) {
@@ -126,7 +128,15 @@ const MovieContainer: FC<MovieContainerProps> = ({ category, listType }) => {
         return <StatusUpload text={"Rejected upload - Enable vpn in browser "} />;
     }
 
-    return <MovieContent error={error} isLoading={isLoading} dataMovieList={dataMovieList} category={category} listType={listType} />;
+    return (
+        <MovieContent
+            onLoadNextPart={onLoadNextPart}
+            error={error}
+            isLoading={isLoading}
+            dataMovieList={dataMovieList}
+            category={category} 
+        />
+    );
 };
 
 export default MovieContainer;

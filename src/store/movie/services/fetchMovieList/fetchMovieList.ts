@@ -12,6 +12,7 @@ interface IParams {
 export const fetchMovieList = createAsyncThunk<TResponseMovieList, IParams, ThunkConfig<IError>>(
     "movie/fetchMovieList",
     async ({ page, listType, id }, thunkApi) => {
+        //  console.log("page-fetchMovieList: ", page);
         try {
             const response = await thunkApi.extra.apiTmdb.get<TResponseMovieList>("/movie/" + (id ? `${id}/` : "") + listType, {
                 params: { page },

@@ -1,4 +1,4 @@
-import { memo, MutableRefObject, ReactNode, useRef } from "react";
+import { memo, MutableRefObject, ReactNode, useEffect, useRef, useState } from "react";
 import cls from "./ScrollWrapper.module.scss";
 import classNames from "classnames";
 import { useInfiniteScroll } from "hooks/useInfiniteScroll/useInfiniteScroll";
@@ -15,7 +15,7 @@ export const ScrollWrapper = memo((props: ScrollWrapperProps) => {
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useInfiniteScroll({
-        callback: onScrollEnd, //;onScrollEnd,
+        callback: onScrollEnd,
         triggerRef,
         wrapperRef,
     });
@@ -23,7 +23,7 @@ export const ScrollWrapper = memo((props: ScrollWrapperProps) => {
     return (
         <section ref={wrapperRef} className={classNames(cls.ScrollWrapper, {}, [className])}>
             {children}
-            <div ref={triggerRef} />
+            <div /* style={{ border: "dashed 1px black" }}  */ ref={triggerRef}></div>
         </section>
     );
 });

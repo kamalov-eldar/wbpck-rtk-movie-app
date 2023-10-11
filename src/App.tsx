@@ -9,29 +9,20 @@ import { selectUserInited } from "store/user/selector/selectUserInited/selectUse
 import "./App.scss";
 import "../node_modules/swiper/swiper.scss";
 import "./assets/boxicons-2.0.7/css/boxicons.min.css";
+import { useLocation, useParams } from "react-router-dom";
+import { TCategoryType } from "api/types";
 
 function App() {
     const { theme } = useTheme();
     const dispatch = useDispatch();
     const userInited = useSelector(selectUserInited);
+    const location = useLocation();
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
 
-    return (
-       /*  <ScrollWrapper> */
-            <div className={`app ${theme}`}>
-                {userInited && (
-                    <>
-                        <Header />
-                        <AppRouter />
-                        <Footer />
-                    </>
-                )}
-            </div>
-        /* </ScrollWrapper> */
-    );
+    return <div className={`app ${theme}`}>{userInited && <AppRouter />}</div>;
 }
 
 export default App;

@@ -1,6 +1,5 @@
 import App from "App";
-import { render } from "react-dom";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import {  HashRouter } from "react-router-dom";
 import { StyledEngineProvider } from "@mui/material/styles";
 import ThemeProvider from "providers/themeProvider/ThemeProvider";
 import { StoreProvider } from "providers/storeProvider/StoreProvider";

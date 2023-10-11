@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PaginationSchema } from "../types/paginationSchema";
 
 const initialState: PaginationSchema = {
-    page: 1,
+    page: 0,
 };
 
 export const paginationSlice = createSlice({

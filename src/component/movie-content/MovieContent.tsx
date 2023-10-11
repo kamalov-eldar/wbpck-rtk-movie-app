@@ -15,76 +15,63 @@ import classNames from "classnames";
 import MovieCardList from "./MovieCardList/MovieCardList";
 import cls from "./MovieContent.module.scss";
 import { ScrollWrapper } from "component/ScrollWrapper/ScrollWrapper";
+import { selectPage } from "store/pagination/selectors/selectPage/selectPage";
 
 type MovieContentProps = {
     category: TCategoryType | undefined;
-    listType: TListType | undefined;
     dataMovieList: TMovieItem[] | undefined;
     isLoading: boolean;
     error: IError | undefined;
+    onLoadNextPart: () => void;
 };
 
-const MovieContent: FC<MovieContentProps> = ({ category, listType, dataMovieList, isLoading, error }) => {
-    const { keyword: keywordUrl } = useParams<{ keyword: string }>();
+const MovieContent: FC<MovieContentProps> = ({ category, dataMovieList, isLoading, error, onLoadNextPart }) => {
     const navigate = useNavigate();
-    const view = useSelector(getViewCards);
-
-    useEffect(() => {
-        if (keywordUrl) {
-            navigate(`/`);
-        }
-    }, []);
-
-    useEffect(() => {
-        // setKeyword("");
-    }, [category]);
-
     const dispatch = useAppDispatch();
+
+    const view = useSelector(getViewCards);
 
     const loadMore = useCallback(() => {
         dispatch(paginationActions.nextPage());
-    }, []);
+    }, [dispatch]);
 
     const viewType = {
         [cls["movie-grid"]]: view === ViewCardsType.GRID,
         [cls["movie-list"]]: view === ViewCardsType.LIST,
     };
 
-    const onLoadNextPart = useCallback(() => {
-        console.log("onLoadNextPart");
-    }, []);
-
     return (
-        <ScrollWrapper onScrollEnd={onLoadNextPart}>
-            <div className={cls.movie__content}>
-                <div className={cls.container__content}>
-                    <MovieSearch category={category} />
-                    <div className={classNames([viewType])}>
-                        {category === "movie" && (
-                            <>
-                                {dataMovieList?.map((item, i) => {
-                                    return view === ViewCardsType.GRID ? (
-                                        <MovieCard category={category} movieItem={item} key={item.id} />
-                                    ) : (
-                                        <MovieCardList category={category} movieItem={item} key={item.id} />
-                                    );
-                                })}
-                            </>
-                        )}
-                    </div>
+        <div className={cls.movie__content}>
+            <MovieSearch category={category} />
+            <ScrollWrapper onScrollEnd={onLoadNextPart}>
+                <div className={classNames([viewType])}>
+                    {category === "movie" && (
+                        <>
+                            {dataMovieList?.map((item, i) => {
+                                return view === ViewCardsType.GRID ? (
+                                    <MovieCard category={category} movieItem={item} key={item.id} />
+                                ) : (
+                                    <MovieCardList category={category} movieItem={item} key={item.id} />
+                                );
+                            })}
+                        </>
+                    )}
                 </div>
-                {error && (
-                    <div className="errorBlock">
-                        <span className="errorText">{error.messageError}</span>
-                    </div>
-                )}
-                {!error?.statusError && dataMovieList && dataMovieList.length > 0 && (
-                    <Button disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
-                        {isLoading ? <SvgSpinners /> : "Load more"}
+            </ScrollWrapper>
+
+            {error && (
+                <div className="errorBlock">
+                    <span className="errorText">{error.messageError}</span>
+                </div>
+            )}
+            {!error?.statusError && dataMovieList && dataMovieList.length > 0 && (
+                <div className={cls.content__button}>
+                    <Button id="trigger" disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>
+                        {isLoading ? <SvgSpinners width={"24px"} height={24} /> : "Load more"}
                     </Button>
-                )}
-            </div>
-        </ScrollWrapper>
+                </div>
+            )}
+        </div>
     );
 };
 

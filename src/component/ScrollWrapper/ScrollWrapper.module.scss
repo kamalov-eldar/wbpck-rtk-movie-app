@@ -1,7 +1,20 @@
+@use "./scss/" as *;
+
+
 .ScrollWrapper {
-    flex-grow: 1;
-    padding: 20px 20px 20px 45px;
-    height: calc(100vh - 272px);
+    padding: 20px;
+    height: calc(100vh - 326px);
     overflow-y: auto;
-    flex-shrink: 100;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--main-color);
+        border-radius: 20px;
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+    }
 }

@@ -6,6 +6,8 @@
     //grid-template-rows: repeat(minmax(200px, 1fr));
     gap: 20px;
     margin-bottom: 3rem;
+    max-width: 1660px;
+    margin: auto;
     //min-height: 1160px;
 
     @include tablet {
@@ -17,19 +19,28 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 1660px;
+    margin: auto;
 }
 
 .movie__content {
-    padding: 0 2rem;
+    padding: 0 1rem;
     color: var(--text-color);
-   // max-width: 1660px;
-   // margin: auto;
+    padding-bottom: 20px;
+
     //height: calc(79vh - 128px); //height:67vh;
     //height:67vh;
     // overflow: auto;
 }
 
-.container__content {
+.content__button {
     max-width: 1660px;
     margin: auto;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.container__content {
+    //  max-width: 1660px;
+    //  margin: auto;
 }

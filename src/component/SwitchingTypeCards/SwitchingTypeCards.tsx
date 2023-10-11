@@ -37,8 +37,8 @@ export const SwitchingTypeCards = memo((props: SwitchingTypeCardsProps) => {
 
     return (
         <div className={classNames(cls.SwitchingTypeCards, {}, [className])}>
-            {viewTypes.map((viewType) => (
-                <Button theme={ButtonTheme.CLEAR} onClick={onClick(viewType.view)}>
+            {viewTypes.map((viewType, idx) => (
+                <Button key={idx} theme={ButtonTheme.CLEAR} onClick={onClick(viewType.view)}>
                     <Icon Svg={viewType.icon} className={classNames("", { [cls.selected]: viewType.view === view })} />
                 </Button>
             ))}
