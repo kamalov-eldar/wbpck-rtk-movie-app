@@ -1,6 +1,5 @@
-import React, { FC, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { TCategoryType } from "../../api/types";
-import apiConfig from "../../api/apiConfig";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchActorsList } from "store/actors/fetchActorsList/fetchActorsList";
 import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
