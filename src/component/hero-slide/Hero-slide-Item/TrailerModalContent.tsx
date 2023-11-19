@@ -4,7 +4,7 @@ import { selectVideosList, selectVideosListError, selectVideosListIsLoading } fr
 import { Loader } from "component/Loader/Loader";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchVideosList } from "store/videos/fetchVideosList/fetchVideosList";
-import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader";
 import { videosReducer } from "store/videos/slice/videosSlice";
 
 interface TrailerModalContentProps {

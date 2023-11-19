@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import { TCategoryType } from "../../api/types";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { fetchActorsList } from "store/actors/fetchActorsList/fetchActorsList";
-import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader";
 import { actorsReducer } from "store/actors/slice/actorsSlice";
 import { useSelector } from "react-redux";
 import { selectActorsList, selectActorsListError, selectActorsListIsLoading } from "store/actors/selectors/selectActorsList";

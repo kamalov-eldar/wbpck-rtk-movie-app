@@ -1,4 +1,4 @@
-import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader";
 import { profileActions, profileReducer } from "store/profile/slice/profileSlice";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";

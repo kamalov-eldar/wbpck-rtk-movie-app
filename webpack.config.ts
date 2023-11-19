@@ -11,9 +11,10 @@ export default (env: IBuildEnv) => {
         src: path.resolve(__dirname, "src"),
     };
     const mode = env.mode || "development";
-    const isDev = mode === "development";
     const PORT = env.port || 3001;
     const apiUrl = env.apiUrl || "http://localhost:8001";
+    
+    const isDev = mode === "development";
 
     const config: webpack.Configuration = buildWebpackConfig({
         mode,
