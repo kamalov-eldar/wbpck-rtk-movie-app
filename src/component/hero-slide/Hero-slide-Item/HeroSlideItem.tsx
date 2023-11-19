@@ -32,10 +32,6 @@ const HeroSlideItem: FC<HeroSlideItemProps> = ({ item, className }) => {
     const [url, setUrl] = useState("");
     const path = item.backdrop_path || item.poster_path;
 
-    setTimeout(() => {
-        // console.log("setTimeout");
-    }, 1);
-
     useEffect(() => {
         fetch(`https://image.tmdb.org/t/p/original${path}`)
             .then((response) => {
