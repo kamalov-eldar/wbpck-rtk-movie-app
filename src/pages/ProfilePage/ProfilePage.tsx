@@ -3,13 +3,12 @@ import { profileActions, profileReducer } from "store/profile/slice/profileSlice
 import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
-import { Profile, ValidateProfileError } from "store/profile/types/profile";
+import {  ValidateProfileError } from "store/profile/types/profile";
 import { ProfileCard } from "component/ProfileCard/ProfileCard";
 import { selectProfileIsLoading } from "store/profile/selectors/selectProfileIsLoading/selectProfileIsLoading";
 import { selectProfileError } from "store/profile/selectors/selectProfileError/selectProfileError";
 import { selectProfile } from "store/profile/selectors/selectProfile/selectProfile";
 import { useTheme } from "providers/themeProvider/useTheme";
-// import "./ProfilePage.scss";
 import cls from "./ProfilePage.module.scss";
 import classNames from "classnames";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";

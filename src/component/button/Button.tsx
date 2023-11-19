@@ -21,7 +21,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+const Button: FC<ButtonProps> = (props) => {
     const { className, children, theme = ButtonTheme.OUTLINE, square, disabled, ...otherProps } = props;
     const mods: TMods = {
         [cls[theme]]: true,

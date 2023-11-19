@@ -61,7 +61,7 @@ const Header = memo(({ catalog }: HeaderProps) => {
     }, [dispatch]);
 
     return (
-        <div id="header" ref={headerRef} className={`${cls.header} ${theme} ${catalog && 'header__catalog'}`}>
+        <div id="header" ref={headerRef} className={`${cls.header} ${theme} ${catalog && "header__catalog"}`}>
             <div className={cls["header__wrap"]}>
                 <div className="logo">
                     <img src={logo} alt="" />

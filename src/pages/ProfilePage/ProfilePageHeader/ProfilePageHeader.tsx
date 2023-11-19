@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
 import cls from "./ProfilePageHeader.module.scss";
-import Button, { ButtonTheme } from "component/Button/Button";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { profileActions } from "store/profile/slice/profileSlice";
@@ -10,6 +9,7 @@ import { selectProfileReadonly } from "store/profile/selectors/selectProfileRead
 import { updateProfileData } from "store/profile/services/updateProfileData/updateProfileData";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { selectProfile } from "store/profile/selectors/selectProfile/selectProfile";
+import Button, { ButtonTheme } from "component/Button/Button";
 
 interface ProfilePageHeaderProps {
     className?: string;
