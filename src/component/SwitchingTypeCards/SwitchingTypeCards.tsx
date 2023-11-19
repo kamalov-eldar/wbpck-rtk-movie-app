@@ -3,7 +3,7 @@ import IconGrid from "../../assets/svg/IconGrid.svg";
 import IconList from "../../assets/svg/IconList.svg";
 import cls from "./SwitchingTypeCards.module.scss";
 import classNames from "classnames";
-import Button, { ButtonTheme } from "component/Button/Button";
+import { Button, ButtonTheme } from "component/Button/Button";
 import { Icon } from "component/Icon/Icon";
 
 export enum ViewCardsType {

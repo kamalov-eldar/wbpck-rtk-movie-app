@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { Theme } from "providers/themeProvider/ThemeContext";
-import Button, { ButtonTheme } from "component/Button/Button";
+import { Button, ButtonTheme } from "component/Button/Button";
 import MoonIcon from "assets/svg/MoonIcon.svg";
 import SunIcon from "assets/svg/SunIcon.svg";
 import cls from "./ThemeSwitcher.module.scss";

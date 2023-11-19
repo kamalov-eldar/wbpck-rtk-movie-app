@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import cls from "./AddCommentForm.module.scss";
 import classNames from "classnames";
 import { Input } from "component/Input/Input";
-import Button, { ButtonTheme } from "component/Button/Button";
+import { Button, ButtonTheme } from "component/Button/Button";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { addCommentFormActions, addCommentFormReducer } from "store/addCommentForm/slices/addCommentFormSlice";

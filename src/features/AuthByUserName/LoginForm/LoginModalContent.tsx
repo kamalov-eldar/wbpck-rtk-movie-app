@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import cls from "./LoginModalContent.module.scss";
-import Button, { ButtonTheme } from "component/Button/Button";
+import { Button, ButtonTheme } from "component/Button/Button";
 import { Input } from "component/Input/Input";
 import { memo, useCallback, useEffect } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";

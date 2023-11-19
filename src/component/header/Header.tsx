@@ -7,7 +7,7 @@ import { ThemeSwitcher } from "component/ThemeSwitcher/ThemeSwitcher";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { RoutePath } from "../../../config/routeConfig/routeConfig";
 import { LoginModal } from "features/AuthByUserName/LoginModal/LoginModal";
-import Button, { ButtonTheme } from "component/Button/Button";
+import { Button, ButtonTheme } from "component/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { userActions } from "../../store/user/slice/userSlice";
