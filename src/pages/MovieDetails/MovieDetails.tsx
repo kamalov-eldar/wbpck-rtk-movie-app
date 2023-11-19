@@ -16,7 +16,7 @@ import {
     selectMovieDetailBackdropPath,
     selectMovieDetailPosterPath,
 } from "store/movieDetails/selectors/selectMovieDetails";
-import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { movieDetailsReducer } from "store/movieDetails/slice/movieDetailsSlice";
 import MovieListContainer from "component/movie-list/MovieListContainer";
 import AddCommentForm from "component/AddCommentForm/AddCommentForm";

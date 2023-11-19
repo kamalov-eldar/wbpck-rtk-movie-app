@@ -3,7 +3,7 @@ import { StateSchema } from "providers/storeProvider/StateSchema";
 import { StoreProvider } from "providers/storeProvider/StoreProvider";
 import { authReducer } from "store/auth/slice/authSlice";
 import { profileReducer } from "store/profile/slice/profileSlice";
-import { ReducersList } from "component/DynamicModuleLoader";
+import { ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { actorsReducer } from "store/actors/slice/actorsSlice";
 import { movieDetailsCommentsReducer } from "store/comments/slice/movieDetailsCommentsSlice";
 import { addCommentFormReducer } from "store/addCommentForm/slices/addCommentFormSlice";
