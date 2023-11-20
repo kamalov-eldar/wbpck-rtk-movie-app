@@ -1,15 +1,10 @@
 .AddCommentForm {
-    // border: 1px solid var(--primary-color);
-    border: 1.2px solid rgba(0, 0, 0, 0.1);
+    // border: 1px solid var(--bg-input);
     border-radius: 6px;
-    padding: 20px;
+    padding: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .InputWrapper {
-        width: 100%;
-    }
 
     input {
         width: 100%;
@@ -21,5 +16,8 @@
             box-shadow: 0 0 0 1px var(--bg-primary);
             border-bottom: 2px solid var(--text-color);
         }
+    }
+    & > div {
+        width: 100%;
     }
 }

@@ -7,7 +7,7 @@ import { ThemeSwitcher } from "component/ThemeSwitcher/ThemeSwitcher";
 import { useTheme } from "providers/themeProvider/useTheme";
 import { RoutePath } from "../../../config/routeConfig/routeConfig";
 import { LoginModal } from "features/AuthByUserName/LoginModal/LoginModal";
-import Button, { ButtonTheme } from "../Button/Button";
+import Button, { ButtonTheme } from "component/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { userActions } from "../../store/user/slice/userSlice";
@@ -25,14 +25,16 @@ const Header = memo(({ catalog }: HeaderProps) => {
 
     const authUser = useSelector(selectUserAuthData);
     const [isAuthModal, setIsAuthModal] = useState(false);
+    const [isShrink, setIsShrink] = useState(false);
 
     useEffect(() => {
         const shrinkHeader = () => {
-            // console.log("scroll");
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 headerRef.current?.classList.add("shrink");
+                setIsShrink(true);
             } else {
                 headerRef.current?.classList.remove("shrink");
+                setIsShrink(false);
             }
         };
 
@@ -61,7 +63,7 @@ const Header = memo(({ catalog }: HeaderProps) => {
     }, [dispatch]);
 
     return (
-        <div id="header" ref={headerRef} className={`${cls.header} ${theme} ${catalog && "header__catalog"}`}>
+        <div id="header" ref={headerRef} className={`${cls.header} ${theme} ${(catalog || "") && "header__catalog"}`}>
             <div className={cls["header__wrap"]}>
                 <div className="logo">
                     <img src={logo} alt="" />
@@ -72,19 +74,20 @@ const Header = memo(({ catalog }: HeaderProps) => {
                         <span className={cls.beta}>beta</span>
                     </div>
                 </Link>
-                {/*  <div className="beta"></div> */}
-                {authUser ? (
-                    <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>
-                        Выйти
-                    </Button>
-                ) : (
-                    <Button theme={ButtonTheme.CLEAR} onClick={onShowModal}>
-                        Войти
-                    </Button>
-                )}
+
                 <ThemeSwitcher />
 
                 <NavbarLinks />
+
+                {authUser ? (
+                    <Button isShrink={isShrink} theme={ButtonTheme.OUTLINE_THIN} onClick={onLogout}>
+                        Выйти
+                    </Button>
+                ) : (
+                    <Button isShrink={isShrink} theme={ButtonTheme.OUTLINE_THIN} onClick={onShowModal}>
+                        Войти
+                    </Button>
+                )}
             </div>
             {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
         </div>

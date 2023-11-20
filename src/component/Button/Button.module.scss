@@ -18,11 +18,6 @@ button {
     }
 }
 
-/*
-
-
-*/
-
 .primary {
     border: 4px solid transparent;
     background-color: var(--main-color);
@@ -58,6 +53,19 @@ button {
         box-shadow: unset;
         color: $main-color;
         background-color: $white;
+    }
+}
+
+.outline_thin {
+    border: 1px solid var(--button-shrink);
+    border-radius: 6px;
+    background: none;
+    color: #fff;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--header-color);
     }
 }
 

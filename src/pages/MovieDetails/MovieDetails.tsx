@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TCategoryType } from "../../api/types";
 
@@ -25,6 +25,7 @@ import { CommentList } from "component/CommentList/CommentList";
 import { fetchCommentsByMovieId } from "store/comments/services/fetchCommentsByMovieId/fetchCommentsByMovieId";
 import { getMovieComments, movieDetailsCommentsReducer } from "store/comments/slice/movieDetailsCommentsSlice";
 import { selectCommentsIsLoading } from "store/comments/selectors/selectComments";
+import Header from "component/header/Header";
 
 const redusers: ReducersList = {
     movieDetails: movieDetailsReducer,
@@ -44,6 +45,8 @@ const MovieDetails = () => {
     const posterPath = useSelector(selectMovieDetailPosterPath);
     const comments = useSelector(getMovieComments.selectAll);
     const commentsIsLoading = useSelector(selectCommentsIsLoading);
+
+    const userStorage = localStorage.getItem("user");
 
     useEffect(() => {
         if (category && movieId) {
@@ -69,6 +72,7 @@ const MovieDetails = () => {
     return (
         <DynamicModuleLoader reducers={redusers} removeAfterUnmount>
             <div className="MovieDetail">
+                <Header />
                 <div
                     className="banner"
                     style={{ backgroundImage: `url(${apiConfig.originalImage(backdropPath || posterPath)})` }}></div>
@@ -99,13 +103,11 @@ const MovieDetails = () => {
                         </div>
                     </div>
                 </div>
-                <AddCommentForm onSendComment={onSendComment} />
+                {userStorage && <AddCommentForm user={JSON.parse(userStorage)} onSendComment={onSendComment} />}
                 <CommentList isLoading={commentsIsLoading} comments={comments} />
 
                 <div className="container">
-                    <div className="section mb-3">
-                        <VideoList id={movieId} category={category} />
-                    </div>
+                    <div className="section mb-3">{/*  <VideoList id={movieId} category={category} /> */}</div>
                     <div className="section mb-3">
                         <MovieListContainer title={"Similar"} category={category} listType="similar" id={movieId} />
                     </div>

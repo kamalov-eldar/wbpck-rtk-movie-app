@@ -1,13 +1,13 @@
 .CommentCard {
     padding: 10px;
-    // border: 1px solid var(--primary-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--bg-input);
     border-radius: 6px;
 }
 
 .header {
     display: flex;
     align-items: center;
+    width: fit-content;
 }
 
 .text {
@@ -16,8 +16,4 @@
 
 .username {
     margin-left: 10px;
-}
-
-.loading {
-    // border: none;
 }

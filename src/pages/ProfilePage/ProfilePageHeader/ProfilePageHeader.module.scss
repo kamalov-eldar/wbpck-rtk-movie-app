@@ -1,10 +1,8 @@
 .ProfilePageHeader {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     width: 100%;
     align-items: center;
-   // height: 150px;
-    margin-top: 128px;
 
     .editBtn {
         margin-left: auto;
@@ -18,4 +16,6 @@
 
 .btnsWrapper {
     margin-left: auto;
+    display: flex;
+
 }

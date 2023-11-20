@@ -9,7 +9,7 @@ import { selectProfileReadonly } from "store/profile/selectors/selectProfileRead
 import { updateProfileData } from "store/profile/services/updateProfileData/updateProfileData";
 import { selectUserAuthData } from "store/user/selector/selectUserAuthData";
 import { selectProfile } from "store/profile/selectors/selectProfile/selectProfile";
-import Button, { ButtonTheme } from "../../../component/Button/Button";
+import Button, { ButtonTheme } from "component/Button/Button";
 
 export const ProfilePageHeader = () => {
     const dispatch = useAppDispatch();

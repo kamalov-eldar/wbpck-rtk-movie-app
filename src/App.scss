@@ -36,7 +36,6 @@ html {
 }
 
 .ScrollWrapper {
-    
 }
 
 body {
@@ -154,6 +153,14 @@ p {
 .shrink {
     height: $header-shrink-height;
     background-color: var(--header-shrink);
+}
+
+.shrink_button {
+    border: 1px solid var(--button-shrink);
+    color: #fff;
+    &:hover {
+        background-color: var(--button-shrink-hover);
+    }
 }
 
 .header__catalog {

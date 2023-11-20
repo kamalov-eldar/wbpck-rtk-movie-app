@@ -3,7 +3,7 @@ import { profileActions, profileReducer } from "store/profile/slice/profileSlice
 import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
-import {  ValidateProfileError } from "store/profile/types/profile";
+import { ValidateProfileError } from "store/profile/types/profile";
 import { ProfileCard } from "component/ProfileCard/ProfileCard";
 import { selectProfileIsLoading } from "store/profile/selectors/selectProfileIsLoading/selectProfileIsLoading";
 import { selectProfileError } from "store/profile/selectors/selectProfileError/selectProfileError";
@@ -18,9 +18,18 @@ import { Country, Currency } from "global/types/global";
 import { selectProfileValidateErrors } from "store/profile/selectors/selectProfileValidateErrors/selectProfileValidateErrors";
 import { fetchProfileData } from "store/profile/services/fetchProfileData/fetchProfileData";
 import { useParams } from "react-router-dom";
+import Header from "component/header/Header";
 
 const redusers: ReducersList = {
     profile: profileReducer,
+};
+
+const validateErrorTranslates = {
+    [ValidateProfileError.SERVER_ERROR]: "Серверная ошибка при сохранении",
+    [ValidateProfileError.INCORRECT_COUNTRY]: "Некорректный регион",
+    [ValidateProfileError.NO_DATA]: "Данные не указаны",
+    [ValidateProfileError.INCORRECT_USER_DATA]: "Имя и фамилия обязательны",
+    [ValidateProfileError.INCORRECT_AGE]: "Некорректный возраст",
 };
 
 const ProfilePage = () => {
@@ -34,14 +43,6 @@ const ProfilePage = () => {
     const readonly = useSelector(selectProfileReadonly);
     const validateErrors = useSelector(selectProfileValidateErrors);
     const { id } = useParams<{ id: string }>();
-
-    const validateErrorTranslates = {
-        [ValidateProfileError.SERVER_ERROR]: "Серверная ошибка при сохранении",
-        [ValidateProfileError.INCORRECT_COUNTRY]: "Некорректный регион",
-        [ValidateProfileError.NO_DATA]: "Данные не указаны",
-        [ValidateProfileError.INCORRECT_USER_DATA]: "Имя и фамилия обязательны",
-        [ValidateProfileError.INCORRECT_AGE]: "Некорректный возраст",
-    };
 
     useEffect(() => {
         if (__PROJECT__ !== "storybook") {
@@ -108,7 +109,8 @@ const ProfilePage = () => {
     return (
         <DynamicModuleLoader reducers={redusers} removeAfterUnmount>
             <div className={classNames(cls.profilePage, {}, [theme])}>
-                <ProfilePageHeader />
+                <Header />
+
                 {validateErrors?.length &&
                     validateErrors.map((err) => (
                         <div className="errorText" key={err}>

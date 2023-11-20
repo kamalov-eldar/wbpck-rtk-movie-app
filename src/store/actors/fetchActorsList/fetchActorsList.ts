@@ -12,7 +12,7 @@ export const fetchActorsList = createAsyncThunk<TResponseActorsList, number, Thu
     async (id, thunkApi) => {
         try {
             const response = await thunkApi.extra.apiTmdb.get<TResponseActorsList>(`/movie/${id}/credits`, { params: {} });
-            console.log("response: ", response);
+           // console.log("response: ", response);
 
             if (!response.data) {
                 throw new Error();

@@ -7,6 +7,7 @@ export enum ButtonTheme {
     PRIMARY = "primary",
     LOAD = "load",
     OUTLINE = "outline",
+    OUTLINE_THIN = "outline_thin",
     CLEAR = "clear",
     CLEAR_INVERTED = "clearInverted",
     BACKGROUND = "background",
@@ -19,10 +20,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean;
     // size?: ButtonSize;
     disabled?: boolean;
+    isShrink?: boolean;
 }
 
 const Button: FC<ButtonProps> = (props) => {
-    const { className, children, theme = ButtonTheme.OUTLINE, square, disabled, ...otherProps } = props;
+    const { className, children, isShrink, theme = ButtonTheme.OUTLINE, square, disabled, ...otherProps } = props;
     const mods: TMods = {
         [cls[theme]]: true,
         // [cls.square]: square,
@@ -31,7 +33,7 @@ const Button: FC<ButtonProps> = (props) => {
     };
 
     return (
-        <button disabled={disabled} className={classNames([mods, className])} {...otherProps}>
+        <button disabled={disabled} className={classNames([mods, className], isShrink && "shrink_button")} {...otherProps}>
             {children}
         </button>
     );

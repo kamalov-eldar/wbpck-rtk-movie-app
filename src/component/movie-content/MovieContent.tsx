@@ -1,9 +1,9 @@
-import { FC, memo, useCallback, useEffect } from "react";
+import { FC, memo, useCallback } from "react";
 import MovieCard from "../movie-card/MovieCard";
 import Button, { ButtonTheme } from "../Button/Button";
 import MovieSearch from "../movie-search/MovieSearch";
-import { TCategoryType, TListType, TMovieItem } from "../../api/types";
-import { useNavigate, useParams } from "react-router-dom";
+import { TCategoryType,  TMovieItem } from "../../api/types";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { paginationActions } from "store/pagination/slice/paginationSlice";
 import { SvgSpinners } from "assets/svg/SvgSpinners";
@@ -15,7 +15,6 @@ import classNames from "classnames";
 import MovieCardList from "./MovieCardList/MovieCardList";
 import cls from "./MovieContent.module.scss";
 import { ScrollWrapper } from "component/ScrollWrapper/ScrollWrapper";
-import { selectPage } from "store/pagination/selectors/selectPage/selectPage";
 
 type MovieContentProps = {
     category: TCategoryType | undefined;
@@ -43,6 +42,11 @@ const MovieContent: FC<MovieContentProps> = ({ category, dataMovieList, isLoadin
     return (
         <div className={cls.movie__content}>
             <MovieSearch category={category} />
+            {error && (
+                <div className="errorBlock">
+                    <span className="errorText">{error.messageError}</span>
+                </div>
+            )}
             <ScrollWrapper onScrollEnd={onLoadNextPart}>
                 <div className={classNames([viewType])}>
                     {category === "movie" && (
@@ -59,11 +63,6 @@ const MovieContent: FC<MovieContentProps> = ({ category, dataMovieList, isLoadin
                 </div>
             </ScrollWrapper>
 
-            {error && (
-                <div className="errorBlock">
-                    <span className="errorText">{error.messageError}</span>
-                </div>
-            )}
             {!error?.statusError && dataMovieList && dataMovieList.length > 0 && (
                 <div className={cls.content__button}>
                     <Button id="trigger" disabled={isLoading} theme={ButtonTheme.LOAD} className="small" onClick={loadMore}>

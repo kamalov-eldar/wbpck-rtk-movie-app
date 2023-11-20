@@ -8,6 +8,7 @@ import { Country, Currency } from "global/types/global";
 import { Avatar } from "component/Avatar/Avatar";
 import { CurrencySelect } from "component/CurrencySelect/CurrencySelect";
 import { CountrySelect } from "component/CountrySelect/CountrySelect";
+import { ProfilePageHeader } from "pages/ProfilePage/ProfilePageHeader/ProfilePageHeader";
 
 interface ProfileCardProps {
     profile?: Profile;
@@ -56,6 +57,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
     return profile ? (
         <div className={classNames(cls.ProfileCard, {}, [])}>
+            <ProfilePageHeader />
             <div className={classNames(cls.ProfileCard__container, {}, [])}>
                 <div className={cls.ProfileCard__header}>
                     {profile?.avatar && (

@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import cls from "./LoginModalContent.module.scss";
-import Button, { ButtonTheme } from "../../../component/Button/Button";
+// import Button, { ButtonTheme } from "../../../component/Button/Button";
 import { Input } from "component/Input/Input";
-import { memo, useCallback, useEffect } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { memo, useCallback } from "react";
+import {  useSelector, useStore } from "react-redux";
 import { authActions, authReducer } from "store/auth/slice/authSlice";
 import { loginByUserName } from "store/auth/services/loginByUserName/loginByUserName";
 import { ReduxStoreWithManager } from "providers/storeProvider/StateSchema";
@@ -13,6 +13,7 @@ import { selectLoginIsLoading } from "store/auth/selectors/selectLoginIsLoading/
 import { selectLoginError } from "store/auth/selectors/selectLoginError/selectLoginError";
 import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
+import Button, { ButtonTheme } from "component/Button/Button";
 
 export interface LoginModalContentProps {
     onSuccess: () => void;

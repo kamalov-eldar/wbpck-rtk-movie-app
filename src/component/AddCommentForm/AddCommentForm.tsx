@@ -8,10 +8,14 @@ import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader
 import { addCommentFormActions, addCommentFormReducer } from "store/addCommentForm/slices/addCommentFormSlice";
 import { getAddCommentFormError, getAddCommentFormText } from "store/addCommentForm/selectors/addCommentFormSelectors";
 import Button, { ButtonTheme } from "component/Button/Button";
+import { Avatar } from "component/Avatar/Avatar";
+import { selectProfileForm } from "store/profile/selectors/selectProfileForm/selectProfileForm";
+import { User } from "store/user/types/user";
 
 export interface AddCommentFormProps {
     className?: string;
     onSendComment: (text: string) => void;
+    user: User;
 }
 
 const reducers: ReducersList = {
@@ -19,7 +23,7 @@ const reducers: ReducersList = {
 };
 
 const AddCommentForm = memo((props: AddCommentFormProps) => {
-    const { className, onSendComment } = props;
+    const { className, onSendComment, user } = props;
     const dispatch = useAppDispatch();
 
     const text = useSelector(getAddCommentFormText);
@@ -41,6 +45,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
         <DynamicModuleLoader reducers={reducers}>
             <div className="comments section mb-3">
                 <div className={classNames("", cls.AddCommentForm, {}, [className])}>
+                    <Avatar size={30} src={user.avatar} />
                     <Input
                         className={cls.input}
                         placeholder={"Введите текст комментария"}
