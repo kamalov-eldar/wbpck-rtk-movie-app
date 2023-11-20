@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ButtonTheme } from "../Button/Button";
+import Button, { ButtonTheme } from "../Button/Button";
 import { ThemeDecorator } from "../../../config/ThemeDecorator/ThemeDecorator";
 import { Theme } from "providers/themeProvider/ThemeContext";
 import { ThemeSwitcher } from "./ThemeSwitcher";

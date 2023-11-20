@@ -1,6 +1,6 @@
 import { FC, memo, useCallback, useEffect } from "react";
 import MovieCard from "../movie-card/MovieCard";
-import { ButtonTheme, Button } from "../Button/Button";
+import Button, { ButtonTheme } from "../Button/Button";
 import MovieSearch from "../movie-search/MovieSearch";
 import { TCategoryType, TListType, TMovieItem } from "../../api/types";
 import { useNavigate, useParams } from "react-router-dom";
