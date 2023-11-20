@@ -21,7 +21,7 @@ import {
 } from "store/movie/selectors/selectMovie";
 import { fetchMovieList } from "store/movie/services/fetchMovieList/fetchMovieList";
 import { Link } from "react-router-dom";
-import { Button, ButtonTheme } from "component/Button/Button";
+import Button, { ButtonTheme } from "../Button/Button";
 import MovieList from "./MovieList";
 
 type MovieListContainerProps = {
