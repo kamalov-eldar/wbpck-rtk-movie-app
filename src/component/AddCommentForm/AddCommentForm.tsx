@@ -7,7 +7,7 @@ import { useAppDispatch } from "store/hooks/useAppDispatch/useAppDispatch";
 import { DynamicModuleLoader, ReducersList } from "component/DynamicModuleLoader/DynamicModuleLoader";
 import { addCommentFormActions, addCommentFormReducer } from "store/addCommentForm/slices/addCommentFormSlice";
 import { getAddCommentFormError, getAddCommentFormText } from "store/addCommentForm/selectors/addCommentFormSelectors";
-import Button, { ButtonTheme } from "../Button/Button";
+import Button, { ButtonTheme } from "component/Button/Button";
 
 export interface AddCommentFormProps {
     className?: string;
