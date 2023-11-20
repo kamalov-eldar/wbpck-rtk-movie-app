@@ -1,5 +1,5 @@
 import App from "App";
-import {  HashRouter } from "react-router-dom";
+import { HashRouter, BrowserRouter } from "react-router-dom";
 import { StyledEngineProvider } from "@mui/material/styles";
 import ThemeProvider from "providers/themeProvider/ThemeProvider";
 import { StoreProvider } from "providers/storeProvider/StoreProvider";
@@ -9,7 +9,7 @@ const container = document.getElementById("root");
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript strict
 
 root.render(
-    <HashRouter>
+    <BrowserRouter>
         <StoreProvider>
             <StyledEngineProvider injectFirst>
                 <ThemeProvider>
@@ -17,7 +17,7 @@ root.render(
                 </ThemeProvider>
             </StyledEngineProvider>
         </StoreProvider>
-    </HashRouter>,
+    </BrowserRouter>,
 );
 
 /* render(
