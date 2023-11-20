@@ -1,8 +1,8 @@
-import React, { FC, useCallback, useEffect } from "react";
+import { FC, useCallback } from "react";
 import "./MovieSearch.scss";
 
 import { useNavigate } from "react-router-dom";
-import Button from "../Button/Button";
+import { Button } from "../Button/Button";
 import { TCategoryType } from "../../api/types";
 import { Input } from "component/Input/Input";
 

@@ -1,5 +1,5 @@
 import { Skeleton } from "component/Skeleton/Skeleton";
-import Button from "component/Button/Button";
+import { Button } from "component/Button/Button";
 import { CSSProperties, FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cls from "./IMG.module.scss";
