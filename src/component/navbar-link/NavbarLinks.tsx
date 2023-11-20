@@ -14,7 +14,7 @@ export interface NavbarItemType {
 const headerNav: NavbarItemType[] = [
     {
         display: "Home",
-        path: RoutePath?.home,
+        path: '/',
     },
     {
         display: "Upcoming Movies",
