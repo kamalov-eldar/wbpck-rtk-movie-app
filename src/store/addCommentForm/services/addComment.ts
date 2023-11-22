@@ -19,12 +19,18 @@ export const addComment = createAsyncThunk<Comment, addCommentProps, ThunkConfig
         if (!userData || !text || !movieId) {
             return rejectWithValue("no data");
         }
+        const data = {
+            movieId,
+            userId: userData.id,
+            text,
+        };
 
         try {
             const response = await extra.api.post<Comment>("/comments", {
-                movieId,
-                userId: userData.id,
-                text,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                data,
             });
 
             if (!response.data) {
